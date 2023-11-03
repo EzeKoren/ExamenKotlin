@@ -1,5 +1,5 @@
-package layout
 
+package com.yaundecode.examenadopcionapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.yaundecode.examenadopcionapp.R
