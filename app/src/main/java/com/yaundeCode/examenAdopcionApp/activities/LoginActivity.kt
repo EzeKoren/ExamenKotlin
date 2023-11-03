@@ -1,4 +1,4 @@
-package layout
+package com.yaundeCode.examenAdopcionApp.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
