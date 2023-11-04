@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Cachogos</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--    Slider Intro One-->
+    <string name="title_slider_one">Estoy solito</string>
+    <string name="subtitle_subtitle_one">Ready to make the good action of the year?</string>
 
     <!--    Slider Intro Two-->
     <string name="title_slider_two">Me llevas a tu casa?</string>
@@ -17,8 +19,9 @@
     <!--    Login Button-->
     <string name="login_ingresar_nombre">Ingresa tu nombre</string>
 
-    <!--    Placeholder Nombre-->
-    <string name="login_nombre">nombre</string>
+    <!--    Login -->
+    <string name="login_title">Ingresa tu nombre</string>
+
 
     <!--    Login Button-->
     <string name="login_button">Login</string>

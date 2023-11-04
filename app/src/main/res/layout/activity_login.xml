@@ -6,23 +6,14 @@
     android:layout_height="match_parent">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView5"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.SliderIntroThreeFragment"
-        android:layout_width="match_parent"
-        android:layout_height="707dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.GetStartedButtonFragment"
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView5" />
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/main_navgraph" />
 </androidx.constraintlayout.widget.ConstraintLayout>
