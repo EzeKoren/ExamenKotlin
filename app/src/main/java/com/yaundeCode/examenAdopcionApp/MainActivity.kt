@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.activities
+package com.yaundeCode.examenAdopcionApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
