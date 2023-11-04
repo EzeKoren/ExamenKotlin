@@ -7,10 +7,8 @@
     android:layout_height="match_parent"
     android:background="#303F9F"
     android:backgroundTint="#303F9F"
-    android:foregroundTint="#00BCD4"
     tools:context="com.yaundeCode.examenAdopcionApp.fragments.PublicationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

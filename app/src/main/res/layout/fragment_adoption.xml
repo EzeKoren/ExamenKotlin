@@ -5,11 +5,10 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D32F2F"
-    android:backgroundTint="#D32F2F"
+    android:background="#303F9F"
+    android:backgroundTint="#303F9F"
     tools:context="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
