@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="background">#FFFFFFFF</color>
-
     <color name="primary">#827397</color>
-    <color name="primaryDark">#5226A1</color>
-    <color name="secondary">#D9D9D9</color>
-    <color name="font">#5F5B5B</color>
+    <color name="input">#D8D8D8</color>
+    <color name="text">#191919</color>
+    <color name="text_light">#ADA8A8</color>
+    <color name="icons">#FFFFFF</color>
 
+    <!-- DARK MODE -->
+    <color name="background_DM">#000000</color>
+    <color name="primary_DM">#58348A</color>
+    <color name="input_DM">#1F1F1F</color>
+    <color name="text_DM">#CACACA</color>
+    <color name="text_light_DM">#ADA8A8</color>
+    <color name="icons_DM">#FFFFFF</color>
 
     <color name="error">#FF0000</color>
 </resources>

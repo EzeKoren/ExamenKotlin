@@ -2,7 +2,9 @@ package com.yaundecode.examenadopcionapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.yaundecode.examenadopcionapp.R
+import android.widget.CompoundButton
+import android.widget.Switch
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -3,5 +3,9 @@
     <style name="Base.Theme.ExamenAdopcion" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:colorBackground">@color/background_DM</item>
+        <item name="colorOnBackground">@color/text_DM</item>
+        <item name="colorPrimary">@color/primary_DM</item>
+        <item name="colorOnPrimary">@color/icons_DM</item>
     </style>
 </resources>
