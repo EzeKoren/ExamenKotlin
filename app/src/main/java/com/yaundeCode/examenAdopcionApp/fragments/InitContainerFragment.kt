@@ -1,15 +1,15 @@
 package com.yaundecode.examenadopcionapp.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.yaundecode.examenadopcionapp.MainActivity
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.yaundecode.examenadopcionapp.R
+import com.yaundecode.examenadopcionapp.SliderAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,23 +17,16 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass. Use the [LoginFragment.newInstance] factory method to create an
- * instance of this fragment.
+ * A simple [Fragment] subclass. Use the [InitContainerFragment.newInstance] factory method to
+ * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
-
-    lateinit var v: View
-
+class InitContainerFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -41,20 +34,21 @@ class LoginFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_login, container, false)
-        val button = v.findViewById<Button>(R.id.login_button)
+        // Inflate the layout for this fragment
+
+        val v = inflater.inflate(R.layout.fragment_init_container, container, false)
+        val button = v.findViewById<Button>(R.id.get_started_button)
         button.setOnClickListener {
-            val editTextNombre = v.findViewById<EditText>(R.id.editTextNombre)
-            val nombre = editTextNombre.text.toString()
-            if (nombre.isEmpty()) {
-                editTextNombre.setError("Este campo es obligatorio")
-            } else {
-                val intent = Intent(requireContext(), MainActivity::class.java)
-                intent.putExtra("nombre", nombre)
-                startActivity(intent)
-            }
+            findNavController().navigate(R.id.action_initContainerFragment3_to_loginFragment)
         }
         return v
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val viewPager = view.findViewById<ViewPager2>(R.id.viewPager)
+        val sliderAdapter = SliderAdapter(requireActivity())
+        viewPager.adapter = sliderAdapter
     }
 
     companion object {
@@ -64,12 +58,12 @@ class LoginFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
+         * @return A new instance of fragment InitContainerFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-                LoginFragment().apply {
+                InitContainerFragment().apply {
                     arguments =
                             Bundle().apply {
                                 putString(ARG_PARAM1, param1)

@@ -16,4 +16,6 @@
     <color name="icons_DM">#FFFFFF</color>
 
     <color name="error">#FF0000</color>
+    <color name="placeholder">#D8D8D8</color>
+    <color name="text_placeholder">#CAC9C9</color>
 </resources>

@@ -1,8 +1,40 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Cachogos</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--    Slider Intro One-->
+    <string name="title_slider_one">Estoy solito</string>
+    <string name="subtitle_subtitle_one">Ready to make the good action of the year?</string>
+
+    <!--    Slider Intro Two-->
+    <string name="title_slider_two">Me llevás a tu casa?</string>
+    <string name="subtitle_subtitle_two">If you take me home with you, you won\'t regret it</string>
+
+    <!--    Slider Intro three-->
+    <string name="title">Adopción de perritos</string>
+    <string name="subtitle">Make your life more happy with us to have a little new friend</string>
+
+    <!--    Get Started Button-->
+    <string name="get_started_button">Get started</string>
+
+    <!--    Login Button-->
+    <string name="login_ingresar_nombre">Ingresa tu nombre</string>
+
+    <!--    Login -->
+    <string name="login_title">Ingresa tu nombre</string>
+
+    <!--    Login Button-->
+    <string name="login_button">Login</string>
+
+    <!--    Menú hamburguesa -->
+    <string name="nav_header_hello">Hola</string>
+    <string name="nav_header_username">Martín</string>
+    <string name="nav_header_user">Usuario</string>
+    <string name="nav_item_profile">Perfil</string>
+    <string name="nav_item_setting">Configuración</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 
     <!-- Configuración -->
     <string name="settings_view_header">Configuración</string>
