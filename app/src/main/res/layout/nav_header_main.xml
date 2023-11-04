@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_header"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/primary"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/nav_header_imageUser"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:src="@drawable/nav_header_image_user"
+        android:contentDescription="@string/nav_header_user"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/nav_header_hello"
+        android:layout_width="match_parent"
+        android:layout_toEndOf="@id/nav_header_imageUser"
+        android:layout_below="@id/nav_header_imageUser"
+        android:paddingTop="5dp"
+        android:text="@string/nav_header_hello"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+    <TextView
+        android:id="@+id/nav_header_username"
+        android:layout_width="match_parent"
+        android:layout_toEndOf="@id/nav_header_imageUser"
+        android:layout_below="@id/nav_header_hello"
+        android:paddingTop="3dp"
+        android:text="@string/nav_header_username"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+</RelativeLayout>

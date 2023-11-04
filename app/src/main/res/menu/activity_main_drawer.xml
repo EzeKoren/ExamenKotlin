@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_item_profile"
+            android:icon="@drawable/ic_user_profile"
+            android:title="@string/nav_item_profile"  />
+        <item android:id="@+id/nav_item_setting"
+            android:icon="@drawable/ic_item_setting"
+            android:title="@string/nav_item_setting"  />
+    </group>
+</menu>

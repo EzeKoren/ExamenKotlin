@@ -45,6 +45,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    implementation("androidx.drawerlayout:drawerlayout:1.1.1")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
     /* Navigation */
     val nav_version = "2.5.3"
 
