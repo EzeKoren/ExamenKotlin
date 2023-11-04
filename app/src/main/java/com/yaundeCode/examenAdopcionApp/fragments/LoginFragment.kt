@@ -1,11 +1,14 @@
 package com.yaundeCode.examenAdopcionApp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import com.yaundecode.examenadopcionapp.MainActivity
 import com.yaundecode.examenadopcionapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,8 +42,20 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_login, container, false)
+        val button = v.findViewById<Button>(R.id.login_button)
+        button.setOnClickListener {
+            val editTextNombre = v.findViewById<EditText>(R.id.editTextNombre)
+            val nombre = editTextNombre.text.toString()
+            if (nombre.isEmpty()) {
+                editTextNombre.setError("Este campo es obligatorio")
+            } else {
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                intent.putExtra("nombre", nombre)
+                startActivity(intent)
+            }
+
+        }
         return v
     }
 
