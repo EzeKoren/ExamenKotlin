@@ -9,25 +9,6 @@
     tools:context=".MainActivity"
     tools:openDrawer="start">
 
-    <!-- <TextView
-        android:id="@+id/textViewNombre"
-        android:layout_width="91dp"
-        android:layout_height="54dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /> -->
-
-    <!-- <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="149dp"
-        android:layout_height="287dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNombre"
-        app:srcCompat="@drawable/ic_dog_slider_one" /> -->
-
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
