@@ -5,10 +5,9 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#303F9F"
-    android:backgroundTint="#303F9F"
-    android:foregroundTint="#00BCD4"
-    tools:context="com.yaundeCode.examenAdopcionApp.fragments.PublicacionFragment">
+    android:background="#0097A7"
+    android:backgroundTint="#0097A7"
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.FavoriteFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -16,11 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Publicacion"
+        android:text="Favoritos"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

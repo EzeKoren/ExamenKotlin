@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.R
 
-class PublicacionFragment: Fragment() {
+class PublicationFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -17,6 +17,6 @@ class PublicacionFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_publicacion, container, false)
+        return inflater.inflate(R.layout.fragment_publication, container, false)
     }
 }

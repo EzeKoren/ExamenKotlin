@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#D32F2F"
     android:backgroundTint="#D32F2F"
-    tools:context="com.yaundeCode.examenAdopcionApp.fragments.AdopcionFragment">
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

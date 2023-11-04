@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.R
 
-class AdopcionFragment: Fragment() {
+class AdoptionFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +18,6 @@ class AdopcionFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_adopcion, container, false)
+        return inflater.inflate(R.layout.fragment_adoption, container, false)
     }
 }
