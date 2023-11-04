@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.fragments
+package com.yaundecode.examenadopcionapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.R
 
-class AdoptionFragment: Fragment() {
+class AdoptionFragment : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_adoption, container, false)

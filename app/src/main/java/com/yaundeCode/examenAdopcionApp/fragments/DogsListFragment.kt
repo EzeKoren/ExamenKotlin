@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.fragments
+package com.yaundecode.examenadopcionapp.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
