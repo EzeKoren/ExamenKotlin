@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp
+package com.yaundeCode.examenAdopcionApp
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var bottomNavView : BottomNavigationView
+    private lateinit var navHostFragment : NavHostFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -61,6 +64,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             return true
         }
 
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        
+        bottomNavView = findViewById(R.id.bottom_bar)
+        
+        NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
+        
         return super.onOptionsItemSelected(item)
     }
 }

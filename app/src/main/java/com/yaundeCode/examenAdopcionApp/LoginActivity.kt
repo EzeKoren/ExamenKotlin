@@ -1,4 +1,3 @@
-
 package com.yaundecode.examenadopcionapp
 import android.os.Bundle
 import android.widget.EditText
