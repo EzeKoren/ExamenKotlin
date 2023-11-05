@@ -9,13 +9,13 @@ import com.yaundeCode.examenAdopcionApp.Dog
 import com.yaundecode.examenadopcionapp.R
 
 class DogViewHolder(view: View) : RecyclerView.ViewHolder(view){
-    val imagen = view.findViewById<ConstraintLayout>(R.id.item_dog)
-    val guardado = view.findViewById<ImageView>(R.id.dogSaveIcon)
-    val nombre = view.findViewById<TextView>(R.id.textDogNombre);
-    val raza = view.findViewById<TextView>(R.id.textDogRaza)
-    val subRaza = view.findViewById<TextView>(R.id.textDogSubRaza)
-    val edad = view.findViewById<TextView>(R.id.textDogEdad)
-    val sexo = view.findViewById<TextView>(R.id.textDogSexo)
+    private val imagen = view.findViewById<ConstraintLayout>(R.id.item_dog)
+    private val guardado = view.findViewById<ImageView>(R.id.dogSaveIcon)
+    private val nombre = view.findViewById<TextView>(R.id.textDogNombre)
+    private val raza = view.findViewById<TextView>(R.id.textDogRaza)
+    private val subRaza = view.findViewById<TextView>(R.id.textDogSubRaza)
+    private val edad = view.findViewById<TextView>(R.id.textDogEdad)
+    private val sexo = view.findViewById<TextView>(R.id.textDogSexo)
 
     fun render(dogModel: Dog){
         val imagenResourceId = itemView.resources.getIdentifier(dogModel.imagen, "drawable", itemView.context.packageName)
