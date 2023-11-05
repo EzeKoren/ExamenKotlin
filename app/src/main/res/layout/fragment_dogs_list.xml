@@ -5,8 +5,7 @@
     tools:context="com.yaundeCode.examenAdopcionApp.fragments.DogsListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/DogsListRecycler"
+        android:id="@+id/dogsListRecycler"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent" />
 </FrameLayout>
