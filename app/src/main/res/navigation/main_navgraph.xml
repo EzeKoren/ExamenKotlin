@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navgraph"
+    app:startDestination="@id/home">
+    <fragment
+        android:id="@+id/adoption"
+        android:name="com.yaundecode.examenadopcionapp.fragments.AdoptionFragment"
+        android:label="fragment_adopcion"
+        tools:layout="@layout/fragment_adoption" />
+    <fragment
+        android:id="@+id/favorite"
+        android:name="com.yaundecode.examenadopcionapp.fragments.FavoriteFragment"
+        android:label="fragment_favoritos"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/home"
+        android:name="com.yaundecode.examenadopcionapp.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/publication"
+        android:name="com.yaundecode.examenadopcionapp.fragments.PublicationFragment"
+        android:label="fragment_publicacion"
+        tools:layout="@layout/fragment_publication" />
+
+</navigation>

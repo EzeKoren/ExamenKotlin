@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_navgraph"
+    app:startDestination="@id/initContainerFragment3">
+
+    <fragment
+        android:id="@+id/initContainerFragment3"
+        android:name="com.yaundecode.examenadopcionapp.fragments.InitContainerFragment"
+        android:label="fragment_init_container"
+        tools:layout="@layout/fragment_init_container">
+        <action
+            android:id="@+id/action_initContainerFragment3_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login"/>
+</navigation>
