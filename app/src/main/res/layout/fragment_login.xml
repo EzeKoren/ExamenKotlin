@@ -1,13 +1,63 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yaundeCode.examenAdopcionApp.fragments.LoginFragment">
+    tools:context="com.yaundecode.examenadopcionapp.fragments.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="264dp"
+            android:layout_height="39dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="@string/login_title"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.203" />
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="284dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ic_rounded_placeholder"
+            android:ems="10"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="text"
+            android:textAlignment="inherit"
+            android:textColor="@color/font"
+            android:textSize="15dp"
+            android:paddingStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            app:layout_constraintVertical_bias="0.076" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="198dp"
+            android:layout_height="52dp"
+            android:background="@drawable/rounded_button_background"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/login_button"
+            android:textColor="@color/secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.893" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- TODO: Cambiar color/secondary -->
 </FrameLayout>
