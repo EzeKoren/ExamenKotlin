@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.yaundeCode.examenAdopcionApp.MainActivity"
+        <activity android:name="com.yaundecode.examenadopcionapp.MainActivity"
             android:exported="true">
 
 
