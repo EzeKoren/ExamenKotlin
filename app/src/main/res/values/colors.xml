@@ -9,4 +9,5 @@
     <color name="error">#FF0000</color>
     <color name="placeholder">#D8D8D8</color>
     <color name="text_placeholder">#CAC9C9</color>
+    <color name="selection_filter">#827397</color>
 </resources>

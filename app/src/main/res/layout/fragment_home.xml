@@ -6,20 +6,141 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#303F9F"
-    android:backgroundTint="#303F9F"
+    android:orientation="vertical"
     tools:context="com.yaundecode.examenadopcionapp.fragments.HomeFragment">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/filterTitle"
+        style="@style/CommonTextViewStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="348dp"
+        android:text="Filtros"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchDogs" />
+
+    <TextView
+        android:id="@+id/moreFilters"
+        style="@style/CommonTextViewStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/primary"
+        android:text="Mas Filtros"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchDogs"
+        tools:layout_editor_absoluteX="317dp" />
+
+    <LinearLayout
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Home"
-        android:textColor="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/filterTitle">
+
+        <RelativeLayout
+            android:id="@+id/filterFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/selector_button_background">
+
+            <!-- Icono a la izquierda -->
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_person"/>
+
+            <!-- Texto a la derecha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="8dp"
+                android:text="Fecha"
+                android:textColor="@drawable/selector_text_color"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/filterPublicacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1.1"
+            android:background="@drawable/selector_button_background">
+
+            <!-- Icono a la izquierda -->
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_person"></ImageView>
+            <!-- Texto a la derecha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="8dp"
+                android:text="Ubicacion"
+                android:textColor="@drawable/selector_text_color"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/filterRaza"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/selector_button_background">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_person"></ImageView>
+            <!-- Texto a la derecha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="8dp"
+                android:text="Raza"
+                android:textColor="@drawable/selector_text_color"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchDogs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDogsView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/filters"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
