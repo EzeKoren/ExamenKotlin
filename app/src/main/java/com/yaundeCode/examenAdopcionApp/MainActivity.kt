@@ -11,17 +11,25 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.yaundeCode.examenAdopcionApp.DogProvider
+import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var bottomNavView : BottomNavigationView
-    private lateinit var navHostFragment : NavHostFragment
+    private lateinit var bottomNavView: BottomNavigationView
+    private lateinit var navHostFragment: NavHostFragment
 
-
+    private fun initDogRecycleView() {
+        val recyclerView = findViewById<RecyclerView>(R.id.dogsListRecycler)
+        recyclerView.layoutManager = LinearLayoutManager(this);
+        recyclerView.adapter = DogAdapter(DogProvider.dogList)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +40,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer = findViewById(R.id.drawer_layout)
 
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle = ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawer.addDrawerListener(toggle)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -47,12 +61,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
+        initDogRecycleView()
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_setting -> Toast.makeText(this, "Configuraciòn", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_setting -> Toast.makeText(this, "Configuraciòn", Toast.LENGTH_SHORT)
+                .show()
         }
 
         drawer.closeDrawer(GravityCompat.START)
@@ -71,7 +88,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
+        if (toggle.onOptionsItemSelected(item)) {
             return true
         }
 
