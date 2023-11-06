@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer = findViewById(R.id.drawer_layout)
 
-        toggle = ActionBarDrawreToggle(
+        toggle = ActionBarDrawerToggle(
             this,
             drawer,
             toolbar,
