@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navHostFragment: NavHostFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val nombre = intent.getStringExtra("nombre") ?: "Default Name"
+        val name = intent.getStringExtra("nombre") ?: "Default Name"
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val headerView: View = navigationView.getHeaderView(0)
         val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
-        usernameTextView.text = nombre
+        usernameTextView.text = name
     }
 
 

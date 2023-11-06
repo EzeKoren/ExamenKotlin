@@ -44,13 +44,13 @@ class LoginFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_login, container, false)
         val button = v.findViewById<Button>(R.id.login_button)
         button.setOnClickListener {
-            val editTextNombre = v.findViewById<EditText>(R.id.editTextNombre)
-            val nombre = editTextNombre.text.toString()
-            if (nombre.isEmpty()) {
-                editTextNombre.setError("Este campo es obligatorio")
+            val editTextName = v.findViewById<EditText>(R.id.editTextNombre)
+            val name = editTextName.text.toString()
+            if (name.isEmpty()) {
+                editTextName.setError("Este campo es obligatorio")
             } else {
                 val intent = Intent(requireContext(), MainActivity::class.java)
-                intent.putExtra("nombre", nombre)
+                intent.putExtra("nombre", name)
                 startActivity(intent)
             }
         }
