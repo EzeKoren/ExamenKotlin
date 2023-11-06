@@ -36,6 +36,7 @@
     <string name="navigation_drawer_close">Close</string>
 
     <!--    Publication Form-->
+    <string name="form_title">Publicar mascota</string>
     <string name="form_name">Nombre</string>
     <string name="form_age">Edad</string>
     <string name="form_gender">Sexo</string>
