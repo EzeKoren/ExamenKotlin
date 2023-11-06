@@ -34,4 +34,63 @@
     <string name="nav_item_setting">Configuración</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+
+    <!--    Publication Form-->
+    <string name="form_name">Nombre</string>
+    <string name="form_age">Edad</string>
+    <string name="form_gender">Sexo</string>
+    <string name="form_weight">Peso</string>
+    <string name="form_description">Descripción</string>
+
+    <!--    Form Button-->
+    <string name="form_button">Crear</string>
+
+    <string-array name="gender_options">
+        <item>Macho</item>
+        <item>Hembra</item>
+    </string-array>
+
+    <string-array name="dog_breeds">
+        <item>Beagle</item>
+        <item>Bulldog</item>
+        <item>Labrador</item>
+        <item>Poodle</item>
+    </string-array>
+
+    <string-array name="dog_subbreeds">
+        <item>Bulldog Francés</item>
+        <item>Bulldog Inglés</item>
+        <item>Bulldog Americano</item>
+        <item>Beagle Harrier</item>
+        <item>Labrador Retriever Chocolate</item>
+        <item>Labrador Retriever Negro</item>
+        <item>Labrador Retriever Amarillo</item>
+    </string-array>
+
+    <string-array name="argentine_provinces">
+        <item>Buenos Aires</item>
+        <item>Catamarca</item>
+        <item>Chaco</item>
+        <item>Chubut</item>
+        <item>Córdoba</item>
+        <item>Corrientes</item>
+        <item>Entre Ríos</item>
+        <item>Formosa</item>
+        <item>Jujuy</item>
+        <item>La Pampa</item>
+        <item>La Rioja</item>
+        <item>Mendoza</item>
+        <item>Misiones</item>
+        <item>Neuquén</item>
+        <item>Río Negro</item>
+        <item>Salta</item>
+        <item>San Juan</item>
+        <item>San Luis</item>
+        <item>Santa Cruz</item>
+        <item>Santa Fe</item>
+        <item>Santiago del Estero</item>
+        <item>Tierra del Fuego</item>
+        <item>Tucumán</item>
+    </string-array>
+
 </resources>
