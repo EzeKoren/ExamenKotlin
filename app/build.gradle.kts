@@ -36,7 +36,7 @@ android {
 
 dependencies {
     /* Room */
-    val room_version = "2.5.0"
+    val room_version = "2.4.0"
     /* Navigation */
     val nav_version = "2.5.3"
 

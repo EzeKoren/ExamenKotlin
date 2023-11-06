@@ -3,7 +3,6 @@ package com.yaundecode.examenadopcionapp
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(tableName = "dogs")
 data class Dog(
@@ -17,7 +16,7 @@ data class Dog(
         @ColumnInfo(name = "gender")
         val gender: String,
         @ColumnInfo(name = "weight")
-        val weight: Float,
+        val weight: Int,
         @ColumnInfo(name = "description")
         val description: String,
         @ColumnInfo(name = "breed")
@@ -26,5 +25,4 @@ data class Dog(
         val subBreed: String,
         @ColumnInfo(name = "location")
         val location: String,
-        @ColumnInfo(name = "creation_date") val creationDate: Date
 )
