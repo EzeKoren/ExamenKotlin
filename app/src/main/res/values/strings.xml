@@ -40,6 +40,9 @@
     <string name="form_age">Edad</string>
     <string name="form_gender">Sexo</string>
     <string name="form_weight">Peso</string>
+    <string name="form_location">Ubicación</string>
+    <string name="form_breed">Raza de perro</string>
+    <string name="form_sub_breed">Subraza de perro</string>
     <string name="form_description">Descripción</string>
 
     <!--    Form Button-->
