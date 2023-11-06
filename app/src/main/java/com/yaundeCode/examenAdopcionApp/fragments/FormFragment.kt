@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.Dog
 import com.yaundecode.examenadopcionapp.R
+import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +41,7 @@ class FormFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_form, container, false)
-        val button = v.findViewById<Button>(R.id.form_button)
+        val button = v.findViewById<Button>(R.id.saveButton)
         button.setOnClickListener {
             val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
             val name = v.findViewById<EditText>(R.id.editTextFormName).text.toString()
@@ -62,7 +63,7 @@ class FormFragment : Fragment() {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
                         .show()
             } else {
-                val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
+                val dog = Dog(0, name, age, gender, weight, description, breed, subBreed, location, Date())
                 println(dog)
             }
         }

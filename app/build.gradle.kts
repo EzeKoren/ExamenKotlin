@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -34,6 +35,11 @@ android {
 }
 
 dependencies {
+    /* Room */
+    val room_version = "2.5.0"
+    /* Navigation */
+    val nav_version = "2.5.3"
+
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
@@ -49,9 +55,29 @@ dependencies {
     implementation("androidx.drawerlayout:drawerlayout:1.1.1")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
 
-    /* Navigation */
-    val nav_version = "2.5.3"
+    // Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
+    /* Room */
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    // To use Kotlin annotation processing tool (kapt)
+    kapt ("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+    // optional - RxJava2 support for Room
+    implementation("androidx.room:room-rxjava2:$room_version")
+    // optional - RxJava3 support for Room
+    implementation("androidx.room:room-rxjava3:$room_version")
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation("androidx.room:room-guava:$room_version")
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:$room_version")
+    // optional - Paging 3 Integration
+    implementation("androidx.room:room-paging:$room_version")
+
+    /* Navigation */
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
@@ -63,6 +89,5 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     // ViewPager2
-
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 }
