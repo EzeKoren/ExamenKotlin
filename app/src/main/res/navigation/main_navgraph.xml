@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/formFragment"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.FormFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.FormFragment"
         android:label="fragment_form"
         tools:layout="@layout/fragment_form" />
 

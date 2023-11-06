@@ -1,7 +1,6 @@
-package com.yaundeCode.examenAdopcionApp.fragments
+package com.yaundecode.examenadopcionapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import com.yaundeCode.examenAdopcionApp.Dog
+import androidx.fragment.app.Fragment
+import com.yaundecode.examenadopcionapp.Dog
 import com.yaundecode.examenadopcionapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,9 +18,8 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [FormFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] subclass. Use the [FormFragment.newInstance] factory method to create an
+ * instance of this fragment.
  */
 class FormFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -36,8 +35,9 @@ class FormFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_form, container, false)
         val button = v.findViewById<Button>(R.id.form_button)
@@ -58,8 +58,9 @@ class FormFragment : Fragment() {
             val age = ageStr.toIntOrNull()
             val weight = weightStr.toFloatOrNull()
 
-            if (age == null || name.isEmpty() || weight == null || description.isEmpty() ) {
-                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+            if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
+                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
+                        .show()
             } else {
                 val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
                 println(dog)
@@ -70,8 +71,8 @@ class FormFragment : Fragment() {
 
     companion object {
         /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
+         * Use this factory method to create a new instance of this fragment using the provided
+         * parameters.
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
@@ -80,11 +81,12 @@ class FormFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FormFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                FormFragment().apply {
+                    arguments =
+                            Bundle().apply {
+                                putString(ARG_PARAM1, param1)
+                                putString(ARG_PARAM2, param2)
+                            }
                 }
-            }
     }
 }

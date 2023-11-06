@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.models
+package com.yaundecode.examenadopcionapp.models
 
 enum class ProvinciasArgentinas {
     BUENOS_AIRES,
