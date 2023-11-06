@@ -8,10 +8,10 @@
     android:layout_height="match_parent"
     android:background="#303F9F"
     android:backgroundTint="#303F9F"
-    tools:context="com.yaundecode.examenadopcionapp.fragments.FavoriteFragment">
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.FavoriteFragment">
 
     <TextView
-        android:id="@+id/textDogNombre"
+        android:id="@+id/textDogname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"

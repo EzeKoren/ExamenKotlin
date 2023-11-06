@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp
+package com.yaundeCode.examenAdopcionApp
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -15,8 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.yaundeCode.examenAdopcionApp.DogProvider
-import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
+import com.yaundeCode.examenAdopcionApp.R
+import com.yaundecode.examenadopcionapp.fragments.DogsListFragment
+import com.jakewharton.threetenabp.AndroidThreeTen
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -25,11 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
 
-    private fun initDogRecycleView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.dogsListRecycler)
-        recyclerView.layoutManager = LinearLayoutManager(this);
-        recyclerView.adapter = DogAdapter(DogProvider.dogList)
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +58,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        initDogRecycleView()
+        // Cargamos el fragmento DogsListFragment en el contenedor
+        val fragment = DogsListFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host, fragment)
+            .commit()
 
+        AndroidThreeTen.init(this)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

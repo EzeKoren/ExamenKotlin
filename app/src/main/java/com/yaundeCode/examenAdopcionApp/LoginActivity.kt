@@ -1,4 +1,6 @@
-package com.yaundecode.examenadopcionapp
+package com.yaundeCode.examenAdopcionApp
+
+
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity

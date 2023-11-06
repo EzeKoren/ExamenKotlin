@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/initContainerFragment3"
-        android:name="com.yaundecode.examenadopcionapp.fragments.InitContainerFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.InitContainerFragment"
         android:label="fragment_init_container"
         tools:layout="@layout/fragment_init_container">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.yaundecode.examenadopcionapp.fragments.LoginFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login"/>
 </navigation>

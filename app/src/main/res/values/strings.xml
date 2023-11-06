@@ -18,10 +18,10 @@
     <string name="get_started_button">Get started</string>
 
     <!--    Login Button-->
-    <string name="login_ingresar_nombre">Ingresa tu nombre</string>
+    <string name="login_ingresar_name">Ingresa tu name</string>
 
     <!--    Login -->
-    <string name="login_title">Ingresa tu nombre</string>
+    <string name="login_title">Ingresa tu name</string>
 
     <!--    Login Button-->
     <string name="login_button">Login</string>
@@ -37,7 +37,7 @@
 
     <!-- Item Dog -->
 
-    <string name="dog_item_edad_label">Edad:</string>
-    <string name="dog_item_sexo_label">Sexo:</string>
+    <string name="dog_item_age_label">age:</string>
+    <string name="dog_item_gender_label">gender:</string>
 
 </resources>
