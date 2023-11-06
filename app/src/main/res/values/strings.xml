@@ -36,7 +36,7 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
 
-    <!-- Configuración -->
+    <!--    Configuración -->
     <string name="settings_view_header">Configuración</string>
     <string name="settings_group_general">Generales</string>
     <string name="settings_option_DM">Modo oscuro</string>

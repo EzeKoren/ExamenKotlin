@@ -9,10 +9,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.yaundecode.examenadopcionapp.fragments.SettingsViewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -56,8 +58,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_setting ->
-                    Toast.makeText(this, "Configuraciòn", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_setting -> {
+                val settingsViewFragment = SettingsViewFragment.newInstance("", "")
+                supportFragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(R.id.drawer_layout, settingsViewFragment)
+                    .addToBackStack("open_config")
+                    .commit()
+            }
         }
 
         drawer.closeDrawer(GravityCompat.START)

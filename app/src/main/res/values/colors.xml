@@ -7,14 +7,6 @@
     <color name="text_light">#ADA8A8</color>
     <color name="icons">#FFFFFF</color>
 
-    <!-- DARK MODE -->
-    <color name="background_DM">#000000</color>
-    <color name="primary_DM">#58348A</color>
-    <color name="input_DM">#1F1F1F</color>
-    <color name="text_DM">#CACACA</color>
-    <color name="text_light_DM">#ADA8A8</color>
-    <color name="icons_DM">#FFFFFF</color>
-
     <color name="error">#FF0000</color>
     <color name="placeholder">#D8D8D8</color>
     <color name="text_placeholder">#CAC9C9</color>
