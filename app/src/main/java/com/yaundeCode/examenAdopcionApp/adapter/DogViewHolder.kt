@@ -1,12 +1,12 @@
-package com.yaundeCode.examenAdopcionApp.adapter
+package com.yaundecode.examenadopcionapp.adapter
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.yaundeCode.examenAdopcionApp.models.Dog
-import com.yaundeCode.examenAdopcionApp.R
+import com.yaundecode.examenadopcionapp.models.Dog
+import com.yaundecode.examenadopcionapp.R
 
 
 

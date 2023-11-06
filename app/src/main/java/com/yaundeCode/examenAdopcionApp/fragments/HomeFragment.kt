@@ -1,11 +1,11 @@
-package com.yaundeCode.examenAdopcionApp.fragments
+package com.yaundecode.examenadopcionapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.yaundeCode.examenAdopcionApp.R
+import com.yaundecode.examenadopcionapp.R
 
 class HomeFragment : Fragment() {
 

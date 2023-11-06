@@ -1,7 +1,6 @@
-package com.yaundeCode.examenAdopcionApp.service
-
-import com.yaundeCode.examenAdopcionApp.models.ListAllBreeds
-import com.yaundeCode.examenAdopcionApp.models.RandomDogImage
+package com.yaundecode.examenadopcionapp.service
+import com.yaundecode.examenadopcionapp.models.RandomDogImage
+import com.yaundecode.examenadopcionapp.models.ListAllBreeds
 
 import retrofit2.Call
 import retrofit2.http.GET

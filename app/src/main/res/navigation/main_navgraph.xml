@@ -6,17 +6,17 @@
     app:startDestination="@id/home">
     <fragment
         android:id="@+id/adoption"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.AdoptionFragment"
         android:label="fragment_adopcion"
         tools:layout="@layout/fragment_adoption" />
     <fragment
         android:id="@+id/favorite"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.FavoriteFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.FavoriteFragment"
         android:label="fragment_favoritos"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/home"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.HomeFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

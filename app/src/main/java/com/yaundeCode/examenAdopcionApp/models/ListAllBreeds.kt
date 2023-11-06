@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.models
+package com.yaundecode.examenadopcionapp.models
 
 import com.google.gson.annotations.SerializedName
 data class ListAllBreeds(

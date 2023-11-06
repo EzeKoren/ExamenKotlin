@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.service
+package com.yaundecode.examenadopcionapp.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

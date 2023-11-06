@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.yaundeCode.examenAdopcionApp"
+    namespace = "com.yaundecode.examenadopcionapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.yaundeCode.examenAdopcionApp"
+        applicationId = "com.yaundecode.examenadopcionapp"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

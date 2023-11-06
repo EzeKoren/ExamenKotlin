@@ -1,8 +1,8 @@
-package com.yaundeCode.examenAdopcionApp
+package com.yaundecode.examenadopcionapp
 
 import android.util.Log
-import com.yaundeCode.examenAdopcionApp.models.Dog
-import com.yaundeCode.examenAdopcionApp.service.ActivityServiceApiBuilder
+import com.yaundecode.examenadopcionapp.models.Dog
+import com.yaundecode.examenadopcionapp.service.ActivityServiceApiBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp
+package com.yaundecode.examenadopcionapp
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.yaundeCode.examenAdopcionApp.R
+import com.yaundecode.examenadopcionapp.R
 import com.yaundecode.examenadopcionapp.fragments.DogsListFragment
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.yaundecode.examenadopcionapp.fragments.SettingsViewFragment
