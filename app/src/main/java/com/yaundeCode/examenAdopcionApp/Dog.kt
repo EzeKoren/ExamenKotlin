@@ -1,5 +1,6 @@
 package com.yaundecode.examenadopcionapp
 
+import DogStatus
 import java.util.Date
 
 data class Dog(
@@ -11,5 +12,7 @@ data class Dog(
         val breed: String,
         val subBreed: String,
         val location: String,
-        val creationDate: Date
+        val creationDate: Date,
+        val status: DogStatus = DogStatus.EN_ADOPCION,
+        val favorite: Boolean = false
 )
