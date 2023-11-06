@@ -3,6 +3,10 @@
     <style name="Base.Theme.ExamenAdopcion" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/text</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/icons</item>
     </style>
 
     <style name="Theme.ExamenAdopcion" parent="Base.Theme.ExamenAdopcion" />
