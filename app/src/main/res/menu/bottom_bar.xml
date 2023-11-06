@@ -15,7 +15,7 @@
         android:icon="@drawable/ic_chat_icon"
         android:title="Adopcion" />
     <item
-        android:id="@+id/publication"
+        android:id="@+id/formFragment"
         android:icon="@drawable/ic_person"
         android:title="Publicacion" />
 </menu>
