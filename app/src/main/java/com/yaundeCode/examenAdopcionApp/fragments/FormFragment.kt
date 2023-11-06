@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import com.yaundeCode.examenAdopcionApp.Perro
+import com.yaundeCode.examenAdopcionApp.Dog
 import com.yaundecode.examenadopcionapp.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,27 +42,27 @@ class FormFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_form, container, false)
         val button = v.findViewById<Button>(R.id.form_button)
         button.setOnClickListener {
-            val edadStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
-            val nombre = v.findViewById<EditText>(R.id.editTextFormName).text.toString()
-            val spinner: Spinner = v.findViewById(R.id.spinner)
-            val sexo = spinner.selectedItem.toString()
-            val pesoStr = v.findViewById<EditText>(R.id.editTextFormWeight).text.toString()
-            val descrip = v.findViewById<EditText>(R.id.editTextFormDescription).text.toString()
+            val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
+            val name = v.findViewById<EditText>(R.id.editTextFormName).text.toString()
+            val spinnerGender: Spinner = v.findViewById(R.id.spinner)
+            val gender = spinnerGender.selectedItem.toString()
+            val weightStr = v.findViewById<EditText>(R.id.editTextFormWeight).text.toString()
+            val description = v.findViewById<EditText>(R.id.editTextFormDescription).text.toString()
             val spinnerBreed: Spinner = v.findViewById(R.id.spinnerBreed)
-            val raza = spinnerBreed.selectedItem.toString()
+            val breed = spinnerBreed.selectedItem.toString()
             val spinnerSubBreed: Spinner = v.findViewById(R.id.spinnerSubBreed)
-            val subraza = spinnerSubBreed.selectedItem.toString()
+            val subBreed = spinnerSubBreed.selectedItem.toString()
             val spinnerLocation: Spinner = v.findViewById(R.id.spinnerLocation)
-            val ubicacion = spinnerLocation.selectedItem.toString()
+            val location = spinnerLocation.selectedItem.toString()
 
-            val edad = edadStr.toIntOrNull()
-            val peso = pesoStr.toFloatOrNull()
+            val age = ageStr.toIntOrNull()
+            val weight = weightStr.toFloatOrNull()
 
-            if (edad == null || nombre.isEmpty() || peso == null || descrip.isEmpty() ) {
+            if (age == null || name.isEmpty() || weight == null || description.isEmpty() ) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
             } else {
-                val mascota = Perro(nombre, edad, sexo, peso, descrip, raza, subraza, ubicacion)
-                println(mascota)
+                val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
+                println(dog)
             }
         }
         return v
