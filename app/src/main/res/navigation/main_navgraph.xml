@@ -20,9 +20,9 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/publication"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.PublicationFragment"
-        android:label="fragment_publicacion"
-        tools:layout="@layout/fragment_publication" />
+        android:id="@+id/formFragment"
+        android:name="com.yaundecode.examenadopcionapp.fragments.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" />
 
 </navigation>
