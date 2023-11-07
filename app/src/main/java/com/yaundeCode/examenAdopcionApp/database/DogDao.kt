@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp.database
+package com.yaundeCode.examenAdopcionApp.database
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -9,7 +9,7 @@ import androidx.room.Update
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
 @Dao
-interface dogDao {
+interface DogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDog(dog: Dog?)
 
@@ -21,5 +21,4 @@ interface dogDao {
 
     @Query("SELECT * FROM dogs")
     fun getAll(): List<Dog>
-
 }

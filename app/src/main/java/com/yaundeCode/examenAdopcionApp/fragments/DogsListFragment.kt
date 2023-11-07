@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
+import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundecode.examenadopcionapp.database.AppDatabase
-import com.yaundecode.examenadopcionapp.database.dogDao
 import kotlinx.coroutines.launch
 
 class DogsListFragment : Fragment() {
@@ -24,7 +24,7 @@ class DogsListFragment : Fragment() {
     private lateinit var dogsViewModel: DogsViewModel
     private lateinit var v: View
     private var db: AppDatabase? = null
-    private var dogDao: dogDao? = null
+    private var dogDao: DogDao? = null
 
     override fun onCreateView(
             inflater: LayoutInflater,

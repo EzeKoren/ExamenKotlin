@@ -6,7 +6,7 @@ import androidx.room.Entity
 import java.util.Date
 
 @Entity(tableName = "dogs")
-public class Dog(
+class Dog(
         image: String,
         name: String,
         age: Int,
@@ -17,9 +17,11 @@ public class Dog(
         breed: String,
         subBreed: String,
         location: String,
+        status: DogStatus = DogStatus.EN_ADOPCION,
+        favorite: Boolean = false
 ) {
         @ColumnInfo(name = "image")
-        var image : String
+        val image : String
 
         @ColumnInfo(name = "name")
         val name: String
@@ -65,7 +67,7 @@ public class Dog(
                 this.breed = breed
                 this.subBreed = subBreed
                 this.location = location
-                this.status = DogStatus.EN_ADOPCION
-                this.favorite = false
+                this.status = status
+                this.favorite = favorite
         }
 }

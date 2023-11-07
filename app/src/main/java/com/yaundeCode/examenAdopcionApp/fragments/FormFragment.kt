@@ -11,16 +11,16 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import com.yaundecode.examenadopcionapp.database.AppDatabase
-import com.yaundecode.examenadopcionapp.database.dogDao
 import java.util.Date
 
 class FormFragment : Fragment() {
 
     private lateinit var v: View
     private var db: AppDatabase? = null
-    private var dogDao: dogDao? = null
+    private var dogDao: DogDao? = null
     // lateinit var listDogs: MutableList<Dog>
 
     override fun onCreateView(
