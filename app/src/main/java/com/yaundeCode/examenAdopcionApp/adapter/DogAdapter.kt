@@ -1,12 +1,10 @@
-package com.yaundecode.examenadopcionapp.adapter
+package com.yaundeCode.examenAdopcionApp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.yaundecode.examenadopcionapp.adapter.DogViewHolder
-import com.yaundecode.examenadopcionapp.models.Dog
-import com.yaundecode.examenadopcionapp.R
-
+import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogAdapter : RecyclerView.Adapter<DogViewHolder>() {
 

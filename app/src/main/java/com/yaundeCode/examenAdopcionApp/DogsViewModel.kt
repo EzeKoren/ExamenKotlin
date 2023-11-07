@@ -1,11 +1,11 @@
-package com.yaundecode.examenadopcionapp
+package com.yaundeCode.examenAdopcionApp
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yaundecode.examenadopcionapp.models.Dog
-import com.yaundecode.examenadopcionapp.models.ListAllBreeds
-import com.yaundecode.examenadopcionapp.models.RandomDogImage
-import com.yaundecode.examenadopcionapp.service.ActivityServiceApiBuilder
+import com.yaundeCode.examenAdopcionApp.models.Dog
+import com.yaundeCode.examenAdopcionApp.models.ListAllBreeds
+import com.yaundeCode.examenAdopcionApp.models.RandomDogImage
+import com.yaundeCode.examenAdopcionApp.service.ActivityServiceApiBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

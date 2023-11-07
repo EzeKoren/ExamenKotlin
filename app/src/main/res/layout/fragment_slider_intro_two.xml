@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yaundecode.examenadopcionapp.fragments.SliderIntroTwoFragment">
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.SliderIntroTwoFragment">
 
     <TextView
         android:id="@+id/textViewTitle"

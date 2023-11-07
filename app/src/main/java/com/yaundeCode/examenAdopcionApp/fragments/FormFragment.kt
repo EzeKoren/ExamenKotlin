@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp.fragments
+package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.yaundecode.examenadopcionapp.R
-import com.yaundecode.examenadopcionapp.models.Dog
+import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.models.Dog
 import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
@@ -60,11 +60,24 @@ class FormFragment : Fragment() {
             val weight = weightStr.toDoubleOrNull()
 
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
-                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
+                        .show()
             } else {
                 val publishedDate = Date()
                 // TODO: Traer una imagen random de la API
-                val dog = Dog("",name, breed, subBreed, age, gender, publishedDate, weight, location, description)
+                val dog =
+                        Dog(
+                                "",
+                                name,
+                                breed,
+                                subBreed,
+                                age,
+                                gender,
+                                publishedDate,
+                                weight,
+                                location,
+                                description
+                        )
                 println(dog)
             }
         }

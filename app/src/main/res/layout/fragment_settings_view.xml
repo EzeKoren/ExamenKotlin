@@ -24,7 +24,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView3"
-            android:name="com.yaundecode.examenadopcionapp.fragments.SettingsFragment"
+            android:name="com.yaundeCode.examenAdopcionApp.fragments.SettingsFragment"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#303F9F"
     android:backgroundTint="#303F9F"
-    tools:context="com.yaundecode.examenadopcionapp.fragments.AdoptionFragment">
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment">
 
     <TextView
         android:id="@+id/textDogname"

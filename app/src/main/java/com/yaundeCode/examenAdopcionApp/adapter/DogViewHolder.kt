@@ -1,7 +1,5 @@
-package com.yaundecode.examenadopcionapp.adapter
+package com.yaundeCode.examenAdopcionApp.adapter
 
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -13,9 +11,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.yaundecode.examenadopcionapp.models.Dog
-import com.yaundecode.examenadopcionapp.R
-
+import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
 
@@ -31,35 +28,45 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
         shimmer.startShimmer()
 
         Glide.with(itemView)
-            .load(dogModel.image)
-            .listener(object : RequestListener<Drawable> {
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: com.bumptech.glide.request.target.Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    shimmer.stopShimmer()
-                    shimmer.setShimmer(null)
-                    return false
-                }
+                .load(dogModel.image)
+                .listener(
+                        object : RequestListener<Drawable> {
+                            override fun onResourceReady(
+                                    resource: Drawable?,
+                                    model: Any?,
+                                    target: com.bumptech.glide.request.target.Target<Drawable>?,
+                                    dataSource: DataSource?,
+                                    isFirstResource: Boolean
+                            ): Boolean {
+                                shimmer.stopShimmer()
+                                shimmer.setShimmer(null)
+                                return false
+                            }
 
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    return false
-                }
-            })
-            .into(image)
+                            override fun onLoadFailed(
+                                    e: GlideException?,
+                                    model: Any?,
+                                    target: Target<Drawable>?,
+                                    isFirstResource: Boolean
+                            ): Boolean {
+                                return false
+                            }
+                        }
+                )
+                .into(image)
         // image.setColorFilter(R.color.image_filter, PorterDuff.Mode.LIGHTEN)
 
-        val imageResourceId = itemView.resources.getIdentifier(dogModel.image, "drawable", itemView.context.packageName)
+        val imageResourceId =
+                itemView.resources.getIdentifier(
+                        dogModel.image,
+                        "drawable",
+                        itemView.context.packageName
+                )
         image.setBackgroundResource(imageResourceId)
-        saved.setImageResource(if (dogModel.favorite) R.drawable.ic_icon_bookmark else R.drawable.ic_icon_bookmark_unsaved)
+        saved.setImageResource(
+                if (dogModel.favorite) R.drawable.ic_icon_bookmark
+                else R.drawable.ic_icon_bookmark_unsaved
+        )
         name.text = dogModel.name
         breed.text = dogModel.breed
         subBreed.text = dogModel.subBreed
