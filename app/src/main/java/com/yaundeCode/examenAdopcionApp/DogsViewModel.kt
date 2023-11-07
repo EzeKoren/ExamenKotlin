@@ -48,17 +48,14 @@ class DogsViewModel : ViewModel() {
                                                     Dog(
                                                         image = imageUrl,
                                                         name = name,
-                                                        breed = breed,
-                                                        subBreed = subBreeds.shuffled()[0],
                                                         age = age,
                                                         gender = gender,
                                                         publishedDate = Date(),
-                                                        favorite = favorite,
                                                         weight = weight,
-                                                        location = "Ciudad de buenos Aires",
                                                         description = "Descripcion generica",
-                                                        status = status
-                                                    )
+                                                        breed = breed,
+                                                        subBreed = subBreeds.shuffled()[0],
+                                                        location = "Ciudad de buenos Aires",)
                                                 )
                                                 dogList.value = newDogList
                                             }

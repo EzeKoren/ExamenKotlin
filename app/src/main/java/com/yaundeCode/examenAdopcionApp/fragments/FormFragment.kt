@@ -11,12 +11,9 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundeCode.examenAdopcionApp.R
-import com.yaundecode.examenadopcionapp.Dog
+import com.yaundeCode.examenAdopcionApp.models.Dog
 import com.yaundecode.examenadopcionapp.database.AppDatabase
 import com.yaundecode.examenadopcionapp.database.dogDao
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.Date
 
 class FormFragment : Fragment() {
@@ -24,7 +21,7 @@ class FormFragment : Fragment() {
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: dogDao? = null
-    lateinit var listDogs: MutableList<Dog>
+    // lateinit var listDogs: MutableList<Dog>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -34,6 +31,7 @@ class FormFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_form, container, false)
         val button = v.findViewById<Button>(R.id.saveButton)
         button.setOnClickListener {
+            val image = v.findViewById<EditText>(R.id.editTextFormImage).text.toString()
             val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
             val name = v.findViewById<EditText>(R.id.editTextFormName).text.toString()
             val spinnerGender: Spinner = v.findViewById(R.id.spinner)
@@ -46,9 +44,10 @@ class FormFragment : Fragment() {
             val subBreed = spinnerSubBreed.selectedItem.toString()
             val spinnerLocation: Spinner = v.findViewById(R.id.spinnerLocation)
             val location = spinnerLocation.selectedItem.toString()
-
+            val publishDate = Date()
             val age = ageStr.toIntOrNull()
-            val weight = weightStr.toFloatOrNull()
+            val weight = weightStr.toDoubleOrNull()
+
 
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
@@ -57,18 +56,18 @@ class FormFragment : Fragment() {
                 /* val publishedDate = Date() */
                 val dog =
                         Dog(
-                                0,
-                                name,
-                                age,
-                                gender,
-                                weight,
-                                description,
-                                breed,
-                                subBreed,
-                                location,
+                            image,
+                            name,
+                            age,
+                            gender,
+                            publishDate,
+                            weight,
+                            description,
+                            breed,
+                            subBreed,
+                            location,
                         )
                 dogDao?.insertDog(dog)
-
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT)
                     .show()
 

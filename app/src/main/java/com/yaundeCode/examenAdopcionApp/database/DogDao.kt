@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.yaundecode.examenadopcionapp.Dog
+import com.yaundeCode.examenAdopcionApp.models.Dog
 
 @Dao
 interface dogDao {
@@ -20,8 +20,6 @@ interface dogDao {
     fun delete(dog: Dog?)
 
     @Query("SELECT * FROM dogs")
-    fun getAll(): MutableList<Dog>
+    fun getAll(): List<Dog>
 
-    @Query("SELECT * FROM dogs WHERE name = :name ORDER BY id")
-    fun loadAllDogsByName(name: String): MutableList<Dog>
 }
