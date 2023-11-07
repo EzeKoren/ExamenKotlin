@@ -9,6 +9,7 @@ import com.yaundecode.examenadopcionapp.service.ActivityServiceApiBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Date
 import java.util.Random
 
 class DogsViewModel : ViewModel() {
@@ -42,22 +43,21 @@ class DogsViewModel : ViewModel() {
                                                 val weight = random.nextDouble() * (25 - 4) + 4
                                                 val names = arrayOf("Woody", "Lito", "Pepa", "Mou", "Toto", "Rocio", "Alegria", "Firulais", "Tommy", "Roco", "Rosita", "Negro", "Gomez", "Churchill")
                                                 val name = names.random()
-                                                val state = if (random.nextBoolean()) "in adoption" else "adopted"
+                                                val status = if (random.nextBoolean()) DogStatus.EN_ADOPCION else DogStatus.ADOPTADO
                                                 newDogList.add(
                                                     Dog(
-                                                        saved = false,
                                                         image = imageUrl,
                                                         name = name,
                                                         breed = breed,
-                                                        subBreed = subBreeds,
+                                                        subBreed = subBreeds.shuffled()[0],
                                                         age = age,
                                                         gender = gender,
-                                                        publishedDate = "2023_08_23",
+                                                        publishedDate = Date(),
                                                         favorite = favorite,
                                                         weight = weight,
                                                         location = "Ciudad de buenos Aires",
                                                         description = "Descripcion generica",
-                                                        state = state
+                                                        status = status
                                                     )
                                                 )
                                                 dogList.value = newDogList

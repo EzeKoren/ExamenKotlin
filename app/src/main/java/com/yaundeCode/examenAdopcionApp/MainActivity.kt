@@ -59,11 +59,11 @@
             bottomNavView = findViewById(R.id.bottom_bar)
             NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-            // Cargamos el fragmento DogsListFragment en el contenedor
-            val fragment = DogsListFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host, fragment)
-                .commit()
+//            // Cargamos el fragmento DogsListFragment en el contenedor
+//            val fragment = DogsListFragment()
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.nav_host, fragment)
+//                .commit()
 
             AndroidThreeTen.init(this)
             val headerView: View = navigationView.getHeaderView(0)

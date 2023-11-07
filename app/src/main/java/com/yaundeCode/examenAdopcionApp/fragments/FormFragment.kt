@@ -57,13 +57,14 @@ class FormFragment : Fragment() {
             val location = spinnerLocation.selectedItem.toString()
 
             val age = ageStr.toIntOrNull()
-            val weight = weightStr.toFloatOrNull()
+            val weight = weightStr.toDoubleOrNull()
 
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
             } else {
                 val publishedDate = Date()
-                val dog = Dog(name, age, gender, weight, description, breed, subBreed, location, publishedDate)
+                // TODO: Traer una imagen random de la API
+                val dog = Dog("",name, breed, subBreed, age, gender, publishedDate, weight, location, description)
                 println(dog)
             }
         }

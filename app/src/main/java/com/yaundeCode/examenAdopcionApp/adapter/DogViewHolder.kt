@@ -59,10 +59,10 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
 
         val imageResourceId = itemView.resources.getIdentifier(dogModel.image, "drawable", itemView.context.packageName)
         image.setBackgroundResource(imageResourceId)
-        saved.setImageResource(if (dogModel.saved) R.drawable.ic_icon_bookmark else R.drawable.ic_icon_bookmark_unsaved)
+        saved.setImageResource(if (dogModel.favorite) R.drawable.ic_icon_bookmark else R.drawable.ic_icon_bookmark_unsaved)
         name.text = dogModel.name
         breed.text = dogModel.breed
-        subBreed.text = dogModel.subBreed.joinToString(", ") // Convertir la lista en una cadena separada por comas
+        subBreed.text = dogModel.subBreed
         stats.text = "${dogModel.age.toString()} / ${dogModel.gender}"
     }
 }
