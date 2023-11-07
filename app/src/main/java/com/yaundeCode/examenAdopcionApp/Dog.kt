@@ -5,24 +5,54 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "dogs")
-data class Dog(
+class Dog(
+        id : Int,
+        name: String,
+        age: Int,
+        gender: String,
+        weight: Float,
+        description: String,
+        breed: String,
+        subBreed: String,
+        location: String,
+) {
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        var id : Int,
+        var id : Int
+
         @ColumnInfo(name = "name")
-        val name: String,
+        val name: String
+
         @ColumnInfo(name = "age")
-        val age: Int,
+        val age: Int
+
         @ColumnInfo(name = "gender")
-        val gender: String,
+        val gender: String
+
         @ColumnInfo(name = "weight")
-        val weight: Int,
+        val weight: Float
+
         @ColumnInfo(name = "description")
-        val description: String,
+        val description: String
+
         @ColumnInfo(name = "breed")
-        val breed: String,
+        val breed: String
+
         @ColumnInfo(name = "subBreed")
-        val subBreed: String,
+        val subBreed: String
+
         @ColumnInfo(name = "location")
-        val location: String,
-)
+        val location: String
+
+        init {
+                this.id = id
+                this.name = name
+                this.age = age
+                this.gender = gender
+                this.weight = weight
+                this.description = description
+                this.breed = breed
+                this.subBreed = subBreed
+                this.location = location
+        }
+}

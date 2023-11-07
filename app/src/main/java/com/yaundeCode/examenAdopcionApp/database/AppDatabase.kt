@@ -8,7 +8,7 @@ import com.yaundecode.examenadopcionapp.Dog
 
 @Database(entities = [Dog::class], version = 4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun DogDao(): DogDao
+    abstract fun DogDao(): dogDao
 
     companion object {
 

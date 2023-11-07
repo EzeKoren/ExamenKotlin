@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.yaundecode.examenadopcionapp"
+    namespace = "com.yaundeCode.examenAdopcionApp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.yaundecode.examenadopcionapp"
+        applicationId = "com.yaundeCode.examenAdopcionApp"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -31,6 +31,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures { viewBinding = true }
     kotlinOptions { jvmTarget = "1.8" }
 }
 
@@ -77,6 +78,9 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
 
+    implementation("com.squareup.retrofit2:retrofit:(insert latest version")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     /* Navigation */
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -87,7 +91,14 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
     // ViewPager2
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // Skeleton shimmer
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

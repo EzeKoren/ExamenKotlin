@@ -1,14 +1,10 @@
-package com.yaundecode.examenadopcionapp.fragments
+package com.yaundeCode.examenAdopcionApp.fragments
 
-import android.content.ContentValues.TAG
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
-import com.yaundecode.examenadopcionapp.R
+import com.yaundeCode.examenAdopcionApp.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
@@ -17,26 +13,27 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private val preferenceChangeListener =
-        SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
-            if (key == "settings_DM_enabled") {
-                AppCompatDelegate.setDefaultNightMode(
-                    if (sharedPreferences.getBoolean(key, false))
-                        AppCompatDelegate.MODE_NIGHT_YES
-                    else
-                        AppCompatDelegate.MODE_NIGHT_NO
-                )
+            SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+                if (key == "settings_DM_enabled") {
+                    AppCompatDelegate.setDefaultNightMode(
+                            if (sharedPreferences.getBoolean(key, false))
+                                    AppCompatDelegate.MODE_NIGHT_YES
+                            else AppCompatDelegate.MODE_NIGHT_NO
+                    )
+                }
             }
-        }
 
     override fun onResume() {
         super.onResume()
-        preferenceScreen.sharedPreferences
-            ?.registerOnSharedPreferenceChangeListener(preferenceChangeListener)
+        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(
+                preferenceChangeListener
+        )
     }
 
     override fun onPause() {
         super.onPause()
-        preferenceScreen.sharedPreferences
-            ?.unregisterOnSharedPreferenceChangeListener(preferenceChangeListener)
+        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(
+                preferenceChangeListener
+        )
     }
 }

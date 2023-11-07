@@ -1,6 +1,6 @@
-package com.yaundecode.examenadopcionapp.models
+package com.yaundeCode.examenAdopcionApp.models
 
-enum class ProvinciasArgentinas {
+enum class ArgentineProvinces {
     BUENOS_AIRES,
     CATAMARCA,
     CHACO,

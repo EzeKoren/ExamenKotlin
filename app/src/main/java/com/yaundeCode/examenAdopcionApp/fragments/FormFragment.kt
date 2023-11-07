@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp.fragments
+package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,17 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.yaundeCode.examenAdopcionApp.R
 import com.yaundecode.examenadopcionapp.Dog
-import com.yaundecode.examenadopcionapp.R
 import com.yaundecode.examenadopcionapp.database.AppDatabase
-import com.yaundecode.examenadopcionapp.database.DogDao
+import com.yaundecode.examenadopcionapp.database.dogDao
+import java.util.Date
 
 class FormFragment : Fragment() {
 
     private lateinit var v: View
     private var db: AppDatabase? = null
-    private var dogDao: DogDao? = null
+    private var dogDao: dogDao? = null
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -42,13 +43,25 @@ class FormFragment : Fragment() {
             val location = spinnerLocation.selectedItem.toString()
 
             val age = ageStr.toIntOrNull()
-            val weight = weightStr.toIntOrNull()
+            val weight = weightStr.toFloatOrNull()
 
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
                         .show()
             } else {
-                val dog = Dog(0, name, age, gender, weight, description, breed, subBreed, location)
+                val publishedDate = Date()
+                val dog =
+                        Dog(
+                                0,
+                                name,
+                                age,
+                                gender,
+                                weight,
+                                description,
+                                breed,
+                                subBreed,
+                                location,
+                        )
                 println(dog)
             }
         }
@@ -75,7 +88,7 @@ class FormFragment : Fragment() {
                         "fede",
                         12,
                         "Hola",
-                        26,
+                        26.5f,
                         "me tengo que ir",
                         "Tardes",
                         "Medianoche",
