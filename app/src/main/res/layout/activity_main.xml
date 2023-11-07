@@ -38,6 +38,7 @@
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:background="@color/background"
             app:itemBackground="@color/background"
             app:itemHorizontalTranslationEnabled="true"
             app:labelVisibilityMode="auto"
