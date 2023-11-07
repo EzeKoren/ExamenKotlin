@@ -1,6 +1,7 @@
 package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,9 @@ import com.yaundeCode.examenAdopcionApp.R
 import com.yaundecode.examenadopcionapp.Dog
 import com.yaundecode.examenadopcionapp.database.AppDatabase
 import com.yaundecode.examenadopcionapp.database.dogDao
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.Date
 
 class FormFragment : Fragment() {
@@ -20,6 +24,7 @@ class FormFragment : Fragment() {
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: dogDao? = null
+    lateinit var listDogs: MutableList<Dog>
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -49,7 +54,7 @@ class FormFragment : Fragment() {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
                         .show()
             } else {
-                val publishedDate = Date()
+                /* val publishedDate = Date() */
                 val dog =
                         Dog(
                                 0,
@@ -76,6 +81,7 @@ class FormFragment : Fragment() {
         dogDao = db?.DogDao()
 
         cargarDB()
+        showDogs()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -83,17 +89,37 @@ class FormFragment : Fragment() {
 
     fun cargarDB() {
         dogDao?.insertDog(
-                Dog(
-                        1,
-                        "fede",
-                        12,
-                        "Hola",
-                        26.5f,
-                        "me tengo que ir",
-                        "Tardes",
-                        "Medianoche",
-                        "Buenos Aires"
-                )
-        )
+            Dog(
+                1,
+                "Fede",
+                18,
+                "Masculino",
+                88.5f,
+                "Pibe progamador",
+                "Hetero",
+                "Hetero2",
+                "Buenos Aires"
+                ))
+        dogDao?.insertDog(
+            Dog(
+                2,
+                "Facu",
+                22,
+                "Masculino",
+                86.5f,
+                "Buenos dias",
+                "Hetero",
+                "Hetero2",
+                "Buenos Aires"
+            ))
+    }
+
+    fun showDogs() {
+        CoroutineScope(Dispatchers.Main).launch {
+            var listDogs = dogDao?.getAll()
+            listDogs?.forEach { dog ->
+                Log.d("Dog", dog.toString())
+            }
+        }
     }
 }
