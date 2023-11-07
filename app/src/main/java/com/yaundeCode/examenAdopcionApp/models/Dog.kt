@@ -16,4 +16,5 @@ data class Dog(
         val description: String,
         val status: DogStatus = DogStatus.EN_ADOPCION,
         val favorite: Boolean = false,
+        val owner: String,
 )

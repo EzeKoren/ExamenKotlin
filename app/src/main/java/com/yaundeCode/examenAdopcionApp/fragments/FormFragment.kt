@@ -76,7 +76,8 @@ class FormFragment : Fragment() {
                                 publishedDate,
                                 weight,
                                 location,
-                                description
+                                description,
+                                owner = "Martin",
                         )
                 println(dog)
             }

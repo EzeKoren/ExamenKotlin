@@ -43,6 +43,8 @@ class DogsViewModel : ViewModel() {
                                                 val weight = random.nextDouble() * (25 - 4) + 4
                                                 val names = arrayOf("Woody", "Lito", "Pepa", "Mou", "Toto", "Rocio", "Alegria", "Firulais", "Tommy", "Roco", "Rosita", "Negro", "Gomez", "Churchill")
                                                 val name = names.random()
+                                                val owners = arrayOf("Martin", "refugio patitas", "firuHome")
+                                                val owner = owners.random()
                                                 val status = if (random.nextBoolean()) DogStatus.EN_ADOPCION else DogStatus.ADOPTADO
                                                 newDogList.add(
                                                     Dog(
@@ -57,7 +59,8 @@ class DogsViewModel : ViewModel() {
                                                         weight = weight,
                                                         location = "Ciudad de buenos Aires",
                                                         description = "Descripcion generica",
-                                                        status = status
+                                                        status = status,
+                                                        owner = owner
                                                     )
                                                 )
                                                 dogList.value = newDogList
