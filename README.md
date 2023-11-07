@@ -26,3 +26,9 @@ Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 5. Ejecutar el Proyecto
     - Selecciona el dispositivo o emulador que deseas usar desde la barra de herramientas.
     - Haz clic en el botón "Run"  para iniciar la aplicación.
+
+## Guía de uso
+
+1. Presione el boton "Get started" para acceder al login.
+
+![readme_init_page.png]()
