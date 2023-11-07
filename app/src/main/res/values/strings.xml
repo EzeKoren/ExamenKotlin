@@ -19,10 +19,10 @@
     <string name="get_started_button">Get started</string>
 
     <!--    Login Button-->
-    <string name="login_ingresar_name">Ingresa tu name</string>
+    <string name="login_ingresar_name">Ingresa tu nombre</string>
 
     <!--    Login -->
-    <string name="login_title">Ingresa tu name</string>
+    <string name="login_title">Ingresa tu nombre</string>
 
     <!--    Login Button-->
     <string name="login_button">Login</string>
