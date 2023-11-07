@@ -6,8 +6,10 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#303F9F"
+    android:backgroundTint="#303F9F"
     android:orientation="vertical"
-    tools:context="com.yaundecode.examenadopcionapp.fragments.HomeFragment">
+    tools:context="com.yaundeCode.examenAdopcionApp.fragments.HomeFragment">
 
     <TextView
         android:id="@+id/filterTitle"

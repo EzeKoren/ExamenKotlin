@@ -6,4 +6,13 @@
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:padding">8dp</item>
     </style>
+    <style name="MenuText24" parent="android:TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textSize">24dp</item>
+    </style>
+    <style name="MenuText30" parent="android:TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textSize">30dp</item>
+    </style>
+    <style name="MenuText18" parent="android:TextAppearance.Widget.IconMenu.Item">
+        <item name="android:textSize">18dp</item>
+    </style>
 </resources>

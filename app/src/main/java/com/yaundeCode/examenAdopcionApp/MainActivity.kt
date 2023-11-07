@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp
+package com.yaundeCode.examenAdopcionApp
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -16,7 +16,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import com.yaundecode.examenadopcionapp.fragments.SettingsViewFragment
+import com.jakewharton.threetenabp.AndroidThreeTen
+import com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,21 +30,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val nombre = intent.getStringExtra("nombre") ?: "Default Name"
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.drawer_layout)
 
-        toggle = ActionBarDrawerToggle(
-            this,
-            drawer,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawer.addDrawerListener(toggle)
+        toggle =
+                ActionBarDrawerToggle(
+                        this,
+                        drawer,
+                        toolbar,
+                        R.string.navigation_drawer_open,
+                        R.string.navigation_drawer_close
+                )
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toggle.isDrawerIndicatorEnabled = true
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.setHomeButtonEnabled(true)
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
@@ -52,22 +59,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
+        //            // Cargamos el fragmento DogsListFragment en el contenedor
+        //            val fragment = DogsListFragment()
+        //            supportFragmentManager.beginTransaction()
+        //                .replace(R.id.nav_host, fragment)
+        //                .commit()
+
+        AndroidThreeTen.init(this)
         val headerView: View = navigationView.getHeaderView(0)
         val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
         usernameTextView.text = nombre
     }
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
             R.id.nav_item_setting -> {
                 val settingsViewFragment = SettingsViewFragment.newInstance("", "")
-                supportFragmentManager.beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.drawer_layout, settingsViewFragment)
-                    .addToBackStack("open_config")
-                    .commit()
+                supportFragmentManager
+                        .beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.drawer_layout, settingsViewFragment)
+                        .addToBackStack("open_config")
+                        .commit()
             }
         }
 

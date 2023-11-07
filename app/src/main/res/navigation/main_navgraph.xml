@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navgraph"
-    app:startDestination="@id/home">
+    app:startDestination="@id/dogsListFragment">
     <fragment
         android:id="@+id/adoption"
-        android:name="com.yaundecode.examenadopcionapp.fragments.AdoptionFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment"
         android:label="fragment_adopcion"
         tools:layout="@layout/fragment_adoption" />
     <fragment
         android:id="@+id/favorite"
-        android:name="com.yaundecode.examenadopcionapp.fragments.FavoriteFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.FavoriteFragment"
         android:label="fragment_favoritos"
         tools:layout="@layout/fragment_favorite" />
     <fragment
-        android:id="@+id/home"
-        android:name="com.yaundecode.examenadopcionapp.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
         android:id="@+id/formFragment"
-        android:name="com.yaundecode.examenadopcionapp.fragments.FormFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.FormFragment"
         android:label="fragment_form"
         tools:layout="@layout/fragment_form" />
+    <fragment
+        android:id="@+id/dogsListFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.DogsListFragment"
+        android:label="fragment_dogs_list"
+        tools:layout="@layout/fragment_dogs_list" />
 
 </navigation>

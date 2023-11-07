@@ -1,4 +1,4 @@
-package com.yaundecode.examenadopcionapp.fragments
+package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.yaundecode.examenadopcionapp.R
-import com.yaundecode.examenadopcionapp.SliderAdapter
+import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.SliderAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
