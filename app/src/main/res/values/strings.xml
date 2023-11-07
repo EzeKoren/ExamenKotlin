@@ -49,7 +49,7 @@
     <string name="settings_option_DM">Modo oscuro</string>
 
     <!--    Publication Form-->
-    <string name="form_title">Publicar mascota</string>
+    <string name="form_title">Ingresar mascota</string>
     <string name="form_name">Nombre</string>
     <string name="form_age">Edad</string>
     <string name="form_gender">Sexo</string>

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.R
 import com.yaundecode.examenadopcionapp.models.Dog
+import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,8 +62,9 @@ class FormFragment : Fragment() {
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
             } else {
-                //val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
-                //println(dog)
+                val publishedDate = Date()
+                val dog = Dog(name, age, gender, weight, description, breed, subBreed, location, publishedDate)
+                println(dog)
             }
         }
         return v
