@@ -56,7 +56,6 @@ dependencies {
 
     implementation ("com.squareup.retrofit2:retrofit:(insert latest version")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.picasso:picasso:2.71828")
 
     /* Navigation */
     val nav_version = "2.5.3"
@@ -70,14 +69,14 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
     implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
-
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
 
-
-
     // ViewPager2
-
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // Skeleton shimmer
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

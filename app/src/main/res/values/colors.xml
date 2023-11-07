@@ -10,4 +10,7 @@
     <color name="error">#FF0000</color>
     <color name="placeholder">#D8D8D8</color>
     <color name="text_placeholder">#CAC9C9</color>
+    <color name="image_placeholder">#353535</color>
+    <color name="image_filter">#FF888888</color>
+    <color name="transparent">#00000000</color>
 </resources>

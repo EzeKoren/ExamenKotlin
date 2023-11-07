@@ -3,10 +3,8 @@ package com.yaundecode.examenadopcionapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.yaundecode.examenadopcionapp.models.Dog
 import com.yaundecode.examenadopcionapp.R
-import com.yaundecode.examenadopcionapp.adapter.DogViewHolder
 
 class DogAdapter(private val dogsList: List<Dog>) : RecyclerView.Adapter<DogViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {

@@ -37,6 +37,9 @@
     <string name="navigation_drawer_close">Close</string>
 
     <!-- Item Dog -->
+    <string name="dog_item_photo_placeholder_description">Foto de </string>
+    <string name="dog_item_favorite_selected_icon_description">Perro guardado como favorito</string>
+    <string name="dog_item_favorite_unselected_icon_description">Perro no guardado como favorito</string>
     <string name="dog_item_age_label">age:</string>
     <string name="dog_item_gender_label">gender:</string>
     

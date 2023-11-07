@@ -52,7 +52,7 @@ class DogsListFragment : Fragment() {
                 if (response.isSuccessful) {
                     val breeds = response.body()?.breeds
                     if (breeds != null) {
-                        for ((breed, subBreeds) in breeds.entries.take(20)) {
+                        for ((breed, subBreeds) in breeds.entries.shuffled().take(20)) {
                             for (subBreed in subBreeds) {
                                 dogService.getRandomDogImage(breed).enqueue(object :
                                     Callback<RandomDogImage> {

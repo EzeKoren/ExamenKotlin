@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.fragments
+package com.yaundecode.examenadopcionapp.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.yaundeCode.examenAdopcionApp.MainActivity
-import com.yaundeCode.examenAdopcionApp.R
+import com.yaundecode.examenadopcionapp.MainActivity
+import com.yaundecode.examenadopcionapp.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
