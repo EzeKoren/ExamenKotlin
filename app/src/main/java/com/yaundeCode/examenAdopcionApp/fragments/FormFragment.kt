@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.yaundecode.examenadopcionapp.Dog
 import com.yaundecode.examenadopcionapp.R
+import com.yaundecode.examenadopcionapp.models.Dog
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,11 +59,10 @@ class FormFragment : Fragment() {
             val weight = weightStr.toFloatOrNull()
 
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
-                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
-                        .show()
+                Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
             } else {
-                val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
-                println(dog)
+                //val dog = Dog(name, age, gender, weight, description, breed, subBreed, location)
+                //println(dog)
             }
         }
         return v

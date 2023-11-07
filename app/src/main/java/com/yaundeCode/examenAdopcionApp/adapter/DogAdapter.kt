@@ -3,10 +3,15 @@ package com.yaundecode.examenadopcionapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.yaundecode.examenadopcionapp.adapter.DogViewHolder
 import com.yaundecode.examenadopcionapp.models.Dog
 import com.yaundecode.examenadopcionapp.R
 
-class DogAdapter(private val dogsList: List<Dog>) : RecyclerView.Adapter<DogViewHolder>() {
+
+class DogAdapter : RecyclerView.Adapter<DogViewHolder>() {
+
+    private var dogsList: List<Dog> = emptyList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return DogViewHolder(layoutInflater.inflate(R.layout.item_dog, parent, false))
@@ -17,5 +22,10 @@ class DogAdapter(private val dogsList: List<Dog>) : RecyclerView.Adapter<DogView
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         val dog = dogsList[position]
         holder.render(dog)
+    }
+
+    fun updateData(newDogsList: List<Dog>) {
+        dogsList = newDogsList
+        notifyDataSetChanged()
     }
 }

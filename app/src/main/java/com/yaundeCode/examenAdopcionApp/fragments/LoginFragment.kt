@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.yaundecode.examenadopcionapp.MainActivity
 import com.yaundecode.examenadopcionapp.R
@@ -23,6 +24,8 @@ private const val ARG_PARAM2 = "param2"
 class LoginFragment : Fragment() {
 
     lateinit var v: View
+    private lateinit var editTextName: EditText
+    private lateinit var navHeaderUsername: TextView
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null

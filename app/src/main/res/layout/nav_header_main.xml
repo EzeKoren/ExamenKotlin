@@ -1,41 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@color/primary"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/nav_header_imageUser"
-        android:layout_width="49dp"
-        android:layout_height="47dp"
-        android:src="@drawable/nav_header_image_user"
-        android:contentDescription="@string/nav_header_user"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/nav_header_hello"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_toEndOf="@id/nav_header_imageUser"
-        android:layout_below="@id/nav_header_imageUser"
-        android:paddingTop="5dp"
-        android:text="@string/nav_header_hello"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/nav_header_username"
+        <ImageView
+            android:id="@+id/nav_header_imageUser"
+            android:layout_width="49dp"
+            android:layout_height="47dp"
+            android:src="@drawable/nav_header_image_user"
+            android:contentDescription="@string/nav_header_user"
+            android:layout_gravity="start" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nav_header_hello"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="@string/nav_header_hello"
+                android:textAppearance="@style/MenuText18"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/nav_header_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="20dp"
+                android:textAppearance="@style/MenuText30"
+                android:text="@string/nav_header_username"
+                android:layout_marginLeft="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_toEndOf="@id/nav_header_imageUser"
-        android:layout_below="@id/nav_header_hello"
-        android:paddingTop="3dp"
-        android:text="@string/nav_header_username"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-</RelativeLayout>
+        android:layout_height="1dp"
+        android:background="@color/text_light" />
+
+</LinearLayout>
+
+
+

@@ -3,8 +3,10 @@
     <group>
         <item android:id="@+id/nav_item_profile"
             android:icon="@drawable/ic_user_profile"
+            android:textAppearance="@style/MenuText24"
             android:title="@string/nav_item_profile"  />
         <item android:id="@+id/nav_item_setting"
+            android:textAppearance="@style/MenuText24"
             android:icon="@drawable/ic_item_setting"
             android:title="@string/nav_item_setting"  />
     </group>
