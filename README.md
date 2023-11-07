@@ -31,6 +31,7 @@ Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 
 1. Presione el boton "Get started" para acceder al login.
 
-<div style="text-align: center;">
+<p align="center">
   <img src="https://github.com/EzeKoren/ExamenKotlin/blob/facundo/readme/app/src/main/res/drawable/readme_init_page.png" alt="readme_init_page.png" width="200" height="400">
-</div>
+</p>
+
