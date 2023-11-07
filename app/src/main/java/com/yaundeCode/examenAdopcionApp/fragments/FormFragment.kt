@@ -9,15 +9,14 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.yaundeCode.examenAdopcionApp.database.AppDatabase
-import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundecode.examenadopcionapp.Dog
 import com.yaundecode.examenadopcionapp.R
-import java.util.Date
+import com.yaundecode.examenadopcionapp.database.AppDatabase
+import com.yaundecode.examenadopcionapp.database.DogDao
 
 class FormFragment : Fragment() {
 
-    lateinit var v : View
+    private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
 
@@ -26,7 +25,7 @@ class FormFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_form, container, false)
+        v = inflater.inflate(R.layout.fragment_form, container, false)
         val button = v.findViewById<Button>(R.id.saveButton)
         button.setOnClickListener {
             val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
@@ -69,9 +68,19 @@ class FormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    fun cargarDB(){
-        dogDao?.insertDog(Dog(1, "fede", 12, "Hola", 26, "me tengo que ir", "Tardes", "Medianoche", "Buenos Aires"))
+    fun cargarDB() {
+        dogDao?.insertDog(
+                Dog(
+                        1,
+                        "fede",
+                        12,
+                        "Hola",
+                        26,
+                        "me tengo que ir",
+                        "Tardes",
+                        "Medianoche",
+                        "Buenos Aires"
+                )
+        )
     }
-
-
 }

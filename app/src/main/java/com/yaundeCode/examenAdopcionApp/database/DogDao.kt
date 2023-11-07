@@ -1,4 +1,4 @@
-package com.yaundeCode.examenAdopcionApp.database
+package com.yaundecode.examenadopcionapp.database
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -10,14 +10,11 @@ import com.yaundecode.examenadopcionapp.Dog
 
 @Dao
 interface DogDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDog(dog: Dog?)
+    @Insert(onConflict = OnConflictStrategy.REPLACE) fun insertDog(dog: Dog?)
 
-    @Update
-    fun updateDog(dog: Dog?)
+    @Update fun updateDog(dog: Dog?)
 
-    @Delete
-    fun delete(dog: Dog?)
+    @Delete fun delete(dog: Dog?)
 
     @Query("SELECT * FROM dogs WHERE name = :name ORDER BY id")
     fun loadAllDogsByName(name: String): MutableList<Dog>
