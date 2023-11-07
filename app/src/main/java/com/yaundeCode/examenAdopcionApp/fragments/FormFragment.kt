@@ -67,7 +67,11 @@ class FormFragment : Fragment() {
                                 subBreed,
                                 location,
                         )
-                println(dog)
+                dogDao?.insertDog(dog)
+
+                Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT)
+                    .show()
+
             }
         }
         return v
@@ -80,13 +84,17 @@ class FormFragment : Fragment() {
 
         dogDao = db?.DogDao()
 
+        /* Probando el Room */
+        /*
         cargarDB()
         showDogs()
+         */
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    /*
     fun cargarDB() {
         dogDao?.insertDog(
             Dog(
@@ -122,4 +130,5 @@ class FormFragment : Fragment() {
             }
         }
     }
+    */
 }
