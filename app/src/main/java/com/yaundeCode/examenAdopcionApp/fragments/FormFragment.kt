@@ -11,7 +11,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
+import com.yaundeCode.examenAdopcionApp.models.ListAllBreeds
+import com.yaundeCode.examenAdopcionApp.service.ActivityServiceApiBuilder.retrofit
+import com.yaundeCode.examenAdopcionApp.service.DogService
 import java.util.Date
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
+import android.widget.ArrayAdapter
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +49,14 @@ class FormFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_form, container, false)
+        val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
+        val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
         val button = v.findViewById<Button>(R.id.form_button)
+        
+
+        getBreedsAndSubbreeds(spinnerBreed, spinnerSubBreed)
+
+
         button.setOnClickListener {
             val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
             val name = v.findViewById<EditText>(R.id.editTextFormName).text.toString()
@@ -82,6 +97,37 @@ class FormFragment : Fragment() {
             }
         }
         return v
+    }
+
+
+
+    private fun getBreedsAndSubbreeds(spinnerBreed: Spinner, spinnerSubBreed: Spinner) {
+        val api = retrofit.create(DogService::class.java)
+        val call: Call<ListAllBreeds> = api.getAllBreeds()
+
+        call.enqueue(object : Callback<ListAllBreeds> {
+            override fun onResponse(call: Call<ListAllBreeds>, response: Response<ListAllBreeds>) {
+                if (response.isSuccessful) {
+                    println(response.body())
+                    val breeds = response.body()?.breeds?.keys?.toList() ?: emptyList<String>()
+                    val subbreeds = response.body()?.breeds?.values?.flatten() ?: emptyList<String>()
+
+                    val breedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, breeds)
+                    breedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    spinnerBreed.adapter = breedAdapter
+
+                    val subBreedAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, subbreeds)
+                    subBreedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    spinnerSubBreed.adapter = subBreedAdapter
+                } else {
+                    println("Error: ${response.errorBody()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ListAllBreeds>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
     }
 
     companion object {
