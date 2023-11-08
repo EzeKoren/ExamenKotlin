@@ -10,10 +10,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
+import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import kotlin.math.roundToInt
@@ -24,6 +26,8 @@ private const val ARG_DOG = "dog"
 class DogDetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var dog: Dog
+    private lateinit var dogsViewModel: DogsViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,11 +86,14 @@ class DogDetailFragment : Fragment() {
 
         bottomSheetAdoptButton.setOnClickListener {
             // TODO: Guardarlo en base
+            dogsViewModel.addDog(dog)
+            Toast.makeText(context, "Perro Adoptado.!Gracias!", Toast.LENGTH_SHORT).show()
         }
 
         val bottomSheetOwnerPicture = view.findViewById<ImageView>(R.id.bottomSheetOwnerPicture)
         val bottomSheetOwner = view.findViewById<TextView>(R.id.bottomSheetOwner)
 
+        bottomSheetOwner.text = dog.owner
         // TODO: Set owner
 
         val bottomSheetCallButton = view.findViewById<ImageButton>(R.id.bottomSheetCallButton)

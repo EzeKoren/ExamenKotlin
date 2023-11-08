@@ -27,4 +27,7 @@ interface DogDao {
 
     @Query("DELETE FROM dogs")
     fun wipeDB()
+
+    @Query("SELECT * FROM dogs WHERE owner = :ownerName AND status = 1")
+    fun getAdoptedDogsByOwner(ownerName: String): List<Dog>
 }
