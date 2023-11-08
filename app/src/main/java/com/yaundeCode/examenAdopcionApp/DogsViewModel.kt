@@ -1,7 +1,12 @@
 package com.yaundeCode.examenAdopcionApp
 
+import android.app.Application
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yaundeCode.examenAdopcionApp.database.AppDatabase
+import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import com.yaundeCode.examenAdopcionApp.models.ListAllBreeds
 import com.yaundeCode.examenAdopcionApp.models.RandomDogImage
@@ -12,23 +17,33 @@ import retrofit2.Response
 import java.util.Date
 import java.util.Random
 
-class DogsViewModel : ViewModel() {
+class DogsViewModel(application: Application) : AndroidViewModel(application) {
     val dogList: MutableLiveData<List<Dog>> = MutableLiveData()
     val errorMessage: MutableLiveData<String> = MutableLiveData()
-
+    private val db: AppDatabase = AppDatabase.getDatabase(application)
+    private val dogDao: DogDao = db.DogDao()
 
     fun loadDogs() {
-        val id = 0
+        if(dogDao?.getDogCount() == 0) {
+            loadDogsFromApi()
+        } else {
+            loadDogsFromRoomDB()
+        }
+    }
+
+    fun addDog(dog: Dog) {
+        dogDao.insertDog(dog)
+        loadDogsFromRoomDB()
+    }
+
+    private fun loadDogsFromApi() {
+        val newDogList = mutableListOf<Dog>()
         val dogService = ActivityServiceApiBuilder.create()
         dogService.getAllBreeds().enqueue(object : Callback<ListAllBreeds> {
             override fun onResponse(call: Call<ListAllBreeds>, response: Response<ListAllBreeds>) {
                 if (response.isSuccessful) {
                     val breeds = response.body()?.breeds
                     if (breeds != null) {
-
-                        val newDogList = mutableListOf<Dog>()
-
-
                         for ((breed, subBreeds) in breeds.entries.shuffled().take(20)) {
                             for (subBreed in subBreeds) {
                                 dogService.getRandomDogImage(breed).enqueue(object :
@@ -47,25 +62,25 @@ class DogsViewModel : ViewModel() {
                                                 val owners = arrayOf("Martin", "refugio patitas", "firuHome")
                                                 val owner = owners.random()
                                                 val status = random.nextBoolean()
-                                                newDogList.add(
-                                                    Dog(
-                                                        id = id,
-                                                        image = imageUrl,
-                                                        name = name,
-                                                        age = age,
-                                                        gender = gender,
-                                                        publishedDate = publishedDate,
-                                                        weight = weight,
-                                                        description = "Descripcion generica",
-                                                        breed = breed,
-                                                        subBreed = subBreeds.shuffled()[0],
-                                                        location = "Ciudad de buenos Aires",
-                                                        status = status,
-                                                        owner = owner
-                                                    )
+
+                                                var newDog = Dog(
+                                                    image = imageUrl,
+                                                    name = name,
+                                                    age = age,
+                                                    gender = gender,
+                                                    publishedDate = publishedDate,
+                                                    weight = weight,
+                                                    description = "Descripcion generica",
+                                                    breed = breed,
+                                                    subBreed = subBreeds.shuffled()[0],
+                                                    location = "Ciudad de buenos Aires",
+                                                    status = status,
+                                                    owner = owner
                                                 )
+
+                                                newDogList.add(newDog)
                                                 dogList.value = newDogList
-                                                id + 1
+                                                dogDao.insertDog(newDog)
                                             }
                                         } else {
                                             errorMessage.value = "Error al obtener todas las razas: ${response.errorBody()}"
@@ -88,5 +103,10 @@ class DogsViewModel : ViewModel() {
                 errorMessage.value = "Fallo al obtener todas las razas: ${t.message}"
             }
         })
+    }
+
+    private fun loadDogsFromRoomDB() {
+        val dogListDB = dogDao.getAll()
+        dogList.value = dogListDB
     }
 }

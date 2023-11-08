@@ -24,4 +24,7 @@ interface DogDao {
 
     @Query("SELECT COUNT(*) FROM dogs")
     fun getDogCount(): Int
+
+    @Query("DELETE FROM dogs")
+    fun wipeDB()
 }

@@ -94,7 +94,7 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
         saved.setOnClickListener {
 
             // Obtener una instancia de la base de datos
-            val appDatabase = AppDatabase.getAppDataBase(itemView.context)
+            val appDatabase = AppDatabase.getDatabase(itemView.context)
 
             // Verificar que la base de datos no sea nula
             if (appDatabase != null) {

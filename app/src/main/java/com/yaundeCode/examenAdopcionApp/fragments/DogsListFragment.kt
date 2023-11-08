@@ -15,12 +15,14 @@ import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
+import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogsListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
+    private var newDogList = mutableListOf<Dog>()
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
@@ -38,23 +40,27 @@ class DogsListFragment : Fragment() {
         return v
     }
 
-    override fun onStart() {
-        super.onStart()
-        db = AppDatabase.getAppDataBase(v.context)
-        dogDao = db?.DogDao()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
+        dogsViewModel.loadDogs()
+
         dogsViewModel.dogList.observe(
                 viewLifecycleOwner,
                 Observer { dogs -> dogAdapter.updateData(dogs) }
         )
-        loadDogs()
     }
 
-    private fun loadDogs() {
+    override fun onResume() {
+        super.onResume()
+
+        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         dogsViewModel.loadDogs()
+
+        dogsViewModel.dogList.observe(
+            viewLifecycleOwner,
+            Observer { dogs -> dogAdapter.updateData(dogs) }
+        )
     }
 }
