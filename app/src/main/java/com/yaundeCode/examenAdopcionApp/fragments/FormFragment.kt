@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
+import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
@@ -21,7 +22,8 @@ class FormFragment : Fragment() {
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
-    // lateinit var listDogs: MutableList<Dog>
+    private lateinit var dogsViewModel: DogsViewModel
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -45,7 +47,7 @@ class FormFragment : Fragment() {
             val spinnerLocation: Spinner = v.findViewById(R.id.spinnerLocation)
             val location = spinnerLocation.selectedItem.toString()
             val publishedDate = Date().toString()
-            val id = dogDao?.getDogCount() ?: 0
+            val id = 0
             val age = ageStr.toIntOrNull()
             val weight = weightStr.toDoubleOrNull()
 
@@ -57,7 +59,6 @@ class FormFragment : Fragment() {
                 /* val publishedDate = Date() */
                 val dog =
                         Dog(
-                            id + 1,
                             image,
                             name,
                             age,
@@ -69,10 +70,9 @@ class FormFragment : Fragment() {
                             subBreed,
                             location,
                         )
-                dogDao?.insertDog(dog)
+                dogsViewModel.addDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT)
                     .show()
-
             }
         }
         return v
@@ -81,7 +81,7 @@ class FormFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        db = AppDatabase.getAppDataBase(v.context)
+        db = AppDatabase.getDatabase(v.context)
 
         dogDao = db?.DogDao()
 

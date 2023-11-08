@@ -8,7 +8,6 @@ import java.util.Date
 
 @Entity(tableName = "dogs")
 class Dog(
-        id: Int,
         image: String,
         name: String,
         age: Int,
@@ -20,11 +19,9 @@ class Dog(
         subBreed: String,
         location: String,
         status: Boolean = false,
-        favorite: Boolean = false
+        favorite: Boolean = false,
+        id: Int? = null
 ) {
-        @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "id")
-        val id: Int
 
         @ColumnInfo(name = "image")
         val image : String
@@ -62,8 +59,11 @@ class Dog(
         @ColumnInfo(name = "favorite")
         val favorite: Boolean
 
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name = "id")
+        val id: Int?
+
         init {
-                this.id = id
                 this.image = image
                 this.name = name
                 this.age = age
@@ -76,5 +76,6 @@ class Dog(
                 this.location = location
                 this.status = status
                 this.favorite = favorite
+                this.id = id
         }
 }
