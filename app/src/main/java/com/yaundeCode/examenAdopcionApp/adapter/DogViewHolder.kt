@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,7 @@ import com.bumptech.glide.request.target.Target
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.gson.Gson
 import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
@@ -87,5 +89,26 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
         breed.text = dogModel.breed
         subBreed.text = dogModel.subBreed
         stats.text = "${dogModel.age.toString()} / ${dogModel.gender}"
+
+
+        saved.setOnClickListener {
+
+            // Obtener una instancia de la base de datos
+            val appDatabase = AppDatabase.getAppDataBase(itemView.context)
+
+            // Verificar que la base de datos no sea nula
+            if (appDatabase != null) {
+                // Obtener una instancia de DogDao
+                val dogDao = appDatabase.DogDao()
+
+                // Actualizar el campo favorite del perro en la base de datos
+                dog.favorite = true
+                dogDao.updateDog(dog)
+
+                // Actualizar la imagen del ícono de guardado
+                saved.setImageResource(R.drawable.ic_icon_bookmark)
+            }
+        }
+
     }
 }

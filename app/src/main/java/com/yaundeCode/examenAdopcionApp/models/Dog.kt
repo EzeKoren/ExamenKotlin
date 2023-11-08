@@ -64,7 +64,7 @@ class Dog(
         val status: Boolean
 
         @ColumnInfo(name = "favorite")
-        val favorite: Boolean
+        var favorite: Boolean
 
         init {
                 this.id = id
