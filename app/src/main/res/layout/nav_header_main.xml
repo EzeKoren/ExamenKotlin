@@ -44,7 +44,6 @@
                 android:paddingTop="15dp"
                 android:paddingBottom="20dp"
                 android:textAppearance="@style/MenuText30"
-                android:text="@string/nav_header_username"
                 android:layout_marginLeft="10dp" />
 
         </LinearLayout>

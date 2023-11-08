@@ -42,11 +42,15 @@
     <string name="dog_item_favorite_unselected_icon_description">Perro no guardado como favorito</string>
     <string name="dog_item_age_label">age:</string>
     <string name="dog_item_gender_label">gender:</string>
-    
+
     <!--    Configuración -->
     <string name="settings_view_header">Configuración</string>
     <string name="settings_group_general">Generales</string>
     <string name="settings_option_DM">Modo oscuro</string>
+
+    <!--    Perfil -->
+    <string name="profile_view_header">Perfil</string>
+
 
     <!--    Publication Form-->
     <string name="form_title">Ingresar mascota</string>
