@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
@@ -16,12 +17,14 @@ import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
+import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogsListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
+    private var newDogList = mutableListOf<Dog>()
     private lateinit var breedReciclerView: RecyclerView
     private lateinit var breedAdapter: BreedAdapter
     private lateinit var breedViewModel: BreedsViewModel
@@ -46,20 +49,16 @@ class DogsListFragment : Fragment() {
         return v
     }
 
-    override fun onStart() {
-        super.onStart()
-        db = AppDatabase.getAppDataBase(v.context)
-        dogDao = db?.DogDao()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
+        dogsViewModel.loadDogs()
+
         dogsViewModel.dogList.observe(
                 viewLifecycleOwner,
                 Observer { dogs -> dogAdapter.updateData(dogs) }
         )
-        loadDogs()
         breedViewModel = ViewModelProvider(this)[BreedsViewModel::class.java]
         breedViewModel.breedList.observe(viewLifecycleOwner,
             Observer { breeds -> breedAdapter.updateData(breeds) }
@@ -67,8 +66,16 @@ class DogsListFragment : Fragment() {
         loadBreeds()
     }
 
-    private fun loadDogs() {
+    override fun onResume() {
+        super.onResume()
+
+        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         dogsViewModel.loadDogs()
+
+        dogsViewModel.dogList.observe(
+            viewLifecycleOwner,
+            Observer { dogs -> dogAdapter.updateData(dogs) }
+        )
     }
 
     private fun loadBreeds() {
