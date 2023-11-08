@@ -12,29 +12,23 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun DogDao(): DogDao
 
     companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
 
-        var INSTANCE: AppDatabase? = null
-
-        fun getAppDataBase(context: Context): AppDatabase? {
-            if (INSTANCE == null) {
-                synchronized(AppDatabase::class) {
-                    INSTANCE =
-                            Room.databaseBuilder(
-                                            context.applicationContext,
-                                            AppDatabase::class.java,
-                                            "adopcionDB"
-                                    )
-                                    .fallbackToDestructiveMigration()
-                                    .addMigrations()
-                                    .allowMainThreadQueries()
-                                    .build()
-                }
+        fun getDatabase(context: Context): AppDatabase {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
             }
-            return INSTANCE
-        }
-
-        fun destroyDataBase() {
-            INSTANCE = null
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "app_database"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
 }
