@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
+import com.yaundeCode.examenAdopcionApp.BreedsViewModel
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
+import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 
@@ -21,6 +22,9 @@ class DogsListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
+    private lateinit var breedReciclerView: RecyclerView
+    private lateinit var breedAdapter: BreedAdapter
+    private lateinit var breedViewModel: BreedsViewModel
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
@@ -35,6 +39,10 @@ class DogsListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         dogAdapter = DogAdapter()
         recyclerView.adapter = dogAdapter
+        breedReciclerView = v.findViewById(R.id.breedsListRecycler)
+        breedReciclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        breedAdapter = BreedAdapter()
+        breedReciclerView.adapter = breedAdapter
         return v
     }
 
@@ -52,9 +60,18 @@ class DogsListFragment : Fragment() {
                 Observer { dogs -> dogAdapter.updateData(dogs) }
         )
         loadDogs()
+        breedViewModel = ViewModelProvider(this)[BreedsViewModel::class.java]
+        breedViewModel.breedList.observe(viewLifecycleOwner,
+            Observer { breeds -> breedAdapter.updateData(breeds) }
+            )
+        loadBreeds()
     }
 
     private fun loadDogs() {
         dogsViewModel.loadDogs()
+    }
+
+    private fun loadBreeds() {
+        breedViewModel.getBreeds()
     }
 }
