@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -11,6 +13,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.facebook.shimmer.ShimmerFrameLayout
+import com.google.gson.Gson
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
@@ -24,7 +27,20 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
     private val subBreed = dogView.findViewById<TextView>(R.id.textDogSubBreed)
     private val stats = dogView.findViewById<TextView>(R.id.textDogStats)
 
+    private lateinit var dog: Dog
+
+    init {
+        itemView.setOnClickListener {
+            val dogJsonString = Gson().toJson(dog).toString()
+
+            val bundle = bundleOf("dog" to dogJsonString)
+            it.findNavController().navigate(R.id.action_dogsListFragment_to_dogDetailFragment, bundle)
+        }
+    }
+
     fun render(dogModel: Dog) {
+        dog = dogModel
+
         shimmer.startShimmer()
 
         Glide.with(itemView)
