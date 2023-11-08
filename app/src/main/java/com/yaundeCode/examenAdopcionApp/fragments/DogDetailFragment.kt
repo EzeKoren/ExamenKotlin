@@ -41,14 +41,12 @@ class DogDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dog_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val action = FormFragmentDirections.action_dogDetailFragment_to_dogsListFragment()
         val bottomSheet = view.findViewById<View>(R.id.bottomSheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -89,7 +87,6 @@ class DogDetailFragment : Fragment() {
         bottomSheetAdoptButton.setOnClickListener {
             // TODO: Guardarlo en base
             dogsViewModel.addDog(dog)
-            findNavController().navigate(action)
             Toast.makeText(context, "Perro Adoptado.!Gracias!", Toast.LENGTH_SHORT).show()
         }
 
