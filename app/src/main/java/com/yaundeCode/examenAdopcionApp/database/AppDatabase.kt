@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
-@Database(entities = [Dog::class], version = 4, exportSchema = false)
+@Database(entities = [Dog::class], version = 5, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun DogDao(): DogDao
 

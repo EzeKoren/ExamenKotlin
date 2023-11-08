@@ -19,7 +19,7 @@ class Dog(
         breed: String,
         subBreed: String,
         location: String,
-        owner: String
+        owner: String,
         status: Boolean = false,
         favorite: Boolean = false
 ) {
