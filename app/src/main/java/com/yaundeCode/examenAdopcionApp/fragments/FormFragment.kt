@@ -78,6 +78,7 @@ class FormFragment : Fragment() {
                                 breed,
                                 subBreed,
                                 location,
+                                owner = "Martin",
                         )
                 dogDao?.insertDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()

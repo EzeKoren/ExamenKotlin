@@ -19,6 +19,7 @@ class Dog(
         breed: String,
         subBreed: String,
         location: String,
+        owner: String
         status: Boolean = false,
         favorite: Boolean = false
 ) {
@@ -56,6 +57,9 @@ class Dog(
         @ColumnInfo(name = "location")
         val location: String
 
+        @ColumnInfo(name = "owner")
+        val owner: String
+
         @ColumnInfo(name = "status")
         val status: Boolean
 
@@ -74,6 +78,7 @@ class Dog(
                 this.breed = breed
                 this.subBreed = subBreed
                 this.location = location
+                this.owner = owner
                 this.status = status
                 this.favorite = favorite
         }

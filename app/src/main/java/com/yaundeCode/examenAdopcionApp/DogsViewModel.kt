@@ -44,6 +44,9 @@ class DogsViewModel : ViewModel() {
                                                 val names = arrayOf("Woody", "Lito", "Pepa", "Mou", "Toto", "Rocio", "Alegria", "Firulais", "Tommy", "Roco", "Rosita", "Negro", "Gomez", "Churchill")
                                                 val name = names.random()
                                                 val publishedDate = Date().toString()
+                                                val owners = arrayOf("Martin", "refugio patitas", "firuHome")
+                                                val owner = owners.random()
+                                                val status = random.nextBoolean()
                                                 newDogList.add(
                                                     Dog(
                                                         id = id,
@@ -56,7 +59,10 @@ class DogsViewModel : ViewModel() {
                                                         description = "Descripcion generica",
                                                         breed = breed,
                                                         subBreed = subBreeds.shuffled()[0],
-                                                        location = "Ciudad de buenos Aires",)
+                                                        location = "Ciudad de buenos Aires",
+                                                        status = status,
+                                                        owner = owner
+                                                    )
                                                 )
                                                 dogList.value = newDogList
                                                 id + 1
