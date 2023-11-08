@@ -22,7 +22,11 @@
         android:id="@+id/formFragment"
         android:name="com.yaundeCode.examenAdopcionApp.fragments.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_dogsListFragment"
+            app:destination="@id/dogsListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dogsListFragment"
         android:name="com.yaundeCode.examenAdopcionApp.fragments.DogsListFragment"
