@@ -3,23 +3,29 @@ package com.yaundeCode.examenAdopcionApp.models
 import DogStatus
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity(tableName = "dogs")
 class Dog(
+        id: Int,
         image: String,
         name: String,
         age: Int,
         gender: String,
-        publishedDate: Date,
+        publishedDate: String,
         weight: Double,
         description: String,
         breed: String,
         subBreed: String,
         location: String,
-        status: DogStatus = DogStatus.EN_ADOPCION,
+        status: Boolean = false,
         favorite: Boolean = false
 ) {
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name = "id")
+        val id: Int
+
         @ColumnInfo(name = "image")
         val image : String
 
@@ -33,7 +39,7 @@ class Dog(
         val gender: String
 
         @ColumnInfo(name = "publishedDate")
-        val publishedDate: Date
+        val publishedDate: String
 
         @ColumnInfo(name = "weight")
         val weight: Double
@@ -51,12 +57,13 @@ class Dog(
         val location: String
 
         @ColumnInfo(name = "status")
-        val status: DogStatus
+        val status: Boolean
 
         @ColumnInfo(name = "favorite")
         val favorite: Boolean
 
         init {
+                this.id = id
                 this.image = image
                 this.name = name
                 this.age = age

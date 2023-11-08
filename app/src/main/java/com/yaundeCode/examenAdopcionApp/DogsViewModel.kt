@@ -18,6 +18,7 @@ class DogsViewModel : ViewModel() {
 
 
     fun loadDogs() {
+        val id = 0
         val dogService = ActivityServiceApiBuilder.create()
         dogService.getAllBreeds().enqueue(object : Callback<ListAllBreeds> {
             override fun onResponse(call: Call<ListAllBreeds>, response: Response<ListAllBreeds>) {
@@ -39,17 +40,18 @@ class DogsViewModel : ViewModel() {
                                                 val random = Random()
                                                 val age = random.nextInt(10) + 1
                                                 val gender = if (random.nextBoolean()) "Male" else "Female"
-                                                val favorite = random.nextBoolean()
                                                 val weight = random.nextDouble() * (25 - 4) + 4
                                                 val names = arrayOf("Woody", "Lito", "Pepa", "Mou", "Toto", "Rocio", "Alegria", "Firulais", "Tommy", "Roco", "Rosita", "Negro", "Gomez", "Churchill")
                                                 val name = names.random()
+                                                val publishedDate = Date().toString()
                                                 newDogList.add(
                                                     Dog(
+                                                        id = id,
                                                         image = imageUrl,
                                                         name = name,
                                                         age = age,
                                                         gender = gender,
-                                                        publishedDate = Date(),
+                                                        publishedDate = publishedDate,
                                                         weight = weight,
                                                         description = "Descripcion generica",
                                                         breed = breed,
@@ -57,6 +59,7 @@ class DogsViewModel : ViewModel() {
                                                         location = "Ciudad de buenos Aires",)
                                                 )
                                                 dogList.value = newDogList
+                                                id + 1
                                             }
                                         } else {
                                             errorMessage.value = "Error al obtener todas las razas: ${response.errorBody()}"

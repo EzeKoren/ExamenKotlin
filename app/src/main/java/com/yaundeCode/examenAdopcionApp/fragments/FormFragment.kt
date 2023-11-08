@@ -10,10 +10,10 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
-import com.yaundecode.examenadopcionapp.database.AppDatabase
 import java.util.Date
 
 class FormFragment : Fragment() {
@@ -44,7 +44,8 @@ class FormFragment : Fragment() {
             val subBreed = spinnerSubBreed.selectedItem.toString()
             val spinnerLocation: Spinner = v.findViewById(R.id.spinnerLocation)
             val location = spinnerLocation.selectedItem.toString()
-            val publishDate = Date()
+            val publishedDate = Date().toString()
+            val id = dogDao?.getDogCount() ?: 0
             val age = ageStr.toIntOrNull()
             val weight = weightStr.toDoubleOrNull()
 
@@ -56,11 +57,12 @@ class FormFragment : Fragment() {
                 /* val publishedDate = Date() */
                 val dog =
                         Dog(
+                            id + 1,
                             image,
                             name,
                             age,
                             gender,
-                            publishDate,
+                            publishedDate,
                             weight,
                             description,
                             breed,

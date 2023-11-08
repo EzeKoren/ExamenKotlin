@@ -21,4 +21,7 @@ interface DogDao {
 
     @Query("SELECT * FROM dogs")
     fun getAll(): List<Dog>
+
+    @Query("SELECT COUNT(*) FROM dogs")
+    fun getDogCount(): Int
 }

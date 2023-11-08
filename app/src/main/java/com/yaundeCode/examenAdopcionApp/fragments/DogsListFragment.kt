@@ -10,12 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
-import com.yaundecode.examenadopcionapp.database.AppDatabase
-import kotlinx.coroutines.launch
 
 class DogsListFragment : Fragment() {
 
@@ -43,14 +42,6 @@ class DogsListFragment : Fragment() {
         super.onStart()
         db = AppDatabase.getAppDataBase(v.context)
         dogDao = db?.DogDao()
-        lifecycleScope.launch {
-            dogDao?.getAll()?.let {
-                dogAdapter.updateData(it)
-            }
-            // Solo agrego un separador entre items del recyclerview
-            //val dividerItemDecoration = DividerItemDecoration(taskRecyclerView.context, layoutManager.orientation)
-            //taskRecyclerView.addItemDecoration(dividerItemDecoration)
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
