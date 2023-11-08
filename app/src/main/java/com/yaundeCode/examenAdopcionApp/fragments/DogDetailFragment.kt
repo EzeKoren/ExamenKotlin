@@ -1,27 +1,23 @@
 package com.yaundeCode.examenAdopcionApp.fragments
 
-import android.graphics.drawable.Drawable
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
-import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import kotlin.math.roundToInt
-import kotlin.math.truncate
+
 
 private const val ARG_DOG = "dog"
 
@@ -92,6 +88,14 @@ class DogDetailFragment : Fragment() {
         val bottomSheetOwner = view.findViewById<TextView>(R.id.bottomSheetOwner)
 
         // TODO: Set owner
+
+        val bottomSheetCallButton = view.findViewById<ImageButton>(R.id.bottomSheetCallButton)
+
+        bottomSheetCallButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:1147896500")
+            startActivity(intent)
+        }
     }
 
     companion object {

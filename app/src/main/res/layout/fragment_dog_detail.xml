@@ -202,16 +202,29 @@
                                     android:text="Nombre del dueño"
                                     android:textColor="@color/text" />
                             </LinearLayout>
+
                         </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/bottomSheetCallButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:scaleType="fitEnd"
-                            android:src="@drawable/ic_phone" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageButton
+                                android:id="@+id/bottomSheetCallButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@color/transparent"
+                                android:contentDescription="@string/dog_details_call_owner_placeholder"
+                                android:scaleType="fitEnd"
+                                android:src="@drawable/ic_phone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </LinearLayout>
 

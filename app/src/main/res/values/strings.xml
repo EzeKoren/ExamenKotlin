@@ -50,6 +50,8 @@
     <string name="dog_details_weight_label">Peso</string>
     <string name="dog_details_weight_suffix">kg</string>
     <string name="dog_details_owner_label">Dueño</string>
+    <string name="dog_details_call_owner_placeholder">Llamar al dueño</string>
+
     <string name="dog_details_adopt_button">Adoptar</string>
 
     <!--    Configuración -->
