@@ -40,15 +40,26 @@
     <string name="dog_item_photo_placeholder_description">Foto de </string>
     <string name="dog_item_favorite_selected_icon_description">Perro guardado como favorito</string>
     <string name="dog_item_favorite_unselected_icon_description">Perro no guardado como favorito</string>
-    <string name="dog_item_age_label">age:</string>
-    <string name="dog_item_gender_label">gender:</string>
-    
+    <string name="dog_item_age_label">Edad:</string>
+    <string name="dog_item_sex_label">Género:</string>
+
+    <!--    Dog Details -->
+    <string name="dog_details_age_suffix_singular">\ año</string>
+    <string name="dog_details_age_suffix_plural">\ años</string>
+    <string name="dog_details_sex_label">Sexo</string>
+    <string name="dog_details_weight_label">Peso</string>
+    <string name="dog_details_weight_suffix">kg</string>
+    <string name="dog_details_owner_label">Dueño</string>
+    <string name="dog_details_call_owner_placeholder">Llamar al dueño</string>
+
+    <string name="dog_details_adopt_button">Adoptar</string>
+
     <!--    Configuración -->
     <string name="settings_view_header">Configuración</string>
     <string name="settings_group_general">Generales</string>
     <string name="settings_option_DM">Modo oscuro</string>
 
-    <!--    Publication Form-->
+    <!--    Publication Form -->
     <string name="form_title">Ingresar mascota</string>
     <string name="form_image">Imagen(URL)</string>
     <string name="form_name">Nombre</string>
@@ -60,7 +71,7 @@
     <string name="form_sub_breed">Subraza de perro</string>
     <string name="form_description">Descripción</string>
 
-    <!--    Form Button-->
+    <!--    Form Button -->
     <string name="form_button">Crear</string>
 
     <string-array name="gender_options">
