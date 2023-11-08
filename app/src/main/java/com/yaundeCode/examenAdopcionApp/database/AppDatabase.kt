@@ -1,4 +1,4 @@
-package com.yaundeAode.examenAdopcionApp.database
+package com.yaundeCode.examenAdopcionApp.database
 
 import android.content.Context
 import androidx.room.Database

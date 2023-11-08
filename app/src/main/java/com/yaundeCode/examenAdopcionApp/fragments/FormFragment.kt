@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.yaundeAode.examenAdopcionApp.database.AppDatabase
+import com.yaundeCode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
