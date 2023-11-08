@@ -68,23 +68,6 @@
         <item>Hembra</item>
     </string-array>
 
-    <string-array name="dog_breeds">
-        <item>Beagle</item>
-        <item>Bulldog</item>
-        <item>Labrador</item>
-        <item>Poodle</item>
-    </string-array>
-
-    <string-array name="dog_subbreeds">
-        <item>Bulldog Francés</item>
-        <item>Bulldog Inglés</item>
-        <item>Bulldog Americano</item>
-        <item>Beagle Harrier</item>
-        <item>Labrador Retriever Chocolate</item>
-        <item>Labrador Retriever Negro</item>
-        <item>Labrador Retriever Amarillo</item>
-    </string-array>
-
     <string-array name="argentine_provinces">
         <item>Buenos Aires</item>
         <item>Catamarca</item>

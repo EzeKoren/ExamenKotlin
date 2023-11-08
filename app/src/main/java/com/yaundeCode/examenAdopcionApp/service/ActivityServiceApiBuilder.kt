@@ -7,7 +7,7 @@ object ActivityServiceApiBuilder {
 
     private val BASE_URL = "https://dog.ceo/api/"
 
-    private val retrofit =
+    val retrofit =
             Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())

@@ -1,10 +1,10 @@
 package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
@@ -14,7 +14,13 @@ import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Dog
+import com.yaundeCode.examenAdopcionApp.models.ListAllBreeds
+import com.yaundeCode.examenAdopcionApp.service.ActivityServiceApiBuilder.retrofit
+import com.yaundeCode.examenAdopcionApp.service.DogService
 import java.util.Date
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FormFragment : Fragment() {
 
@@ -28,8 +34,13 @@ class FormFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        v = inflater.inflate(R.layout.fragment_form, container, false)
-        val button = v.findViewById<Button>(R.id.saveButton)
+        val v = inflater.inflate(R.layout.fragment_form, container, false)
+        val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
+        val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
+        val button = v.findViewById<Button>(R.id.form_button)
+
+        getBreedsAndSubbreeds(spinnerBreed, spinnerSubBreed)
+
         button.setOnClickListener {
             val image = v.findViewById<EditText>(R.id.editTextFormImage).text.toString()
             val ageStr = v.findViewById<EditText>(R.id.editTextFormAge).text.toString()
@@ -49,7 +60,6 @@ class FormFragment : Fragment() {
             val age = ageStr.toIntOrNull()
             val weight = weightStr.toDoubleOrNull()
 
-
             if (age == null || name.isEmpty() || weight == null || description.isEmpty()) {
                 Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT)
                         .show()
@@ -57,22 +67,20 @@ class FormFragment : Fragment() {
                 /* val publishedDate = Date() */
                 val dog =
                         Dog(
-                            id + 1,
-                            image,
-                            name,
-                            age,
-                            gender,
-                            publishedDate,
-                            weight,
-                            description,
-                            breed,
-                            subBreed,
-                            location,
+                                id + 1,
+                                image,
+                                name,
+                                age,
+                                gender,
+                                publishedDate,
+                                weight,
+                                description,
+                                breed,
+                                subBreed,
+                                location,
                         )
                 dogDao?.insertDog(dog)
-                Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT)
-                    .show()
-
+                Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()
             }
         }
         return v
@@ -89,6 +97,68 @@ class FormFragment : Fragment() {
         /*
         cargarDB()
         showDogs()
+        */
+    }
+
+    private fun getBreedsAndSubbreeds(spinnerBreed: Spinner, spinnerSubBreed: Spinner) {
+        val api = retrofit.create(DogService::class.java)
+        val call: Call<ListAllBreeds> = api.getAllBreeds()
+
+        call.enqueue(
+                object : Callback<ListAllBreeds> {
+                    override fun onResponse(
+                            call: Call<ListAllBreeds>,
+                            response: Response<ListAllBreeds>
+                    ) {
+                        if (response.isSuccessful) {
+                            println(response.body())
+                            val breeds =
+                                    response.body()?.breeds?.keys?.toList() ?: emptyList<String>()
+                            val subbreeds =
+                                    response.body()?.breeds?.values?.flatten()
+                                            ?: emptyList<String>()
+
+                            val breedAdapter =
+                                    ArrayAdapter(
+                                            requireContext(),
+                                            android.R.layout.simple_spinner_item,
+                                            breeds
+                                    )
+                            breedAdapter.setDropDownViewResource(
+                                    android.R.layout.simple_spinner_dropdown_item
+                            )
+                            spinnerBreed.adapter = breedAdapter
+
+                            val subBreedAdapter =
+                                    ArrayAdapter(
+                                            requireContext(),
+                                            android.R.layout.simple_spinner_item,
+                                            subbreeds
+                                    )
+                            subBreedAdapter.setDropDownViewResource(
+                                    android.R.layout.simple_spinner_dropdown_item
+                            )
+                            spinnerSubBreed.adapter = subBreedAdapter
+                        } else {
+                            println("Error: ${response.errorBody()}")
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ListAllBreeds>, t: Throwable) {
+                        println("Error: ${t.message}")
+                    }
+                }
+        )
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of this fragment using the provided
+         * parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment FormFragment.
          */
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

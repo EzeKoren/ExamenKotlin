@@ -95,7 +95,8 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFormName" />
+                app:layout_constraintTop_toBottomOf="@+id/textFormName"
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/textFormAge"
@@ -118,7 +119,7 @@
                 android:background="@drawable/ic_rounded_placeholder"
                 android:ems="10"
                 android:fontFamily="@font/poppins_regular"
-                android:inputType="text"
+                android:inputType="number"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textAlignment="inherit"
@@ -126,7 +127,8 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFormAge" />
+                app:layout_constraintTop_toBottomOf="@+id/textFormAge"
+                tools:ignore="Autofill" />
 
 
             <TextView
@@ -191,7 +193,8 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFormWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/textFormWeight"
+                tools:ignore="Autofill" />
 
 
             <TextView
@@ -213,7 +216,6 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_rounded_placeholder"
-                android:entries="@array/dog_breeds"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
@@ -244,7 +246,6 @@
                 android:layout_width="320dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_rounded_placeholder"
-                android:entries="@array/dog_subbreeds"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
@@ -254,7 +255,8 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFormSubBreed" />
+                app:layout_constraintTop_toBottomOf="@+id/textFormSubBreed"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/textFormLocation"
@@ -320,7 +322,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textFormDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/textFormDescription"
+                tools:ignore="Autofill" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
