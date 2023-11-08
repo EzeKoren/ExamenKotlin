@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
@@ -47,6 +48,7 @@ class DogDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val action = FormFragmentDirections.action_dogDetailFragment_to_dogsListFragment()
         val bottomSheet = view.findViewById<View>(R.id.bottomSheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -87,17 +89,16 @@ class DogDetailFragment : Fragment() {
         bottomSheetAdoptButton.setOnClickListener {
             // TODO: Guardarlo en base
             dogsViewModel.addDog(dog)
+            findNavController().navigate(action)
             Toast.makeText(context, "Perro Adoptado.!Gracias!", Toast.LENGTH_SHORT).show()
         }
 
         val bottomSheetOwnerPicture = view.findViewById<ImageView>(R.id.bottomSheetOwnerPicture)
         val bottomSheetOwner = view.findViewById<TextView>(R.id.bottomSheetOwner)
-
         bottomSheetOwner.text = dog.owner
         // TODO: Set owner
 
         val bottomSheetCallButton = view.findViewById<ImageButton>(R.id.bottomSheetCallButton)
-
         bottomSheetCallButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:1147896500")
