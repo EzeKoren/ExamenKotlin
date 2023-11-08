@@ -34,10 +34,10 @@ class FormFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_form, container, false)
+        v = inflater.inflate(R.layout.fragment_form, container, false)
         val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
         val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
-        val button = v.findViewById<Button>(R.id.form_button)
+        val button = v.findViewById<Button>(R.id.saveButton)
 
         getBreedsAndSubbreeds(spinnerBreed, spinnerSubBreed)
 
