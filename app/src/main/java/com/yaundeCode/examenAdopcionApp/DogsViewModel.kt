@@ -62,26 +62,25 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
                                                 val owners = arrayOf("Martin", "refugio patitas", "firuHome")
                                                 val owner = owners.random()
                                                 val status = random.nextBoolean()
-                                                newDogList.add(
-                                                    Dog(
-                                                        image = imageUrl,
-                                                        name = name,
-                                                        age = age,
-                                                        gender = gender,
-                                                        publishedDate = publishedDate,
-                                                        weight = weight,
-                                                        description = "Descripcion generica",
-                                                        breed = breed,
-                                                        subBreed = subBreeds.shuffled()[0],
-                                                        location = "Ciudad de buenos Aires",
-                                                        status = status,
-                                                        owner = owner
-                                                    )
+
+                                                var newDog = Dog(
+                                                    image = imageUrl,
+                                                    name = name,
+                                                    age = age,
+                                                    gender = gender,
+                                                    publishedDate = publishedDate,
+                                                    weight = weight,
+                                                    description = "Descripcion generica",
+                                                    breed = breed,
+                                                    subBreed = subBreeds.shuffled()[0],
+                                                    location = "Ciudad de buenos Aires",
+                                                    status = status,
+                                                    owner = owner
                                                 )
+
+                                                newDogList.add(newDog)
                                                 dogList.value = newDogList
-                                                newDogList.forEach { dog ->
-                                                    dogDao?.insertDog(dog)
-                                                }
+                                                dogDao.insertDog(newDog)
                                             }
                                         } else {
                                             errorMessage.value = "Error al obtener todas las razas: ${response.errorBody()}"

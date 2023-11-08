@@ -40,25 +40,27 @@ class DogsListFragment : Fragment() {
         return v
     }
 
-    override fun onStart() {
-        super.onStart()
-        db = AppDatabase.getDatabase(v.context)
-        dogDao = db?.DogDao()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
+        dogsViewModel.loadDogs()
+
         dogsViewModel.dogList.observe(
                 viewLifecycleOwner,
                 Observer { dogs -> dogAdapter.updateData(dogs) }
         )
-        if(dogDao?.getDogCount() == 0) {
-            loadDogs()
-        }
     }
 
-    private fun loadDogs() {
+    override fun onResume() {
+        super.onResume()
+
+        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         dogsViewModel.loadDogs()
+
+        dogsViewModel.dogList.observe(
+            viewLifecycleOwner,
+            Observer { dogs -> dogAdapter.updateData(dogs) }
+        )
     }
 }
