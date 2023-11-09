@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.fragments.ProfileFragment
 import com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment
 
@@ -27,8 +28,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var navView: NavigationView // Asegúrate de declarar navView
+    private lateinit var navView: NavigationView
     private var name: String? = null
+    private lateinit var dogsViewModel: DogsViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,17 +61,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeButtonEnabled(true)
 
         navView = findViewById(R.id.nav_view)
-        navView.setNavigationItemSelectedListener(this)
+        navView.setNavigationItemSelectedListener (this)
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
-        AndroidThreeTen.init(this)
-        val headerView: View = navView.getHeaderView(0)
-        val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
-        usernameTextView.text = name
-    }
 
+        // inicializo DAO
+        val dogDao = AppDatabase.getDatabase(this).DogDao()
+        // Observa la cantidad de perros favoritos
+        dogDao.getFavoriteDogsCount().observe(this) { count ->
+            // Actualiza el badge con la cantidad de perros favoritos
+            val badgeDrawable = bottomNavView.getOrCreateBadge(R.id.favorite)
+            badgeDrawable.isVisible = count > 0
+            badgeDrawable.number = count
+        }
+
+
+
+    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> {

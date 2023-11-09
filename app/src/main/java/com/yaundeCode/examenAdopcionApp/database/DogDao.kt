@@ -1,5 +1,6 @@
 package com.yaundeCode.examenAdopcionApp.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -27,4 +28,7 @@ interface DogDao {
 
     @Query("DELETE FROM dogs")
     fun wipeDB()
+
+    @Query("SELECT COUNT(*) FROM dogs WHERE favorite = 1")
+    fun getFavoriteDogsCount(): LiveData<Int>
 }

@@ -67,10 +67,8 @@ class DogsListFragment : Fragment() {
             if (searchQuery != "") filterDogs() else updateDogs()
         }
 
-        dogsViewModel.loadDogs()
-
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
-                    as SearchBarFragment
+                as SearchBarFragment
 
         searchBar.searchQuery.observe(viewLifecycleOwner) { query ->
             searchQuery = query
@@ -78,9 +76,10 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
-            breedAdapter.updateData(breeds) 
+            breedAdapter.updateData(breeds)
         }
 
+        dogsViewModel.loadDogs()
         breedViewModel.getBreeds()
     }
 
@@ -104,15 +103,10 @@ class DogsListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
-        breedViewModel = ViewModelProvider(this)[BreedsViewModel::class.java]
-
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
             dogList = dogs
             if (searchQuery != "") filterDogs() else updateDogs()
         }
-
-        dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
                     as SearchBarFragment
@@ -125,7 +119,7 @@ class DogsListFragment : Fragment() {
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
             breedAdapter.updateData(breeds) 
         }
-
+        dogsViewModel.loadDogs()
         breedViewModel.getBreeds()
     }
 }
