@@ -59,7 +59,10 @@
     <string name="settings_group_general">Generales</string>
     <string name="settings_option_DM">Modo oscuro</string>
 
-    <!--    Publication Form -->
+    <!--    Perfil -->
+    <string name="profile_view_header">Perfil</string>
+
+    <!--    Publication Form-->
     <string name="form_title">Ingresar mascota</string>
     <string name="form_image">Imagen(URL)</string>
     <string name="form_name">Nombre</string>
