@@ -12,13 +12,23 @@
         android:background="@color/background">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
+            android:id="@+id/settingsFragmentToolbarContainer"
+            android:name="com.yaundeCode.examenAdopcionApp.fragments.ToolbarWithBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/settingsFragmentContainer"
             android:name="com.yaundeCode.examenAdopcionApp.fragments.SettingsFragment"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsFragmentToolbarContainer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
