@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
@@ -73,15 +74,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         dogDao.getFavoriteDogsCount().observe(this) { count ->
             // Actualiza el badge con la cantidad de perros favoritos
             val badgeFavorite = bottomNavView.getOrCreateBadge(R.id.favorite)
+            badgeFavorite.backgroundColor = ContextCompat.getColor(this, R.color.badge_favorite)
             badgeFavorite.isVisible = count > 0
             badgeFavorite.number = count
         }
         dogDao.getDogsByOwnerCount(name?: "Default Name").observe(this){ count ->
             val badgeAdoption = bottomNavView.getOrCreateBadge(R.id.adoption)
+            badgeAdoption.backgroundColor = ContextCompat.getColor(this, R.color.error)
             badgeAdoption.isVisible = count > 0
             badgeAdoption.number = count}
-
-
 
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {

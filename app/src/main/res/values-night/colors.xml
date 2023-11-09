@@ -14,4 +14,5 @@
     <color name="image_placeholder">#353535</color>
     <color name="image_filter">#FF888888</color>
     <color name="transparent">#00000000</color>
+    <color name="badge_favorite">#24492e</color>
 </resources>
