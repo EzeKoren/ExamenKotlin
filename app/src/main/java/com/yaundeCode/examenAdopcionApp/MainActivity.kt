@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             badgeFavorite.isVisible = count > 0
             badgeFavorite.number = count
         }
-        dogDao.getDogsByOwnerCount(name?: "Default Name").observe(this){ count ->
+        dogDao.getDogsByOwnerCount(name!!).observe(this){ count ->
             val badgeAdoption = bottomNavView.getOrCreateBadge(R.id.adoption)
             badgeAdoption.backgroundColor = ContextCompat.getColor(this, R.color.error)
             badgeAdoption.isVisible = count > 0
