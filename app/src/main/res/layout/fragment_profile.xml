@@ -52,7 +52,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/rounded_button_background"
             android:fontFamily="@font/poppins_bold"
-            android:text="Subir Foto HardCoded"
+            android:text="@string/profile_view_upload_photo"
 
             android:textColor="@color/icons" />
     </LinearLayout>

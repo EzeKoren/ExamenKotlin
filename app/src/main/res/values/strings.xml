@@ -61,6 +61,7 @@
 
     <!--    Perfil -->
     <string name="profile_view_header">Perfil</string>
+    <string name="profile_view_upload_photo">Subir foto</string>
 
     <!--    Publication Form-->
     <string name="form_title">Ingresar mascota</string>
