@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.fragment:fragment:1.6.2")
     /* Room */
     val room_version = "2.4.0"
     /* Navigation */
