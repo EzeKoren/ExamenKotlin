@@ -29,7 +29,6 @@ class OwnedDogsFragment : Fragment() {
     private var dogDao: DogDao? = null
     private var name: String? = null
 
-
     companion object {
         fun newInstance(name: String): OwnedDogsFragment {
             return OwnedDogsFragment().apply {
@@ -39,8 +38,6 @@ class OwnedDogsFragment : Fragment() {
             }
         }
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,7 +49,7 @@ class OwnedDogsFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_owned_dogs, container, false)
         recyclerView = v.findViewById(R.id.ownedDogsListRecycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        dogAdapter = DogAdapter()
+        dogAdapter = DogAdapter(name!!)
         recyclerView.adapter = dogAdapter
         return v
     }

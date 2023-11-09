@@ -28,15 +28,15 @@ import retrofit2.Response
 class FormFragment : Fragment() {
 
     private lateinit var v: View
-    private var db: AppDatabase? = null
     private var dogsViewModel: DogsViewModel? = null
-
+    private var ownerName: String? = null
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        ownerName = arguments?.getString("ownerName")
         v = inflater.inflate(R.layout.fragment_form, container, false)
         dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
@@ -81,7 +81,7 @@ class FormFragment : Fragment() {
                                 breed,
                                 subBreed,
                                 location,
-                                owner = "Martin",
+                                owner = ownerName!!,
                         )
                 dogsViewModel?.addDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()
@@ -89,18 +89,6 @@ class FormFragment : Fragment() {
             }
         }
         return v
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        db = AppDatabase.getDatabase(v.context)
-
-        /* Probando el Room */
-        /*
-        cargarDB()
-        showDogs()
-        */
     }
 
     private fun getBreedsAndSubbreeds(spinnerBreed: Spinner, spinnerSubBreed: Spinner) {
@@ -155,54 +143,12 @@ class FormFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of this fragment using the provided
-         * parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FormFragment.
-         */
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    /*
-    fun cargarDB() {
-        dogDao?.insertDog(
-            Dog(
-                1,
-                "Fede",
-                18,
-                "Masculino",
-                88.5f,
-                "Pibe progamador",
-                "Hetero",
-                "Hetero2",
-                "Buenos Aires"
-                ))
-        dogDao?.insertDog(
-            Dog(
-                2,
-                "Facu",
-                22,
-                "Masculino",
-                86.5f,
-                "Buenos dias",
-                "Hetero",
-                "Hetero2",
-                "Buenos Aires"
-            ))
-    }
-
-    fun showDogs() {
-        CoroutineScope(Dispatchers.Main).launch {
-            var listDogs = dogDao?.getAll()
-            listDogs?.forEach { dog ->
-                Log.d("Dog", dog.toString())
+        fun newInstance(ownerName: String): FormFragment {
+            return FormFragment().apply {
+                arguments = Bundle().apply {
+                    putString("ownerName", ownerName!!)
+                }
             }
         }
     }
-    */
 }

@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -27,12 +28,14 @@ private const val ARG_DOG = "dog"
 class DogDetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var dog: Dog
+    private lateinit var username: String
     private var dogsViewModel: DogsViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             dog = Gson().fromJson(it.getString(ARG_DOG), Dog::class.java)
+            username = it.getString("username")!!
         }
     }
 
@@ -48,7 +51,6 @@ class DogDetailFragment : Fragment() {
         dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         super.onViewCreated(view, savedInstanceState)
 
-        val action = DogDetailFragmentDirections.actionDogDetailFragmentToDogsListFragment()
         val bottomSheet = view.findViewById<View>(R.id.bottomSheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -90,11 +92,12 @@ class DogDetailFragment : Fragment() {
         bottomSheetOwner.text = dog.owner
 
         bottomSheetAdoptButton.setOnClickListener {
-            dog.owner = "Martin"
+            dog.owner = username
             dog.status = true
             dogsViewModel?.updateDog(dog)
 
-            findNavController().navigate(action)
+            val bundle = bundleOf("name" to username!!)
+            findNavController().navigate(R.id.adoption, bundle)
         }
 
 
@@ -112,6 +115,7 @@ class DogDetailFragment : Fragment() {
             DogDetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_DOG, dogJson)
+                    putString("username", username)
                 }
             }
     }

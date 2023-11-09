@@ -6,13 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
-class DogAdapter : RecyclerView.Adapter<DogViewHolder>() {
+class DogAdapter(val username: String) : RecyclerView.Adapter<DogViewHolder>() {
 
     private var dogsList: List<Dog> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return DogViewHolder(layoutInflater.inflate(R.layout.item_dog, parent, false))
+        var dogViewHolder = DogViewHolder(layoutInflater.inflate(R.layout.item_dog, parent, false), username = username)
+
+        return dogViewHolder
     }
 
     override fun getItemCount(): Int = dogsList.size
@@ -26,4 +28,5 @@ class DogAdapter : RecyclerView.Adapter<DogViewHolder>() {
         dogsList = newDogsList
         notifyDataSetChanged()
     }
+
 }

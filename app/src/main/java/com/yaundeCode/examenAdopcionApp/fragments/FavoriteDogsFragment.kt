@@ -27,15 +27,31 @@ class FavoriteDogsFragment : Fragment() {
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
 
+    private lateinit var username: String
+
+    companion object {
+        @JvmStatic
+        fun newInstance(username: String) =
+            DogsListFragment().apply {
+                arguments = Bundle().apply {
+                    putString("username", username)
+                }
+            }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        arguments?.let {
+            username = it.getString("username")!!
+        }
+
         v = inflater.inflate(R.layout.fragment_favorite_dogs, container, false)
         recyclerView = v.findViewById(R.id.favoriteDogsListRecycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        dogAdapter = DogAdapter()
+        dogAdapter = DogAdapter(username)
         recyclerView.adapter = dogAdapter
         return v
     }

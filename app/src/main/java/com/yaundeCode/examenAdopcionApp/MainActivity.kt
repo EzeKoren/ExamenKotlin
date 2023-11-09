@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         name = intent.getStringExtra("name") ?: "Default Name"
 
+        val bundle = bundleOf("username" to name!!)
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        navHostFragment.navController.setGraph(R.navigation.main_navgraph, bundle)
+
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
@@ -64,7 +68,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener (this)
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
@@ -89,11 +92,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNavView.setOnItemSelectedListener  { item ->
             when (item.itemId) {
                 R.id.dogsListFragment -> {
-                    navHostFragment.navController.navigate(R.id.dogsListFragment)
+                    val bundle = bundleOf("username" to name!!)
+                    navHostFragment.navController.navigate(R.id.dogsListFragment, bundle)
                     true
                 }
                 R.id.favorite -> {
-                    navHostFragment.navController.navigate(R.id.favorite)
+                    val bundle = bundleOf("username" to name!!)
+                    navHostFragment.navController.navigate(R.id.favorite, bundle)
                     true
                 }
                 R.id.adoption -> {
@@ -102,7 +107,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     true
                 }
                 R.id.formFragment -> {
-                    navHostFragment.navController.navigate(R.id.formFragment)
+                    val bundle = bundleOf("ownerName" to name!!)
+                    navHostFragment.navController.navigate(R.id.formFragment, bundle)
                     true
                 }
                 else -> false

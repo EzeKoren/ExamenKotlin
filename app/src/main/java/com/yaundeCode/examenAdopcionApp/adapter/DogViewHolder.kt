@@ -18,8 +18,7 @@ import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
-class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
-
+class DogViewHolder(dogView: View, val username: String) : RecyclerView.ViewHolder(dogView) {
     private val image = dogView.findViewById<ImageView>(R.id.dogImageView)
     private val shimmer = dogView.findViewById<ShimmerFrameLayout>(R.id.dogImageShimmer)
     private val saved = dogView.findViewById<ImageView>(R.id.dogSaveIcon)
@@ -34,7 +33,7 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
         itemView.setOnClickListener {
             val dogJsonString = Gson().toJson(dog).toString()
 
-            val bundle = bundleOf("dog" to dogJsonString)
+            val bundle = bundleOf("dog" to dogJsonString, "username" to username)
             it.findNavController().navigate(R.id.action_dog_to_dogDetailFragment, bundle)
         }
     }

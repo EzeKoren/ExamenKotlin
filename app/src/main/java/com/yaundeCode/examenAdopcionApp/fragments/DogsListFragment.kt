@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.BreedsViewModel
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
@@ -32,16 +33,29 @@ class DogsListFragment : Fragment() {
     private var dogList: List<Dog> = listOf()
     private var searchQuery: String = ""
 
+    private var username: String? = null
+
+    companion object {
+        fun newInstance(username: String): DogsListFragment {
+            return DogsListFragment().apply {
+                arguments = Bundle().apply {
+                    putString("username", username!!)
+                }
+            }
+        }
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        username = arguments?.getString("username")
+
         v = inflater.inflate(R.layout.fragment_dogs_list, container, false)
         recyclerView = v.findViewById(R.id.dogsListRecycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        dogAdapter = DogAdapter()
+        dogAdapter = DogAdapter(username!!)
         recyclerView.adapter = dogAdapter
 
         breedReciclerView = v.findViewById(R.id.breedsListRecycler)
