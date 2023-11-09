@@ -18,8 +18,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.yaundeCode.examenAdopcionApp.fragments.ProfileFragment
-import com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,16 +26,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
-    private lateinit var navView: NavigationView // Asegúrate de declarar navView
+    private lateinit var navView: NavigationView
     private var name: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         name = intent.getStringExtra("name") ?: "Default Name"
-
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
 
@@ -71,31 +68,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> {
-                val profileViewFragment = ProfileFragment.newInstance(name!!)
-                supportFragmentManager
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.drawer_layout, profileViewFragment)
-                    .addToBackStack("open_profile")
-                    .commit()
+                navHostFragment.navController.navigate(R.id.action_global_profileFragment)
             }
             R.id.nav_item_setting -> {
-                val settingsViewFragment = SettingsViewFragment.newInstance("", "")
-                supportFragmentManager
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.drawer_layout, settingsViewFragment)
-                    .addToBackStack("open_config")
-                    .commit()
+                navHostFragment.navController.navigate(R.id.action_global_settingsViewFragment)
             }
         }
-
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
 
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -108,18 +94,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.onConfigurationChanged(newConfig)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressedDispatcher.onBackPressed()
-            return true
-        }
 
-        return if (toggle.onOptionsItemSelected(item)) {
-            true
-        } else {
-            super.onOptionsItemSelected(item)
-        }
-    }
+
 
     fun updateDrawerImage(imageUri: Uri) {
         val headerView: View = navView.getHeaderView(0)

@@ -24,5 +24,24 @@
         android:name="com.yaundeCode.examenAdopcionApp.fragments.DogsListFragment"
         android:label="fragment_dogs_list"
         tools:layout="@layout/fragment_dogs_list" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/settingsViewFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings_view" />
+
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@+id/profileFragment" />
+
+    <action
+        android:id="@+id/action_global_settingsViewFragment"
+        app:destination="@+id/settingsViewFragment" />
 
 </navigation>
