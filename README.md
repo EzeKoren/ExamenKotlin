@@ -1,8 +1,38 @@
 # Examen Kotlin
 
 Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
+Fecha de entrega  9/11/2023 - 19:00 Hs.
 
-## Instrucciones de Instalación
+## Introducción
+
+Bienvenido al desarrollo parcial del Trabajo Práctico 3 (TP3) de nuestra aplicación para la adopción de mascotas en el sistema operativo Android, utilizando el lenguaje de programación Kotlin y aprovechando la API pública de [Dog API](https://dog.ceo/dog-api/documentation/random) para obtener información sobre perros, incluyendo fotos, razas y subrazas.
+
+En esta versión de la aplicación, nos enfocaremos en la adopción de perros. La aplicación cuenta con diversas funcionalidades, desde un listado de perros disponibles para adopción hasta la posibilidad de crear nuevas publicaciones de adopción y gestionar favoritos. Además, hemos incorporado un diseño intuitivo y fácil de usar, priorizando la experiencia del usuario.
+
+## Requisitos y Funcionalidades
+
+La aplicación cuenta con un TabBar que organiza las secciones principales y un BottomBar que permite la navegación entre las distintas funcionalidades. En el TabBar, se encuentra el menú desplegable de perfil y configuración, que incluye opciones para personalizar la experiencia del usuario, como el modo claro u oscuro de la aplicación. El BottomBar facilita el acceso a las secciones principales de la aplicación, incluyendo el Home (listado de perros ), la sección de Favoritos, la lista de perros en adopción y la sección para crear nuevas publicaciones de adopción. La sección de Configuración también permite al usuario personalizar su experiencia, incluyendo el modo claro u oscuro de la aplicación.
+
+Filtros y Búsqueda Avanzada: La aplicación ofrece filtros para buscar perros por raza, ubicación, y posibilidad de ordenar por fecha de publicación. Además, cuenta con una barra de búsqueda que sugiere los perros a medida que el usuario escribe, mejorando la precisión de las búsquedas y reduciendo errores.
+
+Detalles del Perro: Al seleccionar un perro en la lista, los usuarios pueden acceder a información detallada, incluyendo raza, subraza (si aplica), nombre, edad, género, descripción, peso, ubicación e imagenre presentativa del perro. También se proporciona información del cuidador/dueño y un botón de llamada directa.
+
+Gestión de Favoritos y Adopciones: Los usuarios tienen la posibilidad de agregar o quitar perros de su lista de favoritos directamente desde la vista detallada. Además, pueden adoptar un perro, lo que implica  actualización en el estado de adopción del perro.
+
+Consideraciones de Diseño y Técnicas
+Paleta de Colores Personalizable: La aplicación permite a los usuarios elegir entre el modo claro y oscuro. La paleta de colores ha sido elegida cuidadosamente para ofrecer una experiencia visual agradable.
+
+Buenas Prácticas de Diseño: El diseño de la interfaz ha sido desarrollado siguiendo buenas prácticas y guidelines para asegurar una experiencia de usuario consistente y fácil de entender.
+
+Arquitectura y Tecnologías Utilizadas: Para el desarrollo de la aplicación, hemos empleado una arquitectura MVVM (Modelo-Vista-ViewModel) que ofrece una estructura organizada y mantenible. Además, hemos utilizado ViewModel, autolayout, independencia de componentes, y código expresivo y declarativo para asegurar la robustez y prolijidad del proyecto.
+
+Futuras Expansiones y Mejoras
+En caso de extender la aplicación para incluir otras mascotas, como gatos, la aplicación está diseñada de forma flexible para adaptarse a futuras incorporaciones. Para lograr esto, se podrían realizar modificaciones específicas en las secciones relacionadas con las características particulares de cada tipo de mascota, manteniendo la estructura general de la aplicación.
+
+Además, en busca de mejoras continuas, estamos abiertos a sugerencias y feedback por parte de los usuarios y evaluadores. Nos interesa recibir comentarios sobre la experiencia de usuario, el rendimiento de la aplicación y cualquier otra área que se pueda optimizar para ofrecer una aplicación aún más sólida y satisfactoria.
+
+Casos de Prueba y Evaluación
+Durante el proceso de evaluación, se han considerado varios casos de prueba para garantizar la calidad y funcionamiento adecuado de la aplicación. Algunos de estos casos incluyen probar la aplicación en modo oscuro, publicar mascotas en adopción, scrollear el listado con al menos 10 publicaciones cargadas, adoptar un perro, filtrar búsquedas por raza, subraza, ubicación, edad y género, así como también gestionar la lista de favoritos.
 
 ### Requisitos Previos
 
@@ -65,6 +95,16 @@ Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 - Javier Bagdadi
 - Federico Peirano
 - Facundo Lopez Bruno
+
+## Información de contacto
+
+- paulyta1983@gmail.com
+- mariano.psico@gmail.com
+- ezequiel@losko.com.ar
+- urielszw@gmail.com
+- javibagdadi@hotmail.com
+- fedepr2345@gmail.com
+- faculopez93@hotmail.com.ar
 
 ## Licencia
 
