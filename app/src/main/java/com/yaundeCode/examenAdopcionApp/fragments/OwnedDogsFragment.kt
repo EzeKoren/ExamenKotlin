@@ -1,6 +1,7 @@
 package com.yaundeCode.examenAdopcionApp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,15 +27,28 @@ class OwnedDogsFragment : Fragment() {
     private lateinit var v: View
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
+    private var name: String? = null
 
-    // TODO: Cambiar por lo de Javi
-    private val HARDCODED_NAME: String = "Martin"
+
+    companion object {
+        fun newInstance(name: String): OwnedDogsFragment {
+            return OwnedDogsFragment().apply {
+                arguments = Bundle().apply {
+                    putString("name", name)
+                }
+            }
+        }
+    }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        name = arguments?.getString("name")
+        Log.d("OwnedDogsFragment", "Name: $name")
         v = inflater.inflate(R.layout.fragment_owned_dogs, container, false)
         recyclerView = v.findViewById(R.id.ownedDogsListRecycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -50,7 +64,7 @@ class OwnedDogsFragment : Fragment() {
         dogsViewModel.loadDogs()
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
-            dogAdapter.updateData(dogs.filter { dog -> dog.owner == HARDCODED_NAME })
+            dogAdapter.updateData(dogs.filter { dog -> dog.owner == name })
         }
     }
 
@@ -61,7 +75,7 @@ class OwnedDogsFragment : Fragment() {
         dogsViewModel.loadDogs()
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
-            dogAdapter.updateData(dogs.filter { dog -> dog.owner == HARDCODED_NAME })
+            dogAdapter.updateData(dogs.filter { dog -> dog.owner == name })
         }
     }
 }
