@@ -1,7 +1,7 @@
 # Examen Kotlin
 
 Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
-Fecha de entrega  9/11/2023 - 19:00 Hs.
+Fecha de entrega 9/11/2023 - 19:00 Hs.
 
 - [Examen Kotlin](#examen-kotlin)
   - [Introducción](#introducción)
@@ -22,11 +22,31 @@ En esta versión de la aplicación, nos enfocaremos en la adopción de perros. L
 
 La aplicación cuenta con un TabBar que organiza las secciones principales y un BottomBar que permite la navegación entre las distintas funcionalidades. En el TabBar, se encuentra el menú desplegable de perfil y configuración, que incluye opciones para personalizar la experiencia del usuario, como el modo claro u oscuro de la aplicación. El BottomBar facilita el acceso a las secciones principales de la aplicación, incluyendo el Home (listado de perros ), la sección de Favoritos, la lista de perros en adopción y la sección para crear nuevas publicaciones de adopción. La sección de Configuración también permite al usuario personalizar su experiencia, incluyendo el modo claro u oscuro de la aplicación.
 
-Filtros y Búsqueda Avanzada: La aplicación ofrece filtros para buscar perros por raza, ubicación, y posibilidad de ordenar por fecha de publicación. Además, cuenta con una barra de búsqueda que sugiere los perros a medida que el usuario escribe, mejorando la precisión de las búsquedas y reduciendo errores.
+**Lógica de negocio**
 
-Detalles del Perro: Al seleccionar un perro en la lista, los usuarios pueden acceder a información detallada, incluyendo raza, subraza (si aplica), nombre, edad, género, descripción, peso, ubicación e imagenre presentativa del perro. También se proporciona información del cuidador/dueño y un botón de llamada directa.
+Creación de nuevas publicaciones de adopción:
 
-Gestión de Favoritos y Adopciones: Los usuarios tienen la posibilidad de agregar o quitar perros de su lista de favoritos directamente desde la vista detallada. Además, pueden adoptar un perro, lo que implica  actualización en el estado de adopción del perro.
+La creación de nuevas publicaciones de adopción es una de las funcionalidades más importantes de la aplicación.
+
+Los usuarios pueden crear nuevas publicaciones de adopción para anunciar perros que tienen disponibles para adopción. Cuando se crea una nueva publicación, el perro se agrega tanto a la lista de perros en adopción como a la lista de perros adoptados del usuario. Esto se debe a que, independientemente de su estado, el perro siempre debe estar a cargo de alguien.
+
+Cuando el perro es adoptado por otra persona, deja de aparecer en ambas listas. Es decir, ya no está en adopción ni es un perro a cargo del usuario que hizo la publicación.
+
+La aplicación también permite dar en adopción a un perro adoptado. En este caso, el perro deja de aparecer en la lista de perros adoptados del usuario y vuelve a aparecer en el listado de perros en adopción.
+
+Esta funcionalidad permite a los usuarios administrar de forma efectiva sus perros adoptados y en adopción.
+
+Filtros y Búsqueda Avanzada:
+
+La aplicación ofrece filtros para buscar perros por raza, ubicación, y posibilidad de ordenar por fecha de publicación. Además, cuenta con una barra de búsqueda que sugiere los perros a medida que el usuario escribe, mejorando la precisión de las búsquedas y reduciendo errores.
+
+Detalles del Perro:
+
+Al seleccionar un perro en la lista, los usuarios pueden acceder a información detallada, incluyendo raza, subraza (si aplica), nombre, edad, género, descripción, peso, ubicación e imagenre presentativa del perro. También se proporciona información del cuidador/dueño y un botón de llamada directa.
+
+Gestión de Favoritos:
+
+Los usuarios tienen la posibilidad de agregar o quitar perros de su lista de favoritos directamente desde la vista detallada.
 
 Consideraciones de Diseño y Técnicas
 Paleta de Colores Personalizable: La aplicación permite a los usuarios elegir entre el modo claro y oscuro. La paleta de colores ha sido elegida cuidadosamente para ofrecer una experiencia visual agradable.
@@ -51,21 +71,25 @@ Durante el proceso de evaluación, se han considerado varios casos de prueba par
 ### Pasos
 
 1. Clonar el Repositorio
-    - Abre una terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio: `git clone https://github.com/EzeKoren/ExamenKotlin.git`
+
+   - Abre una terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio: `git clone https://github.com/EzeKoren/ExamenKotlin.git`
 
 2. Abrir el Proyecto en Android Studio
-    - Selecciona File en el menú y luego Open.
-    - Navega hasta el directorio donde clonaste el repositorio y selecciona la carpeta del proyecto (tu_proyecto).
+
+   - Selecciona File en el menú y luego Open.
+   - Navega hasta el directorio donde clonaste el repositorio y selecciona la carpeta del proyecto (tu_proyecto).
 
 3. Configuración de Dependencias
-    - Android Studio debería detectar automáticamente las dependencias del proyecto y descargarlas si es necesario. Si hay algún problema, asegúrate de tener una conexión a internet activa y verifica la configuración de tu archivo build.gradle.
+
+   - Android Studio debería detectar automáticamente las dependencias del proyecto y descargarlas si es necesario. Si hay algún problema, asegúrate de tener una conexión a internet activa y verifica la configuración de tu archivo build.gradle.
 
 4. Conectar un Dispositivo o Emulador
-    - Conecta un dispositivo Android a tu computadora a través de USB o crea y configura un emulador desde Android Studio.
+
+   - Conecta un dispositivo Android a tu computadora a través de USB o crea y configura un emulador desde Android Studio.
 
 5. Ejecutar el Proyecto
-    - Selecciona el dispositivo o emulador que deseas usar desde la barra de herramientas.
-    - Haz clic en el botón "Run"  para iniciar la aplicación.
+   - Selecciona el dispositivo o emulador que deseas usar desde la barra de herramientas.
+   - Haz clic en el botón "Run" para iniciar la aplicación.
 
 ## Guía de uso
 
@@ -83,7 +107,7 @@ Durante el proceso de evaluación, se han considerado varios casos de prueba par
 
 ### Una vez Logueado
 
-- Seleccione un perro para ver su perfil  
+- Seleccione un perro para ver su perfil
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/EzeKoren/ExamenKotlin/master/app/src/main/res/drawable/readme_home_page.png" alt="readme_init_page.png" width="200" height="400">
