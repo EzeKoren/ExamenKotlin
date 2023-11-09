@@ -17,6 +17,7 @@ import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
+import com.yaundeCode.examenAdopcionApp.models.Breed
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
 class DogsListFragment : Fragment() {
@@ -31,14 +32,15 @@ class DogsListFragment : Fragment() {
     private lateinit var v: View
     private lateinit var searchBar: View
     private var dogList: List<Dog> = listOf()
+    private var breedList: List<Breed> = listOf()
     private var searchQuery: String = ""
     private var db: AppDatabase? = null
     private var dogDao: DogDao? = null
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_dogs_list, container, false)
         recyclerView = v.findViewById(R.id.dogsListRecycler)
@@ -47,7 +49,8 @@ class DogsListFragment : Fragment() {
         recyclerView.adapter = dogAdapter
 
         breedReciclerView = v.findViewById(R.id.breedsListRecycler)
-        breedReciclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        breedReciclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         breedAdapter = BreedAdapter()
         breedReciclerView.adapter = breedAdapter
 
@@ -64,13 +67,13 @@ class DogsListFragment : Fragment() {
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
             dogList = dogs
-            if (searchQuery != "") filterDogs() else updateDogs()
+            filterDogs()
         }
 
         dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
-                    as SearchBarFragment
+                as SearchBarFragment
 
         searchBar.searchQuery.observe(viewLifecycleOwner) { query ->
             searchQuery = query
@@ -78,7 +81,9 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
-            breedAdapter.updateData(breeds) 
+            breedList = breeds
+            breedAdapter.updateData(breeds)
+            filterDogs()
         }
 
         breedViewModel.getBreeds()
@@ -94,11 +99,18 @@ class DogsListFragment : Fragment() {
 
 
     private fun filterDogs() {
-        if (searchQuery == "") updateDogs(dogList)
-        else {
-            var dogs: List<Dog> = dogList.filter { dog -> dog.name.contains(searchQuery, ignoreCase = true) }
-            updateDogs(dogs)
+        var breedsSelected: List<Breed> = breedList.filter { breed -> breed.selected }
+        var dogs: List<Dog>;
+        if (searchQuery != "") {
+            dogs = dogList.filter { dog -> dog.name.contains(searchQuery, ignoreCase = true) }
+        } else {
+            dogs = dogList
         }
+        if (breedsSelected.isNotEmpty()) {
+            dogs =
+                dogs.filter { dog -> breedsSelected.any { selectedBreed -> selectedBreed.breed == dog.breed } }
+        }
+        updateDogs(dogs)
     }
 
     override fun onResume() {
@@ -109,13 +121,13 @@ class DogsListFragment : Fragment() {
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
             dogList = dogs
-            if (searchQuery != "") filterDogs() else updateDogs()
+            filterDogs()
         }
 
         dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
-                    as SearchBarFragment
+                as SearchBarFragment
 
         searchBar.searchQuery.observe(viewLifecycleOwner) { query ->
             searchQuery = query
@@ -123,7 +135,9 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
-            breedAdapter.updateData(breeds) 
+            breedList = breeds
+            breedAdapter.updateData(breeds)
+            filterDogs()
         }
 
         breedViewModel.getBreeds()
