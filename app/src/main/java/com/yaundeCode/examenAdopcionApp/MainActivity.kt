@@ -9,7 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+<<<<<<< HEAD
 import androidx.core.content.ContextCompat
+=======
+import androidx.core.os.bundleOf
+>>>>>>> paula/nombre
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
@@ -83,6 +87,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             badgeAdoption.backgroundColor = ContextCompat.getColor(this, R.color.error)
             badgeAdoption.isVisible = count > 0
             badgeAdoption.number = count
+        }
+        
+        bottomNavView.setOnItemSelectedListener  { item ->
+            when (item.itemId) {
+                R.id.dogsListFragment -> {
+                    navHostFragment.navController.navigate(R.id.dogsListFragment)
+                    true
+                }
+                R.id.favorite -> {
+                    navHostFragment.navController.navigate(R.id.favorite)
+                    true
+                }
+                R.id.adoption -> {
+                    val bundle = bundleOf("name" to name!!)
+                    navHostFragment.navController.navigate(R.id.adoption, bundle)
+                    true
+                }
+                R.id.formFragment -> {
+                    navHostFragment.navController.navigate(R.id.formFragment)
+                    true
+                }
+                else -> false
+            }
         }
 
         AndroidThreeTen.init(this)
