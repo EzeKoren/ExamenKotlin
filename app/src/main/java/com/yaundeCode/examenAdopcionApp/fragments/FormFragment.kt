@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -42,7 +43,6 @@ class FormFragment : Fragment() {
         val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
         val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
         val button = v.findViewById<Button>(R.id.saveButton)
-        val action = FormFragmentDirections.actionFormFragmentToDogsListFragment()
         getBreedsAndSubbreeds(spinnerBreed, spinnerSubBreed)
 
         button.setOnClickListener {
@@ -60,7 +60,6 @@ class FormFragment : Fragment() {
             val spinnerLocation: Spinner = v.findViewById(R.id.spinnerLocation)
             val location = spinnerLocation.selectedItem.toString()
             val publishedDate = Date().toString()
-            val id = 0
             val age = ageStr.toIntOrNull()
             val weight = weightStr.toDoubleOrNull()
 
@@ -85,7 +84,9 @@ class FormFragment : Fragment() {
                         )
                 dogsViewModel?.addDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(action)
+
+                val bundle = bundleOf("name" to ownerName!!)
+                findNavController().navigate(R.id.adoption, bundle)
             }
         }
         return v

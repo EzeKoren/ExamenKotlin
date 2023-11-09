@@ -37,7 +37,7 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
     private var dogList: List<Dog> = listOf()
     private var breedList: List<Breed> = listOf()
     private var searchQuery: String = ""
-    private var isFilteredByModal = false
+    private var filteredByModal: List<Dog> = listOf()
     private var username: String? = null
 
     companion object {
@@ -71,10 +71,8 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
         val filterButtonMoreOptions: Button = v.findViewById(R.id.filterButtonMoreOptions)
         filterButtonMoreOptions.setOnClickListener {
-            if (isFilteredByModal) {
-                updateDogs()
-                isFilteredByModal = false
-            }
+            updateDogs()
+            filteredByModal = dogList
 
             val dialog = FilterDialogFragment(this)
             dialog.show(parentFragmentManager, "FilterDialogFragment")
@@ -192,18 +190,16 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
 
     override fun onFilterGenderSelected(gender: String) {
-        isFilteredByModal = true
-        val newList = dogList.filter { dog -> dog.gender == gender }
-        if (newList.isEmpty())
+        filteredByModal = filteredByModal.filter { dog -> dog.gender == gender }
+        if (filteredByModal.isEmpty())
             Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
-        else updateDogs(newList)
+        else updateDogs(filteredByModal)
     }
 
     override fun onFilterAgeSelected(age: Int) {
-        isFilteredByModal = true
-        val newList = dogList.filter { dog -> dog.age == age }
-        if (newList.isEmpty())
+        filteredByModal = filteredByModal.filter { dog -> dog.age == age }
+        if (filteredByModal.isEmpty())
             Toast.makeText(context, "No tenemos perros con esa edad", Toast.LENGTH_SHORT).show()
-        else updateDogs(newList)
+        else updateDogs(filteredByModal)
     }
 }
