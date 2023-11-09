@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp" />
 
+    <include
+        layout="@layout/filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/breedsListRecycler"
         android:layout_width="wrap_content"
