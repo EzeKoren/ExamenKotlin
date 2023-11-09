@@ -3,6 +3,15 @@
 Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 Fecha de entrega  9/11/2023 - 19:00 Hs.
 
+- [Examen Kotlin](#examen-kotlin)
+  - [Introducción](#introducción)
+  - [Requisitos y Funcionalidades](#requisitos-y-funcionalidades)
+    - [Requisitos Previos](#requisitos-previos)
+    - [Pasos](#pasos)
+  - [Guía de uso](#guía-de-uso)
+    - [Una vez Logueado](#una-vez-logueado)
+  - [Contribución](#contribución)
+
 ## Introducción
 
 Bienvenido al desarrollo parcial del Trabajo Práctico 3 (TP3) de nuestra aplicación para la adopción de mascotas en el sistema operativo Android, utilizando el lenguaje de programación Kotlin y aprovechando la API pública de [Dog API](https://dog.ceo/dog-api/documentation/random) para obtener información sobre perros, incluyendo fotos, razas y subrazas.
@@ -88,32 +97,10 @@ Durante el proceso de evaluación, se han considerado varios casos de prueba par
 
 ## Contribución
 
-- Paula Fuentes
-- Mariano Di Gennaro
-- Ezequiel Korelblum
-- Uriel Swarcman
-- Javier Bagdadi
-- Federico Peirano
-- Facundo Lopez Bruno
-
-## Información de contacto
-
-- paulyta1983@gmail.com
-- mariano.psico@gmail.com
-- ezequiel@losko.com.ar
-- urielszw@gmail.com
-- javibagdadi@hotmail.com
-- fedepr2345@gmail.com
-- faculopez93@hotmail.com.ar
-
-## Licencia
-
-MIT License
-
-Copyright (c) [2023] Paula Fuentes, Mariano Di Gennaro, Ezequiel Korelblum, Uriel Swarcman, Javier Bagdadi, Federico Peirano, Facundo Lopez Bruno
-
-Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de este software y los archivos de documentación asociados (el "Software"), para tratar el Software sin restricciones, incluidos, entre otros, los derechos de uso, copia, modificación, fusión, publicación, distribución, sublicencia y/o venta de copias del Software, y para permitir a las personas a las que se les proporcione el Software a hacer lo mismo, sujeto a las siguientes condiciones:
-
-El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del Software.
-
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUIDAS, ENTRE OTRAS, LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O TITULARES DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES POR NINGUNA RECLAMACIÓN, DAÑO U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRA MANERA, QUE SURJA DE, O EN CONEXIÓN CON EL SOFTWARE O EL USO U OTROS TRATOS EN EL SOFTWARE.
+- [Paula Fuentes](mailto:paulyta1983@gmail.com) - @paulyta1983
+- [Mariano Di Gennaro](mailto:mariano.psico@gmail.com) - @marianopsico
+- [Ezequiel Korelblum](mailto:ezequiel@losko.com.ar) - @EzeKoren
+- [Uriel Swarcman](mailto:urielszw@gmail.com) - @UrielSzw
+- [Javier Bagdadi](mailto:javibagdadi@hotmail.com) - @javibag
+- [Federico Peirano](mailto:fedepr2345@gmail.com) - @FedePeira
+- [Facundo Lopez Bruno](mailto:faculopez93@hotmail.com.ar) - @FacuuLopez
