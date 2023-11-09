@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
@@ -28,8 +29,7 @@ class FormFragment : Fragment() {
 
     private lateinit var v: View
     private var db: AppDatabase? = null
-    private var dogDao: DogDao? = null
-    private lateinit var dogsViewModel: DogsViewModel
+    private var dogsViewModel: DogsViewModel? = null
 
 
     override fun onCreateView(
@@ -38,6 +38,7 @@ class FormFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_form, container, false)
+        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
         val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
         val button = v.findViewById<Button>(R.id.saveButton)
@@ -82,7 +83,7 @@ class FormFragment : Fragment() {
                                 location,
                                 owner = "Martin",
                         )
-                dogDao?.insertDog(dog)
+                dogsViewModel?.addDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(action)
             }
@@ -94,8 +95,6 @@ class FormFragment : Fragment() {
         super.onStart()
 
         db = AppDatabase.getDatabase(v.context)
-
-        dogDao = db?.DogDao()
 
         /* Probando el Room */
         /*
