@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
@@ -43,6 +44,7 @@ class DogDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val action = DogDetailFragmentDirections.actionDogDetailFragmentToDogsListFragment()
         val bottomSheet = view.findViewById<View>(R.id.bottomSheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -82,6 +84,7 @@ class DogDetailFragment : Fragment() {
 
         bottomSheetAdoptButton.setOnClickListener {
             // TODO: Guardarlo en base
+            findNavController().navigate(action)
         }
 
         val bottomSheetOwnerPicture = view.findViewById<ImageView>(R.id.bottomSheetOwnerPicture)

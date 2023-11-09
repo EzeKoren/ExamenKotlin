@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
@@ -40,7 +41,7 @@ class FormFragment : Fragment() {
         val spinnerBreed = v.findViewById<Spinner>(R.id.spinnerBreed)
         val spinnerSubBreed = v.findViewById<Spinner>(R.id.spinnerSubBreed)
         val button = v.findViewById<Button>(R.id.saveButton)
-
+        val action = FormFragmentDirections.actionFormFragmentToDogsListFragment()
         getBreedsAndSubbreeds(spinnerBreed, spinnerSubBreed)
 
         button.setOnClickListener {
@@ -83,6 +84,7 @@ class FormFragment : Fragment() {
                         )
                 dogDao?.insertDog(dog)
                 Toast.makeText(context, "Perro Guardado", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(action)
             }
         }
         return v
