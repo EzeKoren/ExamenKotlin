@@ -89,7 +89,7 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
         breedViewModel = ViewModelProvider(this)[BreedsViewModel::class.java]
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
-            dogList = dogs
+            dogList = dogs.filter { dog -> !dog.status }
             filterDogs()
         }
 
@@ -167,7 +167,7 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
         super.onResume()
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
-            dogList = dogs
+            dogList = dogs.filter { dog -> !dog.status }
             filterDogs()
         }
 
