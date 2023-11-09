@@ -33,8 +33,7 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
     private lateinit var searchBar: View
     private var dogList: List<Dog> = listOf()
     private var searchQuery: String = ""
-    private var db: AppDatabase? = null
-    private var dogDao: DogDao? = null
+    private var isFilteredByModal = false
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -54,6 +53,11 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
         val filterButtonMoreOptions: Button = v.findViewById(R.id.filterButtonMoreOptions)
         filterButtonMoreOptions.setOnClickListener {
+            if (isFilteredByModal) {
+                updateDogs()
+                isFilteredByModal = false
+            }
+
             val dialog = FilterDialogFragment(this)
             dialog.show(parentFragmentManager, "FilterDialogFragment")
         }
@@ -135,18 +139,20 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
         breedViewModel.getBreeds()
     }
 
-    override fun onFilterGenderSelected(gender: String) {
-        var dogsFound =dogsViewModel.loadDogsByGender(gender)
-        if (dogsFound == false){
-            Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
 
-        }
+    override fun onFilterGenderSelected(gender: String) {
+        isFilteredByModal = true
+        val newList = dogList.filter { dog -> dog.gender == gender }
+        if (newList.isEmpty())
+            Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
+        else updateDogs(newList)
     }
 
     override fun onFilterAgeSelected(age: Int) {
-        var dogsFound = dogsViewModel.loadDogsByAge(age)
-        if (dogsFound == false){
+        isFilteredByModal = true
+        val newList = dogList.filter { dog -> dog.age == age }
+        if (newList.isEmpty())
             Toast.makeText(context, "No tenemos perros con esa edad", Toast.LENGTH_SHORT).show()
-        }
+        else updateDogs(newList)
     }
 }

@@ -83,6 +83,9 @@
     <!-- Filter -->
     <string name="filter_title">Filtros</string>
     <string name="filter_more_options">Más filtros</string>
+    <string name="filter_modal_confirm">Confirmar</string>
+    <string name="filter_modal_cancel">Cancelar</string>
+
 
     <!--    Form Button -->
     <string name="form_button">Crear</string>
