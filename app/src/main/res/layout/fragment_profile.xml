@@ -19,6 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/profileFragmentToolbarContainer"
+            android:name="com.yaundeCode.examenAdopcionApp.fragments.ToolbarWithBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/profileTitle"
             android:layout_width="wrap_content"

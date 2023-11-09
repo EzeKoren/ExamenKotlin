@@ -7,19 +7,17 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.yaundeCode.examenAdopcionApp.fragments.ProfileFragment
-import com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -64,6 +62,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.settingsViewFragment, R.id.profileFragment -> {
+                    supportActionBar?.hide()
+                }
+                else -> {
+                    supportActionBar?.show()
+                }
+            }
+        }
+
+
         AndroidThreeTen.init(this)
         val headerView: View = navView.getHeaderView(0)
         val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
@@ -73,23 +83,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> {
-                val profileViewFragment = ProfileFragment.newInstance(name!!)
-                supportFragmentManager
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.drawer_layout, profileViewFragment)
-                    .addToBackStack("open_profile")
-                    .commit()
+                navHostFragment.navController.navigate(R.id.profileFragment)
             }
             R.id.nav_item_setting -> {
-                val settingsViewFragment = SettingsViewFragment()
-                supportFragmentManager
-                    .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .replace(R.id.drawer_layout, settingsViewFragment)
-                    .addToBackStack("open_config")
-                    .commit()
+                navHostFragment.navController.navigate(R.id.settingsViewFragment)
             }
+
         }
 
         drawer.closeDrawer(GravityCompat.START)

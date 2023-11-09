@@ -49,5 +49,15 @@
             android:id="@+id/action_dogDetailFragment_to_dogsListFragment"
             app:destination="@id/dogsListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/settingsViewFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment"
+        android:label="fragment_settings_view"
+        tools:layout="@layout/fragment_settings_view" />
 
 </navigation>
