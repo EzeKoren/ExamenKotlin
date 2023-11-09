@@ -97,10 +97,10 @@ Durante el proceso de evaluación, se han considerado varios casos de prueba par
 
 ## Contribución
 
-- [Paula Fuentes](mailto:paulyta1983@gmail.com) - @paulyta1983
-- [Mariano Di Gennaro](mailto:mariano.psico@gmail.com) - @marianopsico
-- [Ezequiel Korelblum](mailto:ezequiel@losko.com.ar) - @EzeKoren
-- [Uriel Swarcman](mailto:urielszw@gmail.com) - @UrielSzw
-- [Javier Bagdadi](mailto:javibagdadi@hotmail.com) - @javibag
-- [Federico Peirano](mailto:fedepr2345@gmail.com) - @FedePeira
-- [Facundo Lopez Bruno](mailto:faculopez93@hotmail.com.ar) - @FacuuLopez
+- [Paula Fuentes](mailto:paulyta1983@gmail.com) - [@paulyta1983](https://github.com/paulyta1983/)
+- [Mariano Di Gennaro](mailto:mariano.psico@gmail.com) - [@marianopsico](https://github.com/marianopsico/)
+- [Ezequiel Korelblum](mailto:ezequiel@losko.com.ar) - [@EzeKoren](https://github.com/EzeKoren/)
+- [Uriel Swarcman](mailto:urielszw@gmail.com) - [@UrielSzw](https://github.com/UrielSzw/)
+- [Javier Bagdadi](mailto:javibagdadi@hotmail.com) - [@javibag](https://github.com/javibag/)
+- [Federico Peirano](mailto:fedepr2345@gmail.com) - [@FedePeira](https://github.com/FedePeira/)
+- [Facundo Lopez Bruno](mailto:faculopez93@hotmail.com.ar) - [@FacuuLopez](https://github.com/FacuuLopez/)
