@@ -31,4 +31,7 @@ interface DogDao {
 
     @Query("SELECT COUNT(*) FROM dogs WHERE favorite = 1")
     fun getFavoriteDogsCount(): LiveData<Int>
+
+    @Query("SELECT COUNT(*) FROM dogs WHERE owner = :ownerName")
+    fun getDogsByOwnerCount(ownerName: String): LiveData<Int>
 }

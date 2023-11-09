@@ -72,10 +72,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Observa la cantidad de perros favoritos
         dogDao.getFavoriteDogsCount().observe(this) { count ->
             // Actualiza el badge con la cantidad de perros favoritos
-            val badgeDrawable = bottomNavView.getOrCreateBadge(R.id.favorite)
-            badgeDrawable.isVisible = count > 0
-            badgeDrawable.number = count
+            val badgeFavorite = bottomNavView.getOrCreateBadge(R.id.favorite)
+            badgeFavorite.isVisible = count > 0
+            badgeFavorite.number = count
         }
+        dogDao.getDogsByOwnerCount(name?: "Default Name").observe(this){ count ->
+            val badgeAdoption = bottomNavView.getOrCreateBadge(R.id.adoption)
+            badgeAdoption.isVisible = count > 0
+            badgeAdoption.number = count}
 
 
 
