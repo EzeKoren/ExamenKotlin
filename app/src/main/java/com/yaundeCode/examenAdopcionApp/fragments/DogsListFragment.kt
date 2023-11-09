@@ -67,7 +67,7 @@ class DogsListFragment : Fragment() {
             if (searchQuery != "") filterDogs() else updateDogs()
         }
 
-        loadDogs()
+        dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
                     as SearchBarFragment
@@ -80,8 +80,8 @@ class DogsListFragment : Fragment() {
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
             breedAdapter.updateData(breeds) 
         }
-            
-        loadBreeds()
+
+        breedViewModel.getBreeds()
     }
 
     private fun updateDogs(dogs: List<Dog>) {
@@ -112,7 +112,7 @@ class DogsListFragment : Fragment() {
             if (searchQuery != "") filterDogs() else updateDogs()
         }
 
-        loadDogs()
+        dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
                     as SearchBarFragment
@@ -125,11 +125,7 @@ class DogsListFragment : Fragment() {
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
             breedAdapter.updateData(breeds) 
         }
-            
-        loadBreeds()
-    }
 
-    private fun loadBreeds() {
         breedViewModel.getBreeds()
     }
 }
