@@ -69,6 +69,19 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
                                                 val status = random.nextBoolean()
                                                 val favorite = random.nextBoolean()
 
+                                                val descripcion = listOf<String>(
+                                                    "Energético y juguetón: Este perrito siempre está listo para la acción. Le encanta jugar y corretear, ¡ideal para alguien activo!",
+                                                    "Tierno compañero: Con ojos que derriten corazones, este peludo amigo busca amor incondicional. Es perfecto para alguien que busca cariño constante.",
+                                                    "Sabio y tranquilo: Este perro es más relajado y disfruta de los momentos de tranquilidad. Sería ideal para alguien que busca un amigo calmado.",
+                                                    "Adaptable y sociable: A este peludo le encanta conocer nuevas personas y se adapta fácilmente a diferentes situaciones. ¡Ideal para una familia social!",
+                                                    "Guardián leal: Si buscas un compañero protector, este perro es leal hasta la médula. Siempre está atento para velar por ti.",
+                                                    "Amante de las siestas: Si prefieres las tardes relajadas y las siestas, este perrito es tu compañero perfecto. Le encanta descansar y disfrutar de momentos tranquilos.",
+                                                    "Aventurero y curioso: Este intrépido canino está listo para explorar el mundo contigo. Perfecto para alguien que ama la naturaleza y la actividad al aire libre.",
+                                                    "Educado y obediente: Conoce los comandos básicos y tiene buenos modales. Este perro hará que el entrenamiento sea pan comido.",
+                                                    "Amigo para todos: Este perrito se lleva bien con niños, adultos y otros animales. Si buscas un compañero que se integre fácilmente, él es el indicado.",
+                                                    "Resiliente y valiente: A pesar de sus experiencias pasadas, este perro ha demostrado ser fuerte y valiente. Busca un hogar amoroso donde pueda empezar una nueva vida."
+                                                ).random()
+
                                                 var newDog = Dog(
                                                     image = imageUrl,
                                                     name = name,
@@ -76,7 +89,7 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
                                                     gender = gender,
                                                     publishedDate = publishedDate,
                                                     weight = weight,
-                                                    description = "Descripcion generica",
+                                                    description = descripcion,
                                                     breed = breed,
                                                     subBreed = subBreeds.shuffled()[0],
                                                     location = "Ciudad de buenos Aires",
