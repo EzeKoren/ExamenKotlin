@@ -82,8 +82,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val badgeAdoption = bottomNavView.getOrCreateBadge(R.id.adoption)
             badgeAdoption.backgroundColor = ContextCompat.getColor(this, R.color.error)
             badgeAdoption.isVisible = count > 0
-            badgeAdoption.number = count}
+            badgeAdoption.number = count
+        }
 
+        AndroidThreeTen.init(this)
+        val headerView: View = navView.getHeaderView(0)
+        val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
+        usernameTextView.text = name
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
