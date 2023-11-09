@@ -26,6 +26,12 @@ interface DogDao {
     @Query("SELECT COUNT(*) FROM dogs")
     fun getDogCount(): Int
 
+    @Query("SELECT * FROM Dogs WHERE gender = :gender")
+    fun getDogsByGender(gender: String): List<Dog>
+
+    @Query("SELECT * FROM Dogs WHERE age = :age")
+    fun getDogsByAge(age: Int): List<Dog>
+
     @Query("DELETE FROM dogs")
     fun wipeDB()
 

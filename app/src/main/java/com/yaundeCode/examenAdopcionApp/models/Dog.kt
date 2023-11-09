@@ -25,34 +25,34 @@ class Dog(
 ) {
 
         @ColumnInfo(name = "image")
-        val image : String
+        var image : String
 
         @ColumnInfo(name = "name")
-        val name: String
+        var name: String
 
         @ColumnInfo(name = "age")
-        val age: Int
+        var age: Int
 
         @ColumnInfo(name = "gender")
-        val gender: String
+        var gender: String
 
         @ColumnInfo(name = "publishedDate")
-        val publishedDate: String
+        var publishedDate: String
 
         @ColumnInfo(name = "weight")
-        val weight: Double
+        var weight: Double
 
         @ColumnInfo(name = "description")
-        val description: String
+        var description: String
 
         @ColumnInfo(name = "breed")
-        val breed: String
+        var breed: String
 
         @ColumnInfo(name = "subBreed")
-        val subBreed: String
+        var subBreed: String
 
         @ColumnInfo(name = "location")
-        val location: String
+        var location: String
 
         @ColumnInfo(name = "owner")
         var owner: String
@@ -65,7 +65,7 @@ class Dog(
 
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        val id: Int?
+        var id: Int?
 
         init {
                 this.image = image

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,11 +19,12 @@ import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Breed
+import com.yaundeCode.examenAdopcionApp.listener.OnFilterSelectedListener
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import java.util.Date
 
 
-class DogsListFragment : Fragment() {
+class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
@@ -34,6 +37,7 @@ class DogsListFragment : Fragment() {
     private var dogList: List<Dog> = listOf()
     private var breedList: List<Breed> = listOf()
     private var searchQuery: String = ""
+    private var isFilteredByModal = false
     private var username: String? = null
 
     companion object {
@@ -65,8 +69,18 @@ class DogsListFragment : Fragment() {
         breedAdapter = BreedAdapter()
         breedReciclerView.adapter = breedAdapter
 
-        searchBar = v.findViewById(R.id.searchBarFragmentContainer)
+        val filterButtonMoreOptions: Button = v.findViewById(R.id.filterButtonMoreOptions)
+        filterButtonMoreOptions.setOnClickListener {
+            if (isFilteredByModal) {
+                updateDogs()
+                isFilteredByModal = false
+            }
 
+            val dialog = FilterDialogFragment(this)
+            dialog.show(parentFragmentManager, "FilterDialogFragment")
+        }
+
+        searchBar = v.findViewById(R.id.searchBarFragmentContainer)
         return v
     }
 
@@ -174,5 +188,22 @@ class DogsListFragment : Fragment() {
         }
         dogsViewModel.loadDogs()
         breedViewModel.getBreeds()
+    }
+
+
+    override fun onFilterGenderSelected(gender: String) {
+        isFilteredByModal = true
+        val newList = dogList.filter { dog -> dog.gender == gender }
+        if (newList.isEmpty())
+            Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
+        else updateDogs(newList)
+    }
+
+    override fun onFilterAgeSelected(age: Int) {
+        isFilteredByModal = true
+        val newList = dogList.filter { dog -> dog.age == age }
+        if (newList.isEmpty())
+            Toast.makeText(context, "No tenemos perros con esa edad", Toast.LENGTH_SHORT).show()
+        else updateDogs(newList)
     }
 }

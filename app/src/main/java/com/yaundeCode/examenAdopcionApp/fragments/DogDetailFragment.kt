@@ -28,8 +28,7 @@ private const val ARG_DOG = "dog"
 class DogDetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var dog: Dog
-    private lateinit var username: String
-    private var dogsViewModel: DogsViewModel? = null
+    private lateinit var dogsViewModel: DogsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
