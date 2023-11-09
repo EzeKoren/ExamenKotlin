@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
@@ -19,13 +17,14 @@ import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Breed
 import com.yaundeCode.examenAdopcionApp.models.Dog
+import java.util.Date
+
 
 class DogsListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
-    private var newDogList = mutableListOf<Dog>()
     private lateinit var breedReciclerView: RecyclerView
     private lateinit var breedAdapter: BreedAdapter
     private lateinit var breedViewModel: BreedsViewModel
@@ -34,8 +33,6 @@ class DogsListFragment : Fragment() {
     private var dogList: List<Dog> = listOf()
     private var breedList: List<Breed> = listOf()
     private var searchQuery: String = ""
-    private var db: AppDatabase? = null
-    private var dogDao: DogDao? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -101,10 +98,34 @@ class DogsListFragment : Fragment() {
         dogAdapter.updateData(dogList)
     }
 
+    private fun daleCampeon() : List<Dog> {
+        val newDog = Dog(
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAw1_-K-zzqORGhrDwsvkOJJRcNUGDrLX_6ApOpw-lu5jQfmljxJgP5aT8qLwiIY9Qyao&usqp=CAU",
+            name = "Vamos Argentina",
+            age = 3,
+            gender = "Campeon",
+            publishedDate = Date().toString(),
+            weight = 70.0,
+            description = "Vamos Argentina",
+            breed = "Campeon",
+            subBreed = "Del Mundo",
+            location = "Ciudad de buenos Aires",
+            owner = "World Cup",
+            status = true,
+            favorite = true
+        )
+        return listOf(newDog)
+    }
+
 
     private fun filterDogs() {
-        var breedsSelected: List<Breed> = breedList.filter { breed -> breed.selected }
-        var dogs: List<Dog>;
+        var dogs: List<Dog>
+        if (searchQuery == "campeon") {
+            dogs = daleCampeon()
+            updateDogs(dogs)
+            return
+        }
+        val breedsSelected: List<Breed> = breedList.filter { breed -> breed.selected }
         if (searchQuery != "") {
             dogs = dogList.filter { dog -> dog.name.contains(searchQuery, ignoreCase = true) }
         } else {
