@@ -64,6 +64,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
 
+
+        bottomNavView.setOnItemSelectedListener  { item ->
+            when (item.itemId) {
+                R.id.dogsListFragment -> {
+                    navHostFragment.navController.navigate(R.id.dogsListFragment)
+                    true
+                }
+                R.id.favorite -> {
+                    navHostFragment.navController.navigate(R.id.favorite)
+                    true
+                }
+                R.id.adoption -> {
+                    navHostFragment.navController.navigate(R.id.adoption)
+                    true
+                }
+                R.id.formFragment -> {
+                    navHostFragment.navController.navigate(R.id.formFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
         AndroidThreeTen.init(this)
         val headerView: View = navView.getHeaderView(0)
         val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
