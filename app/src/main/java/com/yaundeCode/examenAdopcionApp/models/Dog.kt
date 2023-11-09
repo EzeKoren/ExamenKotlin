@@ -55,10 +55,10 @@ class Dog(
         val location: String
 
         @ColumnInfo(name = "owner")
-        val owner: String
+        var owner: String
 
         @ColumnInfo(name = "status")
-        val status: Boolean
+        var status: Boolean
 
         @ColumnInfo(name = "favorite")
         var favorite: Boolean

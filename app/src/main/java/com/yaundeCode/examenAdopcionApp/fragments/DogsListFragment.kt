@@ -24,7 +24,6 @@ class DogsListFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
-    private var newDogList = mutableListOf<Dog>()
     private lateinit var breedReciclerView: RecyclerView
     private lateinit var breedAdapter: BreedAdapter
     private lateinit var breedViewModel: BreedsViewModel
@@ -32,8 +31,7 @@ class DogsListFragment : Fragment() {
     private lateinit var searchBar: View
     private var dogList: List<Dog> = listOf()
     private var searchQuery: String = ""
-    private var db: AppDatabase? = null
-    private var dogDao: DogDao? = null
+
 
     override fun onCreateView(
             inflater: LayoutInflater,

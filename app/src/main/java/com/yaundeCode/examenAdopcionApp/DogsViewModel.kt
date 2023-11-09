@@ -36,6 +36,11 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
         loadDogsFromRoomDB()
     }
 
+    fun updateDog(dog: Dog) {
+        dogDao.updateDog(dog)
+        loadDogsFromRoomDB()
+    }
+
     private fun loadDogsFromApi() {
         val newDogList = mutableListOf<Dog>()
         val dogService = ActivityServiceApiBuilder.create()

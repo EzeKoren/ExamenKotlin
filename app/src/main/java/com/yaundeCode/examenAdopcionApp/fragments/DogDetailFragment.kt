@@ -11,10 +11,12 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
+import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import kotlin.math.roundToInt
@@ -25,6 +27,7 @@ private const val ARG_DOG = "dog"
 class DogDetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var dog: Dog
+    private var dogsViewModel: DogsViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,7 @@ class DogDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
         super.onViewCreated(view, savedInstanceState)
 
         val action = DogDetailFragmentDirections.actionDogDetailFragmentToDogsListFragment()
@@ -60,6 +64,8 @@ class DogDetailFragment : Fragment() {
         val bottomSheetWeight = view.findViewById<TextView>(R.id.bottomSheetWeight)
         val bottomSheetDogDescription = view.findViewById<TextView>(R.id.bottomSheetDogDescription)
         val bottomSheetAdoptButton = view.findViewById<Button>(R.id.bottomSheetAdoptButton)
+        val bottomSheetOwner = view.findViewById<TextView>(R.id.bottomSheetOwner)
+        val bottomSheetCallButton = view.findViewById<ImageButton>(R.id.bottomSheetCallButton)
 
         Glide.with(view)
             .load(dog.image)
@@ -81,18 +87,17 @@ class DogDetailFragment : Fragment() {
         }
 //        bottomSheetOwner.text = dog.owner
         bottomSheetDogDescription.text = dog.description
+        bottomSheetOwner.text = dog.owner
 
         bottomSheetAdoptButton.setOnClickListener {
-            // TODO: Guardarlo en base
+            dog.owner = "Martin"
+            dog.status = true
+            dogsViewModel?.updateDog(dog)
+
             findNavController().navigate(action)
         }
 
-        val bottomSheetOwnerPicture = view.findViewById<ImageView>(R.id.bottomSheetOwnerPicture)
-        val bottomSheetOwner = view.findViewById<TextView>(R.id.bottomSheetOwner)
 
-        // TODO: Set owner
-
-        val bottomSheetCallButton = view.findViewById<ImageButton>(R.id.bottomSheetCallButton)
 
         bottomSheetCallButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
