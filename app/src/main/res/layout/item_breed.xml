@@ -9,9 +9,11 @@
 
     <Button
         android:id="@+id/breedItemButton"
-        android:drawableLeft="@drawable/ic_breed_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_breed_filter"
+        android:background="@color/transparent"
+        android:textColor="@color/text"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="65dp"
         tools:text="Button" />
