@@ -89,6 +89,12 @@ Durante el proceso de evaluación, se han considerado varios casos de prueba par
   <img src="https://raw.githubusercontent.com/EzeKoren/ExamenKotlin/master/app/src/main/res/drawable/readme_home_page.png" alt="readme_init_page.png" width="200" height="400">
 </p>
 
+- Adopte un perro
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/EzeKoren/ExamenKotlin/master/app/src/main/res/drawable/readme_adoption_page.png" alt="readme_init_page.png" width="200" height="400">
+</p>
+
 - Genere una publicación de adopción
 
 <p align="center">
