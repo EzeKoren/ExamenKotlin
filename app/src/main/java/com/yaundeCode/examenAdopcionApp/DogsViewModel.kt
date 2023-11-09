@@ -110,9 +110,4 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
         dogList.value = dogListDB
     }
 
-    fun loadDogsFavorite(ownerName: String) {
-        val favoriteDogs = dogDao.getFavoriteDogsByOwner(ownerName)
-        dogList.value = favoriteDogs
-    }
-
 }

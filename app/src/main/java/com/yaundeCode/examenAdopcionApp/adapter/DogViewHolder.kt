@@ -102,11 +102,14 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
                 val dogDao = appDatabase.DogDao()
 
                 // Actualizar el campo favorite del perro en la base de datos
-                dog.favorite = true
+                dog.favorite = !dog.favorite
                 dogDao.updateDog(dog)
 
                 // Actualizar la imagen del ícono de guardado
-                saved.setImageResource(R.drawable.ic_icon_bookmark)
+                saved.setImageResource(
+                    if (dog.favorite) R.drawable.ic_icon_bookmark
+                    else R.drawable.ic_icon_bookmark_unsaved
+                )
             }
         }
 

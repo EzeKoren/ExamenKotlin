@@ -12,11 +12,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
+import com.yaundeCode.examenAdopcionApp.database.AppDatabase
+import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.fragments.SettingsViewFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +29,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
+
+    private lateinit var dogDao: DogDao
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val nombre = intent.getStringExtra("nombre") ?: "Default Name"
@@ -65,10 +72,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //                .replace(R.id.nav_host, fragment)
         //                .commit()
 
+        dogDao = AppDatabase.getDatabase(this).DogDao()
+
+
         AndroidThreeTen.init(this)
         val headerView: View = navigationView.getHeaderView(0)
         val usernameTextView: TextView = headerView.findViewById(R.id.nav_header_username)
         usernameTextView.text = nombre
+
+
+        // Obtén una referencia al elemento de menú de favoritos
+        val favoritesMenuItem = bottomNavView.menu.findItem(R.id.favorite)
+
+        // Obtén la cantidad de perros favoritos
+        val ownerName = "Martin"
+        val dogsViewModel = ViewModelProvider(this)[DogsViewModel::class.java]
+        dogsViewModel.loadDogs()
+
+        var favoriteCount: Int = 0
+
+        dogsViewModel.dogList.observe(this) { dogs ->
+            favoriteCount = (dogs.filter { dog -> dog.favorite }).count()
+
+            bottomNavView.removeBadge(favoritesMenuItem.itemId)
+
+            if(favoriteCount > 0) {
+                // Establece el recuento de la insignia en el elemento de menú de favoritos
+                bottomNavView.getOrCreateBadge(favoritesMenuItem.itemId).number = favoriteCount
+            }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -106,4 +138,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        // Actualizar la insignia en el icono de favoritos
+        //updateFavoritesBadge()
+    }
+
 }
