@@ -1,27 +1,28 @@
 # Examen Kotlin
+
 Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 
-## Instrucciones de Instalación:
+## Instrucciones de Instalación
 
 ### Requisitos Previos
 
--  Android Studio instalado en tu sistema.
--  Conexión a internet para descargar las dependencias del proyecto.
+- Android Studio instalado en tu sistema.
+- Conexión a internet para descargar las dependencias del proyecto.
 
 ### Pasos
 
 1. Clonar el Repositorio
-    -  Abre una terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio: git clone https://github.com/EzeKoren/ExamenKotlin.git
+    - Abre una terminal o línea de comandos y ejecuta el siguiente comando para clonar el repositorio: `git clone https://github.com/EzeKoren/ExamenKotlin.git`
 
 2. Abrir el Proyecto en Android Studio
-    -  Selecciona File en el menú y luego Open.
-    -  Navega hasta el directorio donde clonaste el repositorio y selecciona la carpeta del proyecto (tu_proyecto).
+    - Selecciona File en el menú y luego Open.
+    - Navega hasta el directorio donde clonaste el repositorio y selecciona la carpeta del proyecto (tu_proyecto).
 
 3. Configuración de Dependencias
-    -  Android Studio debería detectar automáticamente las dependencias del proyecto y descargarlas si es necesario. Si hay algún problema, asegúrate de tener una conexión a internet activa y verifica la configuración de tu archivo build.gradle.
+    - Android Studio debería detectar automáticamente las dependencias del proyecto y descargarlas si es necesario. Si hay algún problema, asegúrate de tener una conexión a internet activa y verifica la configuración de tu archivo build.gradle.
 
 4. Conectar un Dispositivo o Emulador
-    -  Conecta un dispositivo Android a tu computadora a través de USB o crea y configura un emulador desde Android Studio.
+    - Conecta un dispositivo Android a tu computadora a través de USB o crea y configura un emulador desde Android Studio.
 
 5. Ejecutar el Proyecto
     - Selecciona el dispositivo o emulador que deseas usar desde la barra de herramientas.
@@ -32,40 +33,40 @@ Desarrollo Parcial TP3 ORT Argentina iniciado el 2/11/2023.
 1. Presione el boton "Get started" para acceder al login.
 
 <p align="center">
-  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_init_page.png" alt="readme_init_page.png" width="200" height="400">
+  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_init_page.png" alt="readme_init_page.png?raw=true" width="200" height="400">
 </p>
 
 2. Ingrese su nombre de usuario y luego presione el boton "login"
 
 <p align="center">
-  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_login_page.png" alt="readme_init_page.png" width="200" height="400">
+  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_login_page.png" alt="readme_init_page.png?raw=true" width="200" height="400">
 </p>
 
 ### Una vez Logueado
 
-  -  Seleccione un perro para ver su perfil  
+- Seleccione un perro para ver su perfil  
 
 <p align="center">
-  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_home_page.png" alt="readme_init_page.png" width="200" height="400">
+  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_home_page.png" alt="readme_init_page.png?raw=true" width="200" height="400">
 </p>
 
-  -  Genere una publicación de adopción 
+- Genere una publicación de adopción
 
 <p align="center">
-  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_form_page.png" alt="readme_init_page.png" width="200" height="400">
+  <img src="https://github.com/EzeKoren/ExamenKotlin/tree/master/app/src/main/res/drawable/readme_form_page.png" alt="readme_init_page.png?raw=true" width="200" height="400">
 </p>
 
 ## Contribución
 
--  Paula Fuentes
--  Mariano Di Gennaro
--  Ezequiel Korelblum
--  Uriel Swarcman
--  Javier Bagdadi
--  Federico Peirano
--  Facundo Lopez Bruno
+- Paula Fuentes
+- Mariano Di Gennaro
+- Ezequiel Korelblum
+- Uriel Swarcman
+- Javier Bagdadi
+- Federico Peirano
+- Facundo Lopez Bruno
 
-## Licencia 
+## Licencia
 
 MIT License
 
