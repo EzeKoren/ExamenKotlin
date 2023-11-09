@@ -70,6 +70,10 @@ class DogsListFragment : Fragment() {
             filterDogs()
         }
 
+        breedAdapter.selectedBreeds.observe(viewLifecycleOwner) {
+            filterDogs()
+        }
+
         dogsViewModel.loadDogs()
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
