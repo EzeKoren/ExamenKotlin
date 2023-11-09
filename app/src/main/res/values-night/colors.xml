@@ -7,7 +7,7 @@
     <color name="text_light">#848484</color>
     <color name="icons">#FFFFFF</color>
     <color name="card_background">#030303</color>
-
+    <color name='seeker_background'>#8D8D8D</color>
     <color name="error">#FF0000</color>
     <color name="placeholder">#1B1B1B</color>
     <color name="text_placeholder">#323232</color>

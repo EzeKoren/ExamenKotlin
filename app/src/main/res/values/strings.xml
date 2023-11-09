@@ -75,6 +75,15 @@
     <string name="form_sub_breed">Subraza de perro</string>
     <string name="form_description">Descripción</string>
 
+    <!-- Seeker -->
+
+    <string name="seeker_hint">Buscador</string>
+    <string name="seeker_content_description">Boton Buscador</string>
+
+    <!-- Filter -->
+    <string name="filter_title">Filtros</string>
+    <string name="filter_more_options">Más filtros</string>
+
     <!--    Form Button -->
     <string name="form_button">Crear</string>
 
