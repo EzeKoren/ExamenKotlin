@@ -89,14 +89,32 @@ class DogDetailFragment : Fragment() {
 //        bottomSheetOwner.text = dog.owner
         bottomSheetDogDescription.text = dog.description
         bottomSheetOwner.text = dog.owner
+        bottomSheetAdoptButton.text =
+            if (dog.status) getString(R.string.dog_details_put_to_adoption)
+            else getString(R.string.dog_details_adopt_button)
 
         bottomSheetAdoptButton.setOnClickListener {
-            dog.owner = username
-            dog.status = true
-            dogsViewModel?.updateDog(dog)
+            val owner = dog.owner
+            val status = dog.status
+            val ownerEqualsUsername = dog.owner == username
 
-            val bundle = bundleOf("name" to username!!)
-            findNavController().navigate(R.id.adoption, bundle)
+            val adopted: Boolean = (dog.owner == username && dog.status)
+
+            dog.owner = username
+
+            if (adopted) {
+                dog.status = false
+                dogsViewModel?.updateDog(dog)
+
+                val bundle = bundleOf("username" to username!!)
+                findNavController().navigate(R.id.dogsListFragment, bundle)
+            } else {
+                dog.status = true
+                dogsViewModel?.updateDog(dog)
+
+                val bundle = bundleOf("name" to username!!)
+                findNavController().navigate(R.id.adoption, bundle)
+            }
         }
 
 
