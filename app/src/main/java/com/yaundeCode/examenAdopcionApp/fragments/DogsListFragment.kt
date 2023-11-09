@@ -10,14 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.yaundeAode.examenAdopcionApp.database.AppDatabase
 import com.yaundeCode.examenAdopcionApp.BreedsViewModel
 import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
-import com.yaundeCode.examenAdopcionApp.database.DogDao
 import com.yaundeCode.examenAdopcionApp.models.Breed
 import com.yaundeCode.examenAdopcionApp.listener.OnFilterSelectedListener
 import com.yaundeCode.examenAdopcionApp.models.Dog
@@ -123,7 +120,7 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
         dogAdapter.updateData(dogList)
     }
 
-    private fun daleCampeon() : List<Dog> {
+    private fun daleCampeon(): List<Dog> {
         val newDog = Dog(
             image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAw1_-K-zzqORGhrDwsvkOJJRcNUGDrLX_6ApOpw-lu5jQfmljxJgP5aT8qLwiIY9Qyao&usqp=CAU",
             name = "Vamos Argentina",
@@ -142,13 +139,11 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
         return listOf(newDog)
     }
 
-
-    private fun filterDogs() {
+    private fun filteredNamesAndBreeds(): List<Dog> {
         var dogs: List<Dog>
         if (searchQuery == "campeon") {
             dogs = daleCampeon()
-            updateDogs(dogs)
-            return
+            return dogs
         }
         val breedsSelected: List<Breed> = breedList.filter { breed -> breed.selected }
         if (searchQuery != "") {
@@ -160,6 +155,11 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
             dogs =
                 dogs.filter { dog -> breedsSelected.any { selectedBreed -> selectedBreed.breed == dog.breed } }
         }
+        return dogs
+    }
+
+    private fun filterDogs() {
+        var dogs: List<Dog> = filteredNamesAndBreeds()
         updateDogs(dogs)
     }
 
@@ -190,16 +190,18 @@ class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
 
     override fun onFilterGenderSelected(gender: String) {
-        filteredByModal = filteredByModal.filter { dog -> dog.gender == gender }
+        var dogs: List<Dog> = filteredNamesAndBreeds()
+        filteredByModal = dogs.filter { dog -> dog.gender == gender }
         if (filteredByModal.isEmpty())
             Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
-        else updateDogs(filteredByModal)
+        updateDogs(filteredByModal)
     }
 
     override fun onFilterAgeSelected(age: Int) {
-        filteredByModal = filteredByModal.filter { dog -> dog.age == age }
+        var dogs: List<Dog> = filteredNamesAndBreeds()
+        filteredByModal = dogs.filter { dog -> dog.age == age }
         if (filteredByModal.isEmpty())
             Toast.makeText(context, "No tenemos perros con esa edad", Toast.LENGTH_SHORT).show()
-        else updateDogs(filteredByModal)
+        updateDogs(filteredByModal)
     }
 }
