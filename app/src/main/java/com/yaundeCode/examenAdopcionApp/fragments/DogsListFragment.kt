@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -18,7 +16,10 @@ import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
+import com.yaundeCode.examenAdopcionApp.models.Breed
 import com.yaundeCode.examenAdopcionApp.models.Dog
+import java.util.Date
+
 
 class DogsListFragment : Fragment() {
 
@@ -31,8 +32,8 @@ class DogsListFragment : Fragment() {
     private lateinit var v: View
     private lateinit var searchBar: View
     private var dogList: List<Dog> = listOf()
+    private var breedList: List<Breed> = listOf()
     private var searchQuery: String = ""
-
     private var username: String? = null
 
     companion object {
@@ -46,9 +47,9 @@ class DogsListFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         username = arguments?.getString("username")
 
@@ -59,7 +60,8 @@ class DogsListFragment : Fragment() {
         recyclerView.adapter = dogAdapter
 
         breedReciclerView = v.findViewById(R.id.breedsListRecycler)
-        breedReciclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        breedReciclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         breedAdapter = BreedAdapter()
         breedReciclerView.adapter = breedAdapter
 
@@ -76,7 +78,11 @@ class DogsListFragment : Fragment() {
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
             dogList = dogs
-            if (searchQuery != "") filterDogs() else updateDogs()
+            filterDogs()
+        }
+
+        breedAdapter.selectedBreeds.observe(viewLifecycleOwner) {
+            filterDogs()
         }
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
@@ -88,7 +94,9 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
+            breedList = breeds
             breedAdapter.updateData(breeds)
+            filterDogs()
         }
 
         dogsViewModel.loadDogs()
@@ -103,13 +111,44 @@ class DogsListFragment : Fragment() {
         dogAdapter.updateData(dogList)
     }
 
+    private fun daleCampeon() : List<Dog> {
+        val newDog = Dog(
+            image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAw1_-K-zzqORGhrDwsvkOJJRcNUGDrLX_6ApOpw-lu5jQfmljxJgP5aT8qLwiIY9Qyao&usqp=CAU",
+            name = "Vamos Argentina",
+            age = 3,
+            gender = "Campeon",
+            publishedDate = Date().toString(),
+            weight = 70.0,
+            description = "Vamos Argentina",
+            breed = "Campeon",
+            subBreed = "Del Mundo",
+            location = "Ciudad de buenos Aires",
+            owner = "World Cup",
+            status = true,
+            favorite = true
+        )
+        return listOf(newDog)
+    }
+
 
     private fun filterDogs() {
-        if (searchQuery == "") updateDogs(dogList)
-        else {
-            var dogs: List<Dog> = dogList.filter { dog -> dog.name.contains(searchQuery, ignoreCase = true) }
+        var dogs: List<Dog>
+        if (searchQuery == "campeon") {
+            dogs = daleCampeon()
             updateDogs(dogs)
+            return
         }
+        val breedsSelected: List<Breed> = breedList.filter { breed -> breed.selected }
+        if (searchQuery != "") {
+            dogs = dogList.filter { dog -> dog.name.contains(searchQuery, ignoreCase = true) }
+        } else {
+            dogs = dogList
+        }
+        if (breedsSelected.isNotEmpty()) {
+            dogs =
+                dogs.filter { dog -> breedsSelected.any { selectedBreed -> selectedBreed.breed == dog.breed } }
+        }
+        updateDogs(dogs)
     }
 
     override fun onResume() {
@@ -117,11 +156,11 @@ class DogsListFragment : Fragment() {
 
         dogsViewModel.dogList.observe(viewLifecycleOwner) { dogs ->
             dogList = dogs
-            if (searchQuery != "") filterDogs() else updateDogs()
+            filterDogs()
         }
 
         val searchBar = childFragmentManager.findFragmentById(R.id.searchBarFragmentContainer)
-                    as SearchBarFragment
+                as SearchBarFragment
 
         searchBar.searchQuery.observe(viewLifecycleOwner) { query ->
             searchQuery = query
@@ -129,7 +168,9 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.breedList.observe(viewLifecycleOwner) { breeds ->
-            breedAdapter.updateData(breeds) 
+            breedList = breeds
+            breedAdapter.updateData(breeds)
+            filterDogs()
         }
         dogsViewModel.loadDogs()
         breedViewModel.getBreeds()

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Breed
 
-class BreedViewHolder(breedView: View) : RecyclerView.ViewHolder(breedView){
+class BreedViewHolder(breedView: View, private val onSelect: (String, Boolean) -> Unit) : RecyclerView.ViewHolder(breedView){
     private val button = breedView.findViewById<Button>(R.id.breedItemButton)
     private lateinit var breed: Breed
     private val breedButton: Button = itemView.findViewById(R.id.breedItemButton)
@@ -16,6 +16,8 @@ class BreedViewHolder(breedView: View) : RecyclerView.ViewHolder(breedView){
             breed.let {
                 it.selected = !it.selected  // Cambia el estado de breed.selected
                 render(it)  // Actualiza la vista según sea necesario
+
+                onSelect(it.breed, it.selected)
             }
         }
     }
