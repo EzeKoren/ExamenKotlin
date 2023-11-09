@@ -61,7 +61,7 @@ class Dog(
         val status: Boolean
 
         @ColumnInfo(name = "favorite")
-        val favorite: Boolean
+        var favorite: Boolean
 
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
