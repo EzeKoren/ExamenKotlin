@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
@@ -83,12 +84,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_profile -> {
-                navHostFragment.navController.navigate(R.id.profileFragment)
+                val bundle = bundleOf("name" to name!!)
+                navHostFragment.navController.navigate(R.id.profileFragment, bundle)
             }
             R.id.nav_item_setting -> {
                 navHostFragment.navController.navigate(R.id.settingsViewFragment)
             }
-
         }
 
         drawer.closeDrawer(GravityCompat.START)
