@@ -6,16 +6,20 @@
     app:startDestination="@id/dogsListFragment">
     <fragment
         android:id="@+id/adoption"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.AdoptionFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.OwnedDogsFragment"
         android:label="fragment_adopcion"
-        tools:layout="@layout/fragment_adoption" />
+        tools:layout="@layout/fragment_owned_dogs">
+        <action
+            android:id="@+id/action_dog_to_dogDetailFragment"
+            app:destination="@id/dogDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favorite"
-        android:name="com.yaundeCode.examenAdopcionApp.fragments.FavoriteFragment"
+        android:name="com.yaundeCode.examenAdopcionApp.fragments.FavoriteDogsFragment"
         android:label="fragment_favoritos"
-        tools:layout="@layout/fragment_favorite" >
+        tools:layout="@layout/fragment_favorite_dogs" >
         <action
-            android:id="@+id/action_favorite_to_dogDetailFragment"
+            android:id="@+id/action_dog_to_dogDetailFragment"
             app:destination="@id/dogDetailFragment" />
     </fragment>
     <fragment
@@ -29,7 +33,7 @@
         android:label="fragment_dogs_list"
         tools:layout="@layout/fragment_dogs_list" >
         <action
-            android:id="@+id/action_dogsListFragment_to_dogDetailFragment"
+            android:id="@+id/action_dog_to_dogDetailFragment"
             app:destination="@id/dogDetailFragment" />
     </fragment>
     <fragment

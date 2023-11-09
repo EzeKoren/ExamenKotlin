@@ -34,7 +34,7 @@ class DogViewHolder(dogView: View) : RecyclerView.ViewHolder(dogView) {
             val dogJsonString = Gson().toJson(dog).toString()
 
             val bundle = bundleOf("dog" to dogJsonString)
-            it.findNavController().navigate(R.id.action_dogsListFragment_to_dogDetailFragment, bundle)
+            it.findNavController().navigate(R.id.action_dog_to_dogDetailFragment, bundle)
         }
     }
 

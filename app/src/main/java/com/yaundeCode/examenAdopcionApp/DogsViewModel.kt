@@ -62,6 +62,7 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
                                                 val owners = arrayOf("Martin", "refugio patitas", "firuHome")
                                                 val owner = owners.random()
                                                 val status = random.nextBoolean()
+                                                val favorite = random.nextBoolean()
 
                                                 var newDog = Dog(
                                                     image = imageUrl,
@@ -74,8 +75,9 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
                                                     breed = breed,
                                                     subBreed = subBreeds.shuffled()[0],
                                                     location = "Ciudad de buenos Aires",
+                                                    owner = owner,
                                                     status = status,
-                                                    owner = owner
+                                                    favorite = favorite
                                                 )
 
                                                 newDogList.add(newDog)
