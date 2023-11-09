@@ -1,6 +1,7 @@
 package com.yaundeCode.examenAdopcionApp
 
 import android.app.Application
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -110,5 +111,25 @@ class DogsViewModel(application: Application) : AndroidViewModel(application) {
     private fun loadDogsFromRoomDB() {
         val dogListDB = dogDao.getAll()
         dogList.value = dogListDB
+    }
+
+    fun loadDogsByGender(gender: String): Boolean {
+        var dogsFound : Boolean = true
+        val dogListByGenderDB = dogDao.getDogsByGender(gender)
+        dogList.value = dogListByGenderDB
+        if(dogListByGenderDB.isEmpty()){
+            dogsFound = false
+        }
+        return dogsFound
+    }
+
+    fun loadDogsByAge(age: Int): Boolean {
+        var dogsFound : Boolean = true
+        val dogListByAgeDB = dogDao.getDogsByAge(age)
+        dogList.value = dogListByAgeDB
+        if(dogListByAgeDB.isEmpty()){
+            dogsFound = false
+        }
+        return dogsFound
     }
 }

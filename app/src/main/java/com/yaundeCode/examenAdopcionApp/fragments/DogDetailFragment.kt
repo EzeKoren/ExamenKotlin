@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.gson.Gson
+import com.yaundeCode.examenAdopcionApp.DogsViewModel
 import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.models.Dog
 import kotlin.math.roundToInt
@@ -25,6 +26,7 @@ private const val ARG_DOG = "dog"
 class DogDetailFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var dog: Dog
+    private lateinit var dogsViewModel: DogsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +86,8 @@ class DogDetailFragment : Fragment() {
 
         bottomSheetAdoptButton.setOnClickListener {
             // TODO: Guardarlo en base
+            dog.status = true
+            dogsViewModel.addDog(dog)
             findNavController().navigate(action)
         }
 

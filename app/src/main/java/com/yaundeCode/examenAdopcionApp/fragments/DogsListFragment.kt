@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yaundeAode.examenAdopcionApp.database.AppDatabase
@@ -17,14 +17,15 @@ import com.yaundeCode.examenAdopcionApp.R
 import com.yaundeCode.examenAdopcionApp.adapter.BreedAdapter
 import com.yaundeCode.examenAdopcionApp.adapter.DogAdapter
 import com.yaundeCode.examenAdopcionApp.database.DogDao
+import com.yaundeCode.examenAdopcionApp.listener.OnFilterSelectedListener
 import com.yaundeCode.examenAdopcionApp.models.Dog
 
-class DogsListFragment : Fragment() {
+class DogsListFragment : Fragment(), OnFilterSelectedListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dogAdapter: DogAdapter
     private lateinit var dogsViewModel: DogsViewModel
-    private var newDogList = mutableListOf<Dog>()
+    // private var newDogList = mutableListOf<Dog>()
     private lateinit var breedReciclerView: RecyclerView
     private lateinit var breedAdapter: BreedAdapter
     private lateinit var breedViewModel: BreedsViewModel
@@ -51,8 +52,13 @@ class DogsListFragment : Fragment() {
         breedAdapter = BreedAdapter()
         breedReciclerView.adapter = breedAdapter
 
-        searchBar = v.findViewById(R.id.searchBarFragmentContainer)
+        val filterButtonMoreOptions: Button = v.findViewById(R.id.filterButtonMoreOptions)
+        filterButtonMoreOptions.setOnClickListener {
+            val dialog = FilterDialogFragment(this)
+            dialog.show(parentFragmentManager, "FilterDialogFragment")
+        }
 
+        searchBar = v.findViewById(R.id.searchBarFragmentContainer)
         return v
     }
 
@@ -127,5 +133,20 @@ class DogsListFragment : Fragment() {
         }
 
         breedViewModel.getBreeds()
+    }
+
+    override fun onFilterGenderSelected(gender: String) {
+        var dogsFound =dogsViewModel.loadDogsByGender(gender)
+        if (dogsFound == false){
+            Toast.makeText(context, "No tenemos perros con ese genero", Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+    override fun onFilterAgeSelected(age: Int) {
+        var dogsFound = dogsViewModel.loadDogsByAge(age)
+        if (dogsFound == false){
+            Toast.makeText(context, "No tenemos perros con esa edad", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:text="Macho"
+                android:text="Male"
                 tools:layout_editor_absoluteX="56dp"
                 tools:layout_editor_absoluteY="127dp" />
 
@@ -43,7 +43,7 @@
                 android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hembra"
+                android:text="Female"
                 tools:layout_editor_absoluteX="65dp"
                 tools:layout_editor_absoluteY="183dp" />
 
@@ -60,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <com.google.android.material.slider.RangeSlider
-            android:id="@+id/filter_age_slider"
+            android:id="@+id/filterAgeSlider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -68,7 +68,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:valueFrom="0"
-            android:valueTo="25"
+            android:valueTo="20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"></com.google.android.material.slider.RangeSlider>
@@ -82,10 +82,10 @@
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filter_age_slider">
+            app:layout_constraintTop_toBottomOf="@+id/filterAgeSlider">
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/btnConfirmar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -94,7 +94,7 @@
                 android:text="Confirmar" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnCancelar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -104,7 +104,6 @@
 " />
 
         </LinearLayout>
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
