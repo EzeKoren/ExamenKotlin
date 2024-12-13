@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FFFFFFFF</color>
+    <color name="primary">#827397</color>
+    <color name="input">#D8D8D8</color>
+    <color name="text">#191919</color>
+    <color name="text_light">#ADA8A8</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name='seeker_background'>#D8D8D8</color>
+    <color name="error">#FF0000</color>
+    <color name="placeholder">#D8D8D8</color>
+    <color name="text_placeholder">#CAC9C9</color>
+    <color name="image_placeholder">#353535</color>
+    <color name="image_filter">#FF888888</color>
+    <color name="transparent">#00000000</color>
+    <color name="badge_favorite">#24492e</color>
+
+</resources>

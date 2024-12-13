@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.SearchBarFragment">
+
+    <com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/seeker_background">
+
+        <LinearLayout
+            android:id="@+id/seeker_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/seeker_text_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/seeker_hint"
+                android:textSize="12sp" />
+
+            <ImageButton
+                android:id="@+id/seeker_button"
+                android:layout_width="46dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/seeker_content_description"
+                android:src="@drawable/ic_seeker" />
+        </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
+</FrameLayout>
